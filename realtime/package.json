@@ -1,0 +1,16 @@
+{
+  "name": "pocket-pitlane-realtime",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test server.test.mjs",
+    "test:room-limit": "node --test --test-name-pattern=claim_room_limit server.test.mjs",
+    "test:persistence": "node --test --test-name-pattern=claim_realtime_persists_after_restart server.test.mjs",
+    "test:rate-limit": "node --test --test-name-pattern=claim_realtime_rate_limit server.test.mjs"
+  },
+  "dependencies": {
+    "ws": "8.21.3"
+  }
+}

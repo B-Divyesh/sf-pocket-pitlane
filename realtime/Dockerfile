@@ -1,15 +1,10 @@
-FROM rust:1-slim AS build
-WORKDIR /build
+FROM node:22-bookworm-slim
+WORKDIR /app
 ARG BUILD_SHA=dev
-COPY realtime/Cargo.toml realtime/Cargo.lock* ./
-RUN mkdir -p src && printf 'fn main() {}\n' > src/main.rs && cargo build --release
-COPY realtime/src ./src
-RUN BUILD_SHA=$BUILD_SHA cargo build --release
-
-FROM rust:1-slim AS runtime
-COPY --from=build /build/target/release/pocket-pitlane-realtime /usr/local/bin/pocket-pitlane-realtime
-COPY realtime/entrypoint.sh /usr/local/bin/pocket-pitlane-entrypoint
-RUN chmod 755 /usr/local/bin/pocket-pitlane-entrypoint
+COPY realtime/package.json realtime/package-lock.json ./
+RUN npm ci --omit=dev
+COPY realtime/server.mjs ./server.mjs
 EXPOSE 8080
 ENV PORT=8080
-CMD ["/usr/local/bin/pocket-pitlane-entrypoint"]
+ENV BUILD_SHA=$BUILD_SHA
+CMD ["node", "server.mjs"]

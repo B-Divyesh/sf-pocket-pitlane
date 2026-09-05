@@ -23,7 +23,7 @@ export default defineConfig({
       timeout: 30_000
     },
     {
-      command: 'cd realtime && PORT=8787 cargo run',
+      command: 'cd realtime && npm ci && PORT=8787 node server.mjs',
       url: 'http://127.0.0.1:8787/health',
       reuseExistingServer: true,
       timeout: 60_000

@@ -23,15 +23,15 @@ A round uses a 90-second race clock. Four moving hazards make each seeded run di
 
 ## Run locally
 
-Prerequisites: Node 22+, npm 10+, Rust stable with Cargo, and Chromium installed for Playwright 1.58.2.
+Prerequisites: Node 22+, npm 10+, and Chromium installed for Playwright 1.58.2.
 
 ```sh
 npm ci
 npm run dev
-cd realtime && PORT=8787 cargo run
+cd realtime && npm ci && PORT=8787 node server.mjs
 ```
 
-Open `http://127.0.0.1:4173`. The development client uses `ws://127.0.0.1:8787/ws` for the room service. The server writes `pocket-pitlane.sqlite` beside its binary when `/data` is absent.
+Open `http://127.0.0.1:4173`. The development client uses `ws://127.0.0.1:8787/ws` for the room service. The server writes `pocket-pitlane.sqlite` in its working directory when `/data` is absent.
 
 ## Test and build
 
@@ -42,7 +42,7 @@ npm run test:realtime
 npm run check
 ```
 
-`npm test` starts a production Vite preview and the local Rust room service. It runs desktop and phone-sized browser checks, including the claims in `.factory/claims.json`, offline reload, keyboard use, route titles, room joining, and an axe scan. `npm run test:realtime` checks SQLite restart persistence, health, and the 429 plus `Retry-After` allowance.
+`npm test` starts a production Vite preview and the local Node room service. It runs desktop and phone-sized browser checks, including the claims in `.factory/claims.json`, offline reload, keyboard use, route titles, room joining, and an axe scan. `npm run test:realtime` checks SQLite restart persistence, the complete WebSocket room flow, and the 429 plus `Retry-After` allowance.
 
 The realtime service is intentionally separate from static hosting because it owns WebSocket rooms and SQLite state.
 

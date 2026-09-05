@@ -9,7 +9,10 @@
     "preview": "vite preview --host 0.0.0.0",
     "test": "playwright test",
     "test:claims": "playwright test --grep @claim:",
-    "test:realtime": "cargo test --manifest-path realtime/Cargo.toml",
+    "test:realtime": "npm --prefix realtime ci && npm --prefix realtime test",
+    "test:realtime:room-limit": "npm --prefix realtime ci && npm --prefix realtime run test:room-limit",
+    "test:realtime:persistence": "npm --prefix realtime ci && npm --prefix realtime run test:persistence",
+    "test:realtime:rate-limit": "npm --prefix realtime ci && npm --prefix realtime run test:rate-limit",
     "check": "npm run build && npm test && npm run test:realtime"
   },
   "devDependencies": {
