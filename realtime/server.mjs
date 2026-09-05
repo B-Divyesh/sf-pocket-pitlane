@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
 import { randomBytes } from 'node:crypto';
-import { mkdirSync } from 'node:fs';
+import { existsSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { WebSocketServer, WebSocket } from 'ws';
@@ -320,7 +320,9 @@ export function createRelay({ databasePath, buildSha = 'dev', connectionLimit = 
 }
 
 if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
-  const databasePath = process.env.DATA_DIR ? `${process.env.DATA_DIR}/pocket-pitlane.sqlite` : (process.env.DATABASE_PATH ?? (await import('node:fs')).existsSync('/data') ? '/data/pocket-pitlane.sqlite' : 'pocket-pitlane.sqlite');
+  const databasePath = process.env.DATA_DIR
+    ? `${process.env.DATA_DIR}/pocket-pitlane.sqlite`
+    : (process.env.DATABASE_PATH ?? (existsSync('/data') ? '/data/pocket-pitlane.sqlite' : 'pocket-pitlane.sqlite'));
   const relay = createRelay({ databasePath, buildSha: process.env.BUILD_SHA ?? 'dev' });
   relay.listen().then((port) => console.log(JSON.stringify({ event: 'startup', port, database: databasePath, build: process.env.BUILD_SHA ?? 'dev' }))).catch((error) => {
     console.error(JSON.stringify({ event: 'startup-error', error: 'The room service could not start.' }));
