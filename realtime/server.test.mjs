@@ -104,6 +104,9 @@ test('health reports a ready relay and its build identifier', async () => {
   const response = await fetch(`http://127.0.0.1:${port}/health`);
   assert.equal(response.status, 200);
   assert.deepEqual(await response.json(), { status: 'ok', build: 'test-build' });
+  const root = await fetch(`http://127.0.0.1:${port}/`);
+  assert.equal(root.status, 200);
+  assert.deepEqual(await root.json(), { status: 'ok', service: 'pocket-pitlane-realtime' });
 });
 
 test('an invalid room request gives a player a next step instead of closing the controller', async () => {

@@ -219,6 +219,11 @@ export function createRelay({ databasePath, buildSha = 'dev', connectionLimit = 
   const channels = new Map();
   const wss = new WebSocketServer({ noServer: true });
   const server = createServer((request, response) => {
+    if (request.method === 'GET' && request.url === '/') {
+      response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      response.end(JSON.stringify({ status: 'ok', service: 'pocket-pitlane-realtime' }));
+      return;
+    }
     if (request.method === 'GET' && request.url === '/health') {
       response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
       response.end(JSON.stringify({ status: 'ok', build: buildSha }));
