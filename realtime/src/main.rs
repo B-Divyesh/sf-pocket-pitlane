@@ -116,7 +116,8 @@ impl Database {
         }
         let connection = Connection::open(path).map_err(|_| RoomError::Database)?;
         connection.execute_batch(
-            "PRAGMA journal_mode=WAL;
+            "PRAGMA journal_mode=DELETE;
+             PRAGMA busy_timeout=5000;
              CREATE TABLE IF NOT EXISTS rooms (
                 code TEXT PRIMARY KEY,
                 host_id TEXT NOT NULL,
