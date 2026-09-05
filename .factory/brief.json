@@ -1,0 +1,32 @@
+{
+  "slug": "pocket-pitlane",
+  "title": "Pocket Pitlane",
+  "territory": "games-creative",
+  "user": "Friends with one shared TV or laptop who want a five-minute competitive racing game where every phone is a controller and nobody installs an app.",
+  "evidence": [
+    {
+      "url": "https://hn.algolia.com/api/v1/items/47954074",
+      "date": "2026-04-29",
+      "quote_or_summary": "In feedback on a browser racer, an HN commenter says 'we need more games in this space'; another explicitly asks for browser controllers for schools, while several report confusing phone/room-code onboarding."
+    },
+    {
+      "url": "https://simdrive.xyz/",
+      "date": "2026-09-01",
+      "quote_or_summary": "The fetched live page identifies Sim Drive as a multiplayer racing simulator with phone controllers, demonstrating the desired zero-install play surface."
+    }
+  ],
+  "recurrence": "One 2026 thread contains independent demand for more phone-controlled browser games plus repeated join-flow failures; the pain is acute when a group is standing around a screen.",
+  "current_workaround": "Use Jackbox-style paid packs, pass a keyboard around, or make everyone install a mobile game.",
+  "incumbents_and_gap": "Jackbox, AirConsole, SimDrive, and PadlessBox prove the format, but the shared friction is setup: QR loops, unclear host-versus-controller roles, and small game collections. A single polished arcade race can remove that first-minute failure mode.",
+  "smallest_useful_product": "A 2-8 player top-down race: host creates a six-character room on the big screen, phones open a controller link, and a 90-second race begins after a visual ready check. Runs vary through rotating track hazards and one drafted power. Non-goals: accounts, voice chat, physics simulation, or a party-game platform.",
+  "success_measure": "At least 70% of new rooms start a race with two or more controllers within 90 seconds, and 35% play a second race in the same visit.",
+  "artifact_class": "browser-game",
+  "monetization": "free \u2014 a frictionless room link is the product; sponsorship or a paid cosmetic track pack can be tested only after retention exists.",
+  "constraints": "Use WebSockets with region-aware relay; request device-motion permission only after an explicit tap and provide touch steering; collect no phone identity or contact data.",
+  "est_build_effort": "M",
+  "scale": "small",
+  "why_distinct": "It is a single purpose-built, setup-proof couch race, not another collection of licensed party prompts or a controller SDK.",
+  "confidence": 4,
+  "state": "RESEARCHED",
+  "research_run": "research-browser-games-0901-204337-3"
+}
