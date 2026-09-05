@@ -8,6 +8,8 @@ RUN BUILD_SHA=$BUILD_SHA cargo build --release
 
 FROM rust:1-slim AS runtime
 COPY --from=build /build/target/release/pocket-pitlane-realtime /usr/local/bin/pocket-pitlane-realtime
+COPY realtime/entrypoint.sh /usr/local/bin/pocket-pitlane-entrypoint
+RUN chmod 755 /usr/local/bin/pocket-pitlane-entrypoint
 EXPOSE 8080
 ENV PORT=8080
-CMD ["/usr/local/bin/pocket-pitlane-realtime"]
+CMD ["/usr/local/bin/pocket-pitlane-entrypoint"]
