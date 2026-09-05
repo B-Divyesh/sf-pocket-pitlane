@@ -1,0 +1,10 @@
+{
+  "name": "Pocket Pitlane",
+  "short_name": "Pitlane",
+  "description": "A shared-screen racing game with phone controllers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#132837",
+  "theme_color": "#132837",
+  "icons": [{ "src": "/apple-touch-icon.svg", "sizes": "180x180", "type": "image/svg+xml" }]
+}

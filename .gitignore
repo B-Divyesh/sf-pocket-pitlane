@@ -1,0 +1,8 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+realtime/target/
+pocket-pitlane.sqlite
+realtime/pocket-pitlane.sqlite*
+.DS_Store
