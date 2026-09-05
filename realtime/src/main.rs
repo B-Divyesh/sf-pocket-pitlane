@@ -89,7 +89,7 @@ enum RoomError {
     NotHost,
     NeedTwoReady,
     Invalid,
-    Database,
+    Database(String),
 }
 
 impl RoomError {
@@ -100,7 +100,7 @@ impl RoomError {
             Self::NotHost => "Only the shared-screen host can start the race.".to_owned(),
             Self::NeedTwoReady => "Two ready drivers are needed before the race starts.".to_owned(),
             Self::Invalid => "That room request was not valid. Try again.".to_owned(),
-            Self::Database => "The room service could not save this change. Try again.".to_owned(),
+            Self::Database(_) => "The room service could not save this change. Try again.".to_owned(),
         }
     }
 }
@@ -112,9 +112,9 @@ struct Database {
 impl Database {
     fn open(path: &Path) -> Result<Self, RoomError> {
         if let Some(parent) = path.parent().filter(|parent| !parent.as_os_str().is_empty()) {
-            std::fs::create_dir_all(parent).map_err(|_| RoomError::Database)?;
+            std::fs::create_dir_all(parent).map_err(|error| RoomError::Database(error.to_string()))?;
         }
-        let connection = Connection::open(path).map_err(|_| RoomError::Database)?;
+        let connection = Connection::open(path).map_err(|error| RoomError::Database(error.to_string()))?;
         connection.execute_batch(
             "PRAGMA journal_mode=DELETE;
              PRAGMA busy_timeout=5000;
@@ -127,7 +127,7 @@ impl Database {
                 updated_at INTEGER NOT NULL
              );
              CREATE INDEX IF NOT EXISTS rooms_host ON rooms(host_id);",
-        ).map_err(|_| RoomError::Database)?;
+        ).map_err(|error| RoomError::Database(error.to_string()))?;
         Ok(Self { connection: Mutex::new(connection) })
     }
 
@@ -189,7 +189,7 @@ impl Database {
     }
 
     fn load(&self, code: &str) -> Result<Option<Room>, RoomError> {
-        let connection = self.connection.lock().map_err(|_| RoomError::Database)?;
+        let connection = self.connection.lock().map_err(|_| RoomError::Database("database lock failed".to_owned()))?;
         let row = connection.query_row(
             "SELECT code, host_id, players_json, seed, created_at, updated_at FROM rooms WHERE code = ?1",
             [code],
@@ -198,12 +198,12 @@ impl Database {
                 let players = serde_json::from_str(&players_json).map_err(|error| rusqlite::Error::FromSqlConversionFailure(2, rusqlite::types::Type::Text, Box::new(error)))?;
                 Ok(Room { code: row.get(0)?, host_id: row.get(1)?, players, seed: row.get(3)?, created_at: row.get(4)?, updated_at: row.get(5)? })
             },
-        ).optional().map_err(|_| RoomError::Database)?;
+        ).optional().map_err(|error| RoomError::Database(error.to_string()))?;
         Ok(row)
     }
 
     fn load_by_host(&self, host_id: &str) -> Result<Option<Room>, RoomError> {
-        let connection = self.connection.lock().map_err(|_| RoomError::Database)?;
+        let connection = self.connection.lock().map_err(|_| RoomError::Database("database lock failed".to_owned()))?;
         let row = connection.query_row(
             "SELECT code, host_id, players_json, seed, created_at, updated_at FROM rooms WHERE host_id = ?1 ORDER BY updated_at DESC LIMIT 1",
             [host_id],
@@ -212,24 +212,24 @@ impl Database {
                 let players = serde_json::from_str(&players_json).map_err(|error| rusqlite::Error::FromSqlConversionFailure(2, rusqlite::types::Type::Text, Box::new(error)))?;
                 Ok(Room { code: row.get(0)?, host_id: row.get(1)?, players, seed: row.get(3)?, created_at: row.get(4)?, updated_at: row.get(5)? })
             },
-        ).optional().map_err(|_| RoomError::Database)?;
+        ).optional().map_err(|error| RoomError::Database(error.to_string()))?;
         Ok(row)
     }
 
     fn save(&self, room: &Room) -> Result<(), RoomError> {
-        let players = serde_json::to_string(&room.players).map_err(|_| RoomError::Database)?;
-        let connection = self.connection.lock().map_err(|_| RoomError::Database)?;
+        let players = serde_json::to_string(&room.players).map_err(|error| RoomError::Database(error.to_string()))?;
+        let connection = self.connection.lock().map_err(|_| RoomError::Database("database lock failed".to_owned()))?;
         connection.execute(
             "INSERT INTO rooms (code, host_id, players_json, seed, created_at, updated_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6)
              ON CONFLICT(code) DO UPDATE SET host_id = excluded.host_id, players_json = excluded.players_json, seed = excluded.seed, updated_at = excluded.updated_at",
             params![room.code, room.host_id, players, room.seed, room.created_at, room.updated_at],
-        ).map_err(|_| RoomError::Database)?;
+        ).map_err(|error| RoomError::Database(error.to_string()))?;
         Ok(())
     }
 
     fn cleanup(&self) -> Result<(), RoomError> {
-        let connection = self.connection.lock().map_err(|_| RoomError::Database)?;
-        connection.execute("DELETE FROM rooms WHERE updated_at < ?1", [now() - ROOM_TTL_SECONDS]).map_err(|_| RoomError::Database)?;
+        let connection = self.connection.lock().map_err(|_| RoomError::Database("database lock failed".to_owned()))?;
+        connection.execute("DELETE FROM rooms WHERE updated_at < ?1", [now() - ROOM_TTL_SECONDS]).map_err(|error| RoomError::Database(error.to_string()))?;
         Ok(())
     }
 
@@ -238,7 +238,7 @@ impl Database {
             let code = make_code();
             if self.load(&code)?.is_none() { return Ok(code); }
         }
-        Err(RoomError::Database)
+        Err(RoomError::Database("could not allocate a room code".to_owned()))
     }
 }
 
@@ -405,7 +405,11 @@ async fn main() {
     let port = env::var("PORT").ok().and_then(|value| value.parse::<u16>().ok()).unwrap_or(8080);
     let database_path = if Path::new("/data").is_dir() { PathBuf::from("/data/pocket-pitlane.sqlite") } else { PathBuf::from("pocket-pitlane.sqlite") };
     let build_sha = option_env!("BUILD_SHA").unwrap_or("dev").to_owned();
-    let database = Database::open(&database_path).expect("open SQLite room database");
+    let database = Database::open(&database_path).unwrap_or_else(|error| {
+        eprintln!("{{\"event\":\"database-startup-error\",\"path\":\"{}\",\"error\":\"{}\"}}", database_path.display(), error.message());
+        if let RoomError::Database(detail) = error { eprintln!("{{\"event\":\"database-detail\",\"detail\":\"{}\"}}", detail); }
+        panic!("open SQLite room database");
+    });
     let state = AppState { database: Arc::new(database), rooms: Arc::new(Mutex::new(HashMap::new())), limits: Arc::new(Mutex::new(HashMap::new())), build_sha: build_sha.clone() };
     let address = SocketAddr::from(([0, 0, 0, 0], port));
     println!("{{\"event\":\"startup\",\"port\":{port},\"database\":\"{}\",\"build\":\"{build_sha}\"}}", database_path.display());
