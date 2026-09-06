@@ -327,3 +327,60 @@ There are no known release-blocking gaps. Pocket Pitlane remains intentionally
 free and has no accounts, chat, ads, payments, voice chat, physics simulation,
 or party-game collection. No billing offer is advertised, so no billing
 metadata is required.
+
+## Verification 4
+
+### Status
+
+**PASS — 0 findings and 0 untested claims.**
+
+### Scope and versions
+
+- Independent report: `.factory/verification-4.md`.
+- Static implementation reviewed: `4724115fa67684275ef9191d6133ee30794be2fe`.
+- Repair documentation revision: `55281c7afe5f5a08a6ee0e3353b4544c84e28666`.
+- Factory and Graphify wrapper at review start:
+  `072eae356a6ded035910416f7a14a35145132de2`.
+- Unchanged live relay build:
+  `a955346b3e78fd83e3377c572973c15d9c6b94d9`.
+
+The live JavaScript and CSS hashes match the clean implementation build.
+Pre-existing uncommitted `graphify-out` changes were preserved untouched.
+
+### Verification completed
+
+- A fresh detached checkout completed both documented installs. `npm run check`
+  passed with 34 browser checks, 2 intentional mobile-only skips, and all 8
+  relay checks.
+- All 19 claim-manifest entries were run separately and passed. Every claim has
+  exactly one matching test tag.
+- Fresh desktop and phone contexts showed the game, job, audience, Create room,
+  and sample action before scrolling.
+- The isolated sample showed four named racers, retained its sample label,
+  reset without changing real browser data, reached an ordered four-finisher
+  result screen, and restarted.
+- A recorded deterministic run covers entry, active play, the result, and
+  restart. A separate real phone joined and readied a live room, sent touch
+  input, started the race, and stayed connected through host refresh recovery.
+- A second host received a separate room. Invalid short and missing room codes
+  produced clear recovery messages.
+- Keyboard skip navigation, settings dialog focus return, steering and mute
+  persistence, reduced motion, 200% text, offline demo reload, legal pages,
+  privacy-request text, route metadata, links, and the structured deliberate
+  HTTP 404 all passed.
+- Live Axe scans found no serious or critical violations. No unexpected console
+  or page errors occurred.
+- Lighthouse mobile scored 99 Performance and 100 for Accessibility, Best
+  Practices, and SEO. An active phone-sized race measured 60.04 fps.
+- Relay health returned 200. Twenty live WebSocket upgrades succeeded; attempt
+  21 returned 429 with `Retry-After: 60`. Clean relay tests covered the room
+  limit, expiry, SQLite reopen persistence, storage scope, and full room flow.
+- Verification 1, Verification 2, and Review 2 findings were each rechecked and
+  remain closed, including the earlier minor reset-feedback defect.
+
+Evidence is in `/work/.evidence/pocket-pitlane-verify-4/`. No product code,
+deployment, infrastructure, or relay state was modified during verification.
+
+### Known gaps
+
+None found. The intentional first-release exclusions remain unchanged.
