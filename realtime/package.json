@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node server.mjs",
     "test": "node --test server.test.mjs",
-    "test:room-limit": "node --test --test-name-pattern=claim_room_limit server.test.mjs",
-    "test:room-expiry": "node --test --test-name-pattern=claim_room_expiry server.test.mjs",
-    "test:persistence": "node --test --test-name-pattern=claim_realtime_persists_after_restart server.test.mjs",
-    "test:rate-limit": "node --test --test-name-pattern=claim_realtime_rate_limit server.test.mjs",
+    "test:room-limit": "node --test --test-name-pattern=@claim:room-limit server.test.mjs",
+    "test:room-expiry": "node --test --test-name-pattern=@claim:room-expiry server.test.mjs",
+    "test:persistence": "node --test --test-name-pattern=@claim:realtime-persistence server.test.mjs",
+    "test:rate-limit": "node --test --test-name-pattern=@claim:realtime-rate-limit server.test.mjs",
     "test:storage-scope": "node --test --test-name-pattern=@claim:realtime-storage-scope server.test.mjs"
   },
   "dependencies": {

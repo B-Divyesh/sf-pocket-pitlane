@@ -62,7 +62,7 @@ function rawUpgrade(port, count) {
   });
 }
 
-test('claim_room_limit refuses a ninth driver after the host and seven controllers', () => {
+test('@claim:room-limit refuses a ninth driver after the host and seven controllers', () => {
   const store = new RoomStore(databaseFile());
   disposers.push(async () => store.close());
   const room = store.hostRoom(id(1));
@@ -71,7 +71,7 @@ test('claim_room_limit refuses a ninth driver after the host and seven controlle
   assert.throws(() => store.joinRoom(room.code, id(9)), (error) => error.kind === 'full');
 });
 
-test('claim_realtime_persists_after_restart reopens a durable room with its ready controller', () => {
+test('@claim:realtime-persistence reopens a durable room with its ready controller after a service restart', () => {
   const durableFile = databaseFile();
   const first = new RoomStore(databaseFile(), durableFile);
   const room = first.hostRoom(id(1));
@@ -121,7 +121,7 @@ test('@claim:realtime-storage-scope keeps only anonymous room identifiers and ge
   assert.doesNotMatch(JSON.stringify(row).toLowerCase(), /"(name|email|contact|phone|camera|location|address)"/);
 });
 
-test('claim_room_expiry removes an expired room from the durable snapshot', () => {
+test('@claim:room-expiry removes an expired room from the durable snapshot', () => {
   const durableFile = databaseFile();
   const first = new RoomStore(databaseFile(), durableFile);
   const room = first.hostRoom(id(1));
@@ -133,7 +133,7 @@ test('claim_room_expiry removes an expired room from the durable snapshot', () =
   assert.equal(restarted.load(room.code), null);
 });
 
-test('claim_realtime_rate_limit returns HTTP 429 with Retry-After after 20 connection attempts', async () => {
+test('@claim:realtime-rate-limit returns HTTP 429 with Retry-After after 20 connection attempts', async () => {
   const relay = createRelay({ databasePath: databaseFile() });
   disposers.push(async () => relay.close());
   const port = await relay.listen(0, '127.0.0.1');
