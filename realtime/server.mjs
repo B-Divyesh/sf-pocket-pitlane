@@ -343,7 +343,7 @@ export function createRelay({ databasePath, buildSha = 'dev', connectionLimit = 
 
 if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
   const relay = createRelay({ databasePath: process.env.DATABASE_PATH, buildSha: process.env.BUILD_SHA ?? 'dev' });
-  relay.listen().then((port) => console.log(JSON.stringify({ event: 'startup', port, database: databasePath, build: process.env.BUILD_SHA ?? 'dev' }))).catch((error) => {
+  relay.listen().then((port) => console.log(JSON.stringify({ event: 'startup', port, database: relay.store.durablePath, build: process.env.BUILD_SHA ?? 'dev' }))).catch((error) => {
     console.error(JSON.stringify({ event: 'startup-error', error: 'The room service could not start.' }));
     console.error(error);
     process.exitCode = 1;
