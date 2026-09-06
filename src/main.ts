@@ -394,7 +394,7 @@ function gameOverlay(phase: GamePhase, cars: Car[], seconds: number): void {
     document.querySelector<HTMLButtonElement>('#resume-race')?.addEventListener('click', () => game?.resume());
   } else {
     const ordered = [...cars].sort((a, b) => b.progress - a.progress);
-    overlay.innerHTML = `<div class="overlay-panel results-panel"><h2>Race results</h2><p>90-second race complete. ${escapeHtml(ordered[0]?.label ?? 'No driver')} wins this race.</p><ol>${ordered.map((car, index) => `<li>${index + 1}. ${escapeHtml(car.label)} — ${car.progress.toFixed(2)} laps</li>`).join('')}</ol><div class="button-row"><button class="button" id="race-again" type="button">Race again</button><button class="button-secondary" id="back-to-room" type="button">Back to room</button></div></div>`;
+    overlay.innerHTML = `<div class="overlay-panel results-panel"><h2>Race results</h2><p>90-second race complete. ${escapeHtml(ordered[0]?.label ?? 'No driver')} wins this race.</p><ol>${ordered.map((car) => `<li>${escapeHtml(car.label)} — ${car.progress.toFixed(2)} laps</li>`).join('')}</ol><div class="button-row"><button class="button" id="race-again" type="button">Race again</button><button class="button-secondary" id="back-to-room" type="button">Back to room</button></div></div>`;
     document.querySelector<HTMLButtonElement>('#race-again')?.addEventListener('click', () => {
       if (isDemoRoute()) startSampleRace();
       else if (room) socket?.send({ type: 'start' });

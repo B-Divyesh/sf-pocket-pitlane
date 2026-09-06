@@ -24,6 +24,7 @@ test('@claim:race-reaches-end runs a deterministic race through its results scre
   await expect(page.getByRole('heading', { name: 'Race results' })).toBeVisible({ timeout: 8_000 });
   await expect(page.getByText('90-second race complete.', { exact: false })).toBeVisible();
   await expect(page.locator('.results-panel li')).toHaveCount(4);
+  await expect(page.locator('.results-panel li').first()).toHaveText(/^[A-Za-z]+ — \d+\.\d{2} laps$/);
   await expect(page.getByRole('button', { name: 'Race again' })).toBeVisible();
 });
 
