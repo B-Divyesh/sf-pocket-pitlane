@@ -50,3 +50,50 @@ Independent verification report: `.factory/verification-1.md`.
 - In a clean clone, `npm run check` passed (build, 26 browser checks, and 7 relay checks). Every declared claim command was also run separately and passed.
 - Fresh live desktop and phone checks confirmed the first screen, isolated demo/reset, deterministic result screen, independent controller join/start, host refresh recovery, route titles, legal pages, reduced motion, live axe, styled HTTP 404, relay health, and the controlled 429/`Retry-After` allowance.
 - Evidence is in `/work/.evidence/pocket-pitlane/`. No product code was changed during verification.
+
+## Repair 1
+
+### Status
+
+**PASS.** The five untested public promises from Verification 1 now each have a declared, observable outcome test. The static implementation deployed to the live product is `8953c47ee08f51040d3b650399fbc2969bdee14b`. The prior claims-and-test documentation revision is `4d9e8fecab7c93a77f044815569babfa38bfd83b`; this handoff revision follows it.
+
+### What changed
+
+- Added five entries to `.factory/claims.json` and five outcome tests:
+  - Motion permission is not requested before a phone tap; denied permission still sends a touch-steering frame.
+  - The rendered Canvas contains four moving hazards and distinct seeded runs render different hazard positions.
+  - A complete host-plus-phone room flow requests only the product site and its owned relay.
+  - Home and controller routes do not invoke contact, camera, or location APIs.
+  - A durable SQLite room record contains only the permitted anonymous room, generated player-state, and race-state fields.
+- The sample test fixture now accepts deterministic seed input only through unlinked verification query parameters documented in `.factory/demo.md`.
+- Corrected the privacy wording to include the generated game fields the relay actually stores: room code, timestamps, generated labels/colors, ready state, race state, and random controller tokens.
+- Fixed a minor demo recovery defect found during live verification: **Reset demo** now announces `Sample reset. Nothing was saved.` instead of updating a missing status node.
+- `.factory/catalog-description.txt` remains the plain verb-first description, and the same text was copied to `/work/.evidence/catalog-description.txt`.
+
+### Verification
+
+- Clean setup: `npm ci`, then `npm --prefix realtime ci`.
+- Every one of the 19 commands declared in `.factory/claims.json` was run separately. All passed. The final reset-feedback change also reran `@claim:sample-sandbox`.
+- Final `npm run check` passed: production build, 32 browser tests passed with 2 intentional desktop skips for phone-only checks, and all 8 relay tests passed.
+- Build output: JavaScript 33.99 KB raw / 11.10 KB gzip; CSS 10.29 KB raw / 3.12 KB gzip.
+- Static deployment completed successfully for `8953c47ee08f51040d3b650399fbc2969bdee14b`. The product URL returned HTTPS 200.
+- Fresh live desktop check found the game canvas, `Race with friends on one shared screen`, the audience sentence, and **Create room** before scrolling. Fresh live phone check joined an independent real room, marked ready, enabled the host start action, and exposed a 98 px steering target.
+- Live demo verification entered through the visible sample action, retained `Demo — sample data, nothing is saved`, showed four named racers, reset with its new confirmation, preserved a real-storage sentinel, and reached the four-finisher `Race results` end screen through the deterministic run.
+- Live Privacy and Terms had their route titles, one h1, and main landmark. `/not-a-pitlane-route` returned the deliberate styled HTTP 404. No console errors occurred.
+- Final `verify-url.sh` result: HTTPS 200, 594 ms load, title/lang/main present, one h1, no image-alt omissions, and no unlabeled buttons. Live Playwright axe found no serious or critical issues on home or controller. The standalone axe CLI was unavailable because this container has no system Chrome binary; the repository’s Playwright axe integration used its installed browser instead.
+- The unchanged realtime service remained on its already-deployed implementation `a955346b3e78fd83e3377c572973c15d9c6b94d9`; live `/health` returned 200. A controlled same-origin allowance run opened 20 WebSockets and received `429 Retry-After: 60` on attempts 21–22.
+- Current screenshots, verification JSON, relay health response, and route captures are in `/work/.evidence/pocket-pitlane/repair-1/`.
+
+### Verification 1 finding disposition
+
+| Earlier finding | Current disposition |
+| --- | --- |
+| F-01.1 Motion permission and touch fallback | Covered by `phone-motion-touch-fallback`; pass. |
+| F-01.2 Four seeded moving hazards | Covered by `seeded-hazards`; pass. |
+| F-01.3 No ads, analytics, or third-party scripts | Covered by `real-room-request-scope`; pass. |
+| F-01.4 No contact, camera, or location access | Covered by `no-device-data-access`; pass. |
+| F-01.5 Real-room data scope | Covered by `realtime-storage-scope`; pass. |
+
+### Known gaps
+
+There are no known release-blocking gaps. The product remains intentionally free and has no accounts, chat, advertisements, payments, voice chat, physics simulation, or party-game collection. No billing metadata is needed because no offer is advertised.
