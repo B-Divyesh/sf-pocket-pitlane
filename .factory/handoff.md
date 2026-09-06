@@ -243,7 +243,7 @@ Report: `.factory/review-2.md`. Evidence: `/work/.evidence/pocket-pitlane-review
 **PASS.** Review 2's four findings and its one untested contradictory privacy
 claim are closed. The static implementation is
 `4724115fa67684275ef9191d6133ee30794be2fe`. The documentation report commit
-is recorded in the follow-up handoff reference commit.
+is `55281c7afe5f5a08a6ee0e3353b4544c84e28666`.
 
 ### What changed
 
