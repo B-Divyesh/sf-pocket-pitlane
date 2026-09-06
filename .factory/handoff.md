@@ -236,6 +236,32 @@ No findings in Review 1. Intentional scope remains unchanged: no accounts, chat,
 
 Report: `.factory/review-2.md`. Evidence: `/work/.evidence/pocket-pitlane-review-2/`.
 
+## Review 3
+
+### Status
+
+**PASS — 0 findings and 0 untested claims.**
+
+### Scope and verification
+
+- Reviewed live static implementation: `4724115fa67684275ef9191d6133ee30794be2fe`; documentation baseline: `c8b5080cac07400ad9028996713f4292433819ee`; unchanged relay build: `a955346b3e78fd83e3377c572973c15d9c6b94d9`.
+- The live JavaScript and CSS SHA-256 values exactly match a clean build of that static candidate.
+- A fresh detached checkout passed `npm ci`, `npm --prefix realtime ci`, and `npm run check`: 34 browser checks passed, 2 intentional desktop skips remained, and 8 relay checks passed. All 19 declared claim commands then passed separately, with one exact test tag per claim.
+- Fresh desktop and phone contexts confirmed the above-fold playable race, labeled and isolated sample/reset, deterministic four-finisher result screen, independent real phone join/ready/start and steering input, invalid-input recovery, offline demo reload, keyboard skip link, reduced motion, legal routes, privacy request scope, and styled deliberate HTTP 404.
+- Live Axe found no serious or critical violations. Normal-route console loads were clean. A three-second phone-sized active race measured 60.25 fps in headless Chromium; this is not a hardware claim.
+- Live relay health returned 200. A controlled allowance check returned 20 WebSocket HTTP 101 upgrades and a `429 Retry-After: 60` response. Restart persistence and tenant/storage boundaries passed in the clean owned-SQLite relay suite.
+
+### Earlier finding disposition and evidence
+
+Verification 1 F-01.1 through F-01.5, the earlier reset-feedback defect, Verification 2 F-02, and Review 2 F-01 through F-04 remain closed and were rechecked. No product code changed in this review.
+
+- Review report: `.factory/review-3.md`.
+- Evidence: `/work/.evidence/pocket-pitlane-review-3/` and the factory QA copies at `/work/.evidence/qa-report.md` and `/work/.evidence/qa-result.json`.
+
+### Known gaps
+
+None found. Intentional first-release scope remains: no accounts, chat, ads, payments, voice chat, physics simulation, or party-game collection.
+
 ## Repair 3
 
 ### Status
