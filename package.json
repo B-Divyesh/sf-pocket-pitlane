@@ -14,6 +14,7 @@
     "test:realtime:room-expiry": "npm --prefix realtime ci && npm --prefix realtime run test:room-expiry",
     "test:realtime:persistence": "npm --prefix realtime ci && npm --prefix realtime run test:persistence",
     "test:realtime:rate-limit": "npm --prefix realtime ci && npm --prefix realtime run test:rate-limit",
+    "test:realtime:storage-scope": "npm --prefix realtime ci && npm --prefix realtime run test:storage-scope",
     "check": "npm run build && npm test && npm run test:realtime"
   },
   "devDependencies": {

@@ -3,6 +3,7 @@ import { afterEach, test } from 'node:test';
 import { mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { DatabaseSync } from 'node:sqlite';
 import net from 'node:net';
 import { WebSocket } from 'ws';
 import { createRelay, RoomStore } from './server.mjs';
@@ -85,6 +86,39 @@ test('claim_realtime_persists_after_restart reopens a durable room with its read
   assert.equal(persisted.players.find((player) => player.id === id(2)).ready, true);
   assert.equal(persisted.race.seed, raced.seed);
   assert.equal(persisted.race.duration, 90);
+});
+
+test('@claim:realtime-storage-scope keeps only anonymous room identifiers and generated game state in the durable snapshot', () => {
+  const durableFile = databaseFile();
+  const store = new RoomStore(databaseFile(), durableFile);
+  const room = store.hostRoom(id(1));
+  store.joinRoom(room.code, id(2));
+  store.setReady(room.code, id(2), true);
+  store.start(room.code, id(1));
+  store.close();
+
+  const snapshot = new DatabaseSync(durableFile);
+  const row = snapshot.prepare('SELECT code, host_id, players_json, race_json, seed, created_at, updated_at FROM rooms').get();
+  snapshot.close();
+  assert.deepEqual(Object.keys(row).sort(), ['code', 'created_at', 'host_id', 'players_json', 'race_json', 'seed', 'updated_at']);
+  assert.match(row.code, /^[A-Z2-9]{6}$/);
+  assert.match(row.host_id, /^[0-9a-f-]{36}$/i);
+  const players = JSON.parse(row.players_json);
+  assert.equal(players.length, 2);
+  for (const player of players) {
+    assert.deepEqual(Object.keys(player).sort(), ['color', 'host', 'id', 'label', 'ready']);
+    assert.match(player.id, /^[0-9a-f-]{36}$/i);
+    assert.match(player.label, /^(Host|Driver 2)$/);
+    assert.match(player.color, /^#[0-9a-f]{6}$/i);
+    assert.equal(typeof player.ready, 'boolean');
+    assert.equal(typeof player.host, 'boolean');
+  }
+  const race = JSON.parse(row.race_json);
+  assert.deepEqual(Object.keys(race).sort(), ['duration', 'seed', 'startedAt']);
+  assert.equal(race.duration, 90);
+  assert.equal(typeof race.seed, 'number');
+  assert.equal(typeof race.startedAt, 'number');
+  assert.doesNotMatch(JSON.stringify(row).toLowerCase(), /"(name|email|contact|phone|camera|location|address)"/);
 });
 
 test('claim_room_expiry removes an expired room from the durable snapshot', () => {

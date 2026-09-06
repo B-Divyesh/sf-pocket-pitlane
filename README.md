@@ -67,7 +67,7 @@ The client connects to `wss://pocket-pitlane-realtime.sociobot.in/ws` outside lo
 
 ## Privacy
 
-Pocket Pitlane has no analytics, ads, third-party scripts, accounts, contact access, camera access, or location access. A real room stores only a random controller token, ready state, and race state. Browser settings and controller tokens stay local. See `/privacy` and `/terms` for the full plain-language policy.
+Pocket Pitlane has no analytics, ads, third-party scripts, accounts, contact access, camera access, or location access. A real room stores random controller tokens and generated game state: ready state, car colors, race state, room code, and timestamps. Browser settings and controller tokens stay local. See `/privacy` and `/terms` for the full plain-language policy.
 
 ## Product shape
 

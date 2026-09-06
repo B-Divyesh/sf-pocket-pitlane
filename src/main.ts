@@ -290,7 +290,7 @@ function textPage(kind: 'privacy' | 'terms'): string {
   const privacy = kind === 'privacy';
   return pageShell(`<main id="main" class="page route-page"><h1 tabindex="-1">${privacy ? 'Privacy for Pocket Pitlane' : 'Terms for Pocket Pitlane'}</h1>${privacy ? `
     <p>Pocket Pitlane does not ask for a name, email address, contacts, camera, or location.</p>
-    <h2>Room data</h2><p>The room service stores a random controller token, ready state, and race state. It exists to connect a phone to a shared screen. Rooms expire after four hours.</p>
+    <h2>Room data</h2><p>The room service stores random controller tokens and generated game state. That includes ready state, car colors, race state, room code, and timestamps. Rooms expire after four hours.</p>
     <h2>Device motion</h2><p>Motion steering is optional. The browser asks only after you tap the motion button. Touch steering works without permission.</p>
     <h2>Storage</h2><p>Game settings and an anonymous controller token stay in this browser. Demo storage uses a separate sample key and is discarded when you leave the demo.</p>
     <h2>Tracking</h2><p>This game has no ads, analytics, or third-party scripts.</p>
@@ -461,8 +461,17 @@ function sampleDrivers(): Driver[] {
   ];
 }
 
+function sampleRaceSeed(): number {
+  const candidate = Number(new URLSearchParams(location.search).get('test-seed'));
+  return Number.isSafeInteger(candidate) && candidate >= 0 ? candidate : 423_515;
+}
+
+function sampleRaceDrivers(): Driver[] {
+  return new URLSearchParams(location.search).get('test-hazard-fixture') === '1' ? sampleDrivers().slice(0, 3) : sampleDrivers();
+}
+
 function startSampleRace(duration = 90): void {
-  game?.start(sampleDrivers(), 423_515, duration, true);
+  game?.start(sampleRaceDrivers(), sampleRaceSeed(), duration, true);
 }
 
 function resetDemo(): void {

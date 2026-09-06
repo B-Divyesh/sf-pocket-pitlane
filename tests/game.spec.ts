@@ -1,5 +1,60 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+
+type HazardCenter = { x: number; y: number; pixels: number; width: number; height: number };
+
+async function readAmberHazards(page: Page): Promise<HazardCenter[]> {
+  return page.locator('#track').evaluate((element) => {
+    const canvas = element as HTMLCanvasElement;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    if (!context) throw new Error('The race canvas is not available.');
+    const { width, height } = canvas;
+    const image = context.getImageData(0, 0, width, height);
+    const seen = new Uint8Array(width * height);
+    const pixelRatio = window.devicePixelRatio || 1;
+    const minHazardPixels = 20 * pixelRatio ** 2;
+    const maxHazardPixels = 80 * pixelRatio ** 2;
+    const isHazardPixel = (offset: number) => image.data[offset] === 255 && image.data[offset + 1] === 201 && image.data[offset + 2] === 94 && image.data[offset + 3] === 255;
+    const hazards: HazardCenter[] = [];
+    for (let start = 0; start < width * height; start += 1) {
+      if (seen[start] || !isHazardPixel(start * 4)) continue;
+      const pending = [start];
+      seen[start] = 1;
+      let pixels = 0;
+      let sumX = 0;
+      let sumY = 0;
+      let minX = width;
+      let maxX = 0;
+      let minY = height;
+      let maxY = 0;
+      while (pending.length) {
+        const point = pending.pop()!;
+        const x = point % width;
+        const y = Math.floor(point / width);
+        pixels += 1;
+        sumX += x;
+        sumY += y;
+        minX = Math.min(minX, x);
+        maxX = Math.max(maxX, x);
+        minY = Math.min(minY, y);
+        maxY = Math.max(maxY, y);
+        for (const neighbor of [point - 1, point + 1, point - width, point + width]) {
+          if (neighbor < 0 || neighbor >= width * height || seen[neighbor]) continue;
+          const neighborX = neighbor % width;
+          if (Math.abs(neighborX - x) > 1 || !isHazardPixel(neighbor * 4)) continue;
+          seen[neighbor] = 1;
+          pending.push(neighbor);
+        }
+      }
+      if (pixels >= minHazardPixels && pixels <= maxHazardPixels) hazards.push({ x: sumX / pixels, y: sumY / pixels, pixels, width: maxX - minX + 1, height: maxY - minY + 1 });
+    }
+    return hazards.sort((left, right) => left.x - right.x);
+  });
+}
+
+function hasChangedPosition(before: HazardCenter[], after: HazardCenter[], threshold: number): boolean {
+  return before.some((hazard, index) => Math.hypot(hazard.x - after[index].x, hazard.y - after[index].y) > threshold);
+}
 
 test('@claim:sample-sandbox @claim:free-first-release starts a realistic sample race without changing real browser data or asking for payment', async ({ page }) => {
   await page.goto('/demo');
@@ -100,6 +155,115 @@ test('@claim:keyboard-controls accepts remapped keyboard steering during a sampl
   await page.getByRole('button', { name: 'Close settings' }).click();
   await page.keyboard.press('a');
   await expect(page.getByText('Keyboard steering is active.')).toBeVisible();
+});
+
+test('@claim:phone-motion-touch-fallback asks for motion only after a tap and keeps touch steering working when denied', async ({ page, browser }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Create room' }).click();
+  const controllerUrl = await page.locator('.share-link').getAttribute('href');
+  expect(controllerUrl).toBeTruthy();
+
+  const phone = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  await phone.addInitScript(() => {
+    const probe = globalThis as typeof globalThis & { __motionPermissionCalls?: number };
+    probe.__motionPermissionCalls = 0;
+    Object.defineProperty(window, 'DeviceOrientationEvent', {
+      configurable: true,
+      value: {
+        requestPermission: async () => {
+          probe.__motionPermissionCalls = (probe.__motionPermissionCalls ?? 0) + 1;
+          return 'denied';
+        }
+      }
+    });
+  });
+  const controller = await phone.newPage();
+  const sentFrames: string[] = [];
+  controller.on('websocket', (socket) => socket.on('framesent', (frame) => sentFrames.push(String(frame.payload))));
+  await controller.goto(controllerUrl!);
+  await controller.getByRole('button', { name: 'Join room' }).click();
+  await expect(controller.getByRole('button', { name: 'Use phone tilt' })).toBeVisible();
+  expect(await controller.evaluate(() => (globalThis as typeof globalThis & { __motionPermissionCalls?: number }).__motionPermissionCalls)).toBe(0);
+  await controller.getByRole('button', { name: 'Use phone tilt' }).click();
+  await expect(controller.getByText('Motion permission was not granted. Touch steering still works.')).toBeVisible();
+  expect(await controller.evaluate(() => (globalThis as typeof globalThis & { __motionPermissionCalls?: number }).__motionPermissionCalls)).toBe(1);
+  await controller.getByRole('button', { name: 'Steer left' }).click();
+  await expect.poll(() => sentFrames.some((frame) => frame.includes('"type":"input"') && frame.includes('"steer":-1') && frame.includes('"throttle":true'))).toBe(true);
+  await phone.close();
+});
+
+test('@claim:seeded-hazards renders four moving hazards and changes their positions for another seed', async ({ page }) => {
+  await page.goto('/demo?test-seed=101&test-hazard-fixture=1');
+  await page.getByRole('button', { name: 'Start sample race' }).click();
+  await expect(page.getByRole('heading', { name: 'Get ready' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Get ready' })).toBeHidden({ timeout: 3_000 });
+  const firstSeed = await readAmberHazards(page);
+  expect(firstSeed).toHaveLength(4);
+  await page.waitForTimeout(700);
+  const movedHazards = await readAmberHazards(page);
+  expect(movedHazards).toHaveLength(4);
+  expect(hasChangedPosition(firstSeed, movedHazards, 2)).toBe(true);
+
+  await page.goto('/demo?test-seed=102&test-hazard-fixture=1');
+  await page.getByRole('button', { name: 'Start sample race' }).click();
+  await expect(page.getByRole('heading', { name: 'Get ready' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Get ready' })).toBeHidden({ timeout: 3_000 });
+  const secondSeed = await readAmberHazards(page);
+  expect(secondSeed).toHaveLength(4);
+  expect(hasChangedPosition(firstSeed, secondSeed, 16)).toBe(true);
+});
+
+test('@claim:real-room-request-scope makes a shared-room flow with only product assets and the owned room service', async ({ page, browser }) => {
+  const origins: string[] = [];
+  const observe = (candidate: Page): void => {
+    candidate.context().on('request', (request) => origins.push(request.url()));
+    candidate.on('websocket', (socket) => origins.push(socket.url()));
+  };
+  observe(page);
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Create room' }).click();
+  const controllerUrl = await page.locator('.share-link').getAttribute('href');
+  expect(controllerUrl).toBeTruthy();
+  const phone = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  const controller = await phone.newPage();
+  observe(controller);
+  await controller.goto(controllerUrl!);
+  await controller.getByRole('button', { name: 'Join room' }).click();
+  await controller.getByRole('button', { name: 'Tap when ready' }).click();
+  await expect(page.getByRole('button', { name: 'Start 90-second race' })).toBeEnabled();
+  const allowedOrigins = new Set(['http://127.0.0.1:4173', 'ws://127.0.0.1:8787']);
+  expect(origins.length).toBeGreaterThan(0);
+  expect(origins.every((url) => allowedOrigins.has(new URL(url).origin))).toBe(true);
+  expect(origins.some((url) => new URL(url).origin === 'ws://127.0.0.1:8787')).toBe(true);
+  await phone.close();
+});
+
+test('@claim:no-device-data-access does not call contact, camera, or location APIs on the shared screen or controller', async ({ page }) => {
+  await page.addInitScript(() => {
+    const probe = { camera: 0, contacts: 0, location: 0 };
+    const navigatorWithProbe = navigator as Navigator & { contacts?: { select: () => Promise<unknown> } };
+    Object.defineProperty(globalThis, '__deviceAccessProbe', { configurable: true, value: probe });
+    Object.defineProperty(navigator, 'mediaDevices', {
+      configurable: true,
+      value: { getUserMedia: () => { probe.camera += 1; return Promise.reject(new Error('blocked by test')); } }
+    });
+    Object.defineProperty(navigator, 'geolocation', {
+      configurable: true,
+      value: {
+        getCurrentPosition: () => { probe.location += 1; },
+        watchPosition: () => { probe.location += 1; return 1; }
+      }
+    });
+    Object.defineProperty(navigatorWithProbe, 'contacts', {
+      configurable: true,
+      value: { select: () => { probe.contacts += 1; return Promise.resolve([]); } }
+    });
+  });
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: 'Race with friends on one shared screen' })).toBeVisible();
+  await page.goto('/controller?room=CALM42');
+  await expect(page.getByRole('heading', { name: 'Use this phone as a race controller' })).toBeVisible();
+  expect(await page.evaluate(() => (globalThis as typeof globalThis & { __deviceAccessProbe: { camera: number; contacts: number; location: number } }).__deviceAccessProbe)).toEqual({ camera: 0, contacts: 0, location: 0 });
 });
 
 test('mobile controller has usable touch controls and no serious accessibility issues', async ({ page, isMobile }) => {
