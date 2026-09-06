@@ -310,11 +310,82 @@ test('@claim:phone-controllers lets a phone join a room and start a shared race'
   await phone.close();
 });
 
-test('routes set titles and render a usable 404 page', async ({ page }) => {
-  await page.goto('/privacy');
-  await expect(page).toHaveTitle('Privacy — Pocket Pitlane');
-  await expect(page.getByRole('main')).toBeVisible();
+test('routes publish their own canonical and social metadata', async ({ page }) => {
+  const routes = [
+    {
+      path: '/demo',
+      title: 'Demo — Pocket Pitlane',
+      description: 'Try a four-racer sample race. It stays separate from your real browser data.'
+    },
+    {
+      path: '/privacy',
+      title: 'Privacy — Pocket Pitlane',
+      description: 'Read what Pocket Pitlane stores, sends to the room relay, and does not collect.'
+    },
+    {
+      path: '/terms',
+      title: 'Terms — Pocket Pitlane',
+      description: 'Read the rules for using the free Pocket Pitlane shared-screen race.'
+    },
+    {
+      path: '/controller',
+      title: 'Controller — Pocket Pitlane',
+      description: 'Join a Pocket Pitlane room from your phone and use touch controls to race.'
+    }
+  ];
+  for (const route of routes) {
+    await page.goto(route.path);
+    const expectedUrl = `https://pocket-pitlane.sociobot.in${route.path}`;
+    await expect(page).toHaveTitle(route.title);
+    await expect(page.getByRole('main')).toBeVisible();
+    await expect.poll(() => page.evaluate(() => ({
+      canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href'),
+      description: document.querySelector('meta[name="description"]')?.getAttribute('content'),
+      openGraphTitle: document.querySelector('meta[property="og:title"]')?.getAttribute('content'),
+      openGraphDescription: document.querySelector('meta[property="og:description"]')?.getAttribute('content'),
+      openGraphUrl: document.querySelector('meta[property="og:url"]')?.getAttribute('content'),
+      twitterTitle: document.querySelector('meta[name="twitter:title"]')?.getAttribute('content'),
+      twitterDescription: document.querySelector('meta[name="twitter:description"]')?.getAttribute('content'),
+      twitterUrl: document.querySelector('meta[name="twitter:url"]')?.getAttribute('content')
+    }))).toEqual({
+      canonical: expectedUrl,
+      description: route.description,
+      openGraphTitle: route.title,
+      openGraphDescription: route.description,
+      openGraphUrl: expectedUrl,
+      twitterTitle: route.title,
+      twitterDescription: route.description,
+      twitterUrl: expectedUrl
+    });
+  }
+});
+
+test('404 page has the standard accessible shell, metadata, and a way back', async ({ page }) => {
   await page.goto('/404.html');
   await expect(page).toHaveTitle('Page not found — Pocket Pitlane');
+  await expect(page.getByRole('link', { name: 'Skip to page content' })).toBeVisible();
+  await expect(page.getByRole('banner')).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Site' })).toBeVisible();
+  await expect(page.getByRole('main')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Page not found' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Open the race' })).toHaveAttribute('href', '/');
+  await expect(page.getByRole('contentinfo')).toContainText('Built by Param Factory');
+  await expect(page.getByRole('contentinfo')).toContainText('Build 1.0.0');
+  expect(await page.evaluate(() => ({
+    description: document.querySelector('meta[name="description"]')?.getAttribute('content'),
+    canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href'),
+    openGraphTitle: document.querySelector('meta[property="og:title"]')?.getAttribute('content'),
+    openGraphUrl: document.querySelector('meta[property="og:url"]')?.getAttribute('content'),
+    twitterTitle: document.querySelector('meta[name="twitter:title"]')?.getAttribute('content'),
+    twitterUrl: document.querySelector('meta[name="twitter:url"]')?.getAttribute('content')
+  }))).toEqual({
+    description: 'This Pocket Pitlane page was not found. Return to the shared-screen race.',
+    canonical: 'https://pocket-pitlane.sociobot.in/404.html',
+    openGraphTitle: 'Page not found — Pocket Pitlane',
+    openGraphUrl: 'https://pocket-pitlane.sociobot.in/404.html',
+    twitterTitle: 'Page not found — Pocket Pitlane',
+    twitterUrl: 'https://pocket-pitlane.sociobot.in/404.html'
+  });
+  const results = await new AxeBuilder({ page: page as never }).analyze();
+  expect(results.violations.filter((violation) => ['critical', 'serious'].includes(violation.impact ?? ''))).toEqual([]);
 });

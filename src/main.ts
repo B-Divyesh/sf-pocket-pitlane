@@ -71,6 +71,7 @@ const app: HTMLDivElement = root;
 
 const palette = ['#ff795f', '#65c9e8', '#d9f36c', '#ffc95e', '#cf9dff', '#ff94c7', '#70e1ba', '#f3f1e9'];
 const storagePrefix = 'pocket-pitlane:';
+const siteOrigin = 'https://pocket-pitlane.sociobot.in';
 const defaultControls = { left: 'ArrowLeft', right: 'ArrowRight', drive: 'ArrowUp' };
 let route = routeFromLocation();
 let settings = readSettings(isDemoRoute());
@@ -162,15 +163,49 @@ function keyName(value: string): string {
   return value.length === 1 ? value.toUpperCase() : value;
 }
 
-function setTitle(nextRoute: Route): void {
-  const titles: Record<Route, string> = {
-    home: 'Pocket Pitlane — Race on one shared screen',
-    demo: 'Demo — Pocket Pitlane',
-    privacy: 'Privacy — Pocket Pitlane',
-    terms: 'Terms — Pocket Pitlane',
-    controller: 'Controller — Pocket Pitlane'
+function setPageMetadata(nextRoute: Route): void {
+  const metadata: Record<Route, { title: string; description: string; path: string }> = {
+    home: {
+      title: 'Pocket Pitlane — Race on one shared screen',
+      description: 'A free shared-screen racing game. Friends use phones or a keyboard as controllers.',
+      path: '/'
+    },
+    demo: {
+      title: 'Demo — Pocket Pitlane',
+      description: 'Try a four-racer sample race. It stays separate from your real browser data.',
+      path: '/demo'
+    },
+    privacy: {
+      title: 'Privacy — Pocket Pitlane',
+      description: 'Read what Pocket Pitlane stores, sends to the room relay, and does not collect.',
+      path: '/privacy'
+    },
+    terms: {
+      title: 'Terms — Pocket Pitlane',
+      description: 'Read the rules for using the free Pocket Pitlane shared-screen race.',
+      path: '/terms'
+    },
+    controller: {
+      title: 'Controller — Pocket Pitlane',
+      description: 'Join a Pocket Pitlane room from your phone and use touch controls to race.',
+      path: '/controller'
+    }
   };
-  document.title = titles[nextRoute];
+  const page = metadata[nextRoute];
+  const url = `${siteOrigin}${page.path}`;
+  const setContent = (selector: string, value: string): void => {
+    const element = document.head.querySelector<HTMLMetaElement>(selector);
+    if (element) element.content = value;
+  };
+  document.title = page.title;
+  document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', url);
+  setContent('meta[name="description"]', page.description);
+  setContent('meta[property="og:title"]', page.title);
+  setContent('meta[property="og:description"]', page.description);
+  setContent('meta[property="og:url"]', url);
+  setContent('meta[name="twitter:title"]', page.title);
+  setContent('meta[name="twitter:description"]', page.description);
+  setContent('meta[name="twitter:url"]', url);
 }
 
 function navigate(path: string): void {
@@ -292,7 +327,7 @@ function textPage(kind: 'privacy' | 'terms'): string {
     <p>Pocket Pitlane does not ask for a name, email address, contacts, camera, or location.</p>
     <h2>Room data</h2><p>The room service stores random controller tokens and generated game state. That includes ready state, car colors, race state, room code, and timestamps. Rooms expire after four hours.</p>
     <h2>Device motion</h2><p>Motion steering is optional. The browser asks only after you tap the motion button. Touch steering works without permission.</p>
-    <h2>Storage</h2><p>Game settings and an anonymous controller token stay in this browser. Demo storage uses a separate sample key and is discarded when you leave the demo.</p>
+    <h2>Storage</h2><p>Game settings stay in this browser. The browser sends a random controller token to the owned room relay. Demo storage uses a separate sample key and is discarded when you leave the demo.</p>
     <h2>Tracking</h2><p>This game has no ads, analytics, or third-party scripts.</p>
     <h2>Contact</h2><p>For a privacy request, contact the Param Factory operator through the product listing.</p>` : `
     <p>Pocket Pitlane is a free browser game for a shared screen and phone controllers.</p>
@@ -310,7 +345,7 @@ function controllerPage(): string {
 function render(): void {
   game?.destroy();
   game = null;
-  setTitle(route);
+  setPageMetadata(route);
   ariaText = route === 'demo' ? 'Demo page loaded' : `${route[0].toUpperCase()}${route.slice(1)} page loaded`;
   app.innerHTML = route === 'home' || route === 'demo' ? homePage(route === 'demo') : route === 'controller' ? controllerPage() : textPage(route);
   bindRoutes();

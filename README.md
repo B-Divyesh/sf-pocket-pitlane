@@ -1,6 +1,6 @@
 # Pocket Pitlane
 
-Pocket Pitlane is a free 2–8 player top-down racing game for friends sharing one laptop or TV. A host opens a room on the shared screen, friends open its controller link on their phones, and two ready drivers can start a 90-second race. The host can also use a keyboard.
+Pocket Pitlane is a free 2–8 player top-down racing game for friends sharing one laptop or TV. A host opens a room on the shared screen. Friends open its controller link on their phones. Two ready drivers can start a 90-second race. The host can also use a keyboard.
 
 ## Who it is for
 
@@ -44,7 +44,7 @@ npm run test:realtime
 npm run check
 ```
 
-`npm test` starts a production Vite preview and the local Node room service. It runs desktop and phone-sized browser checks, including the claims in `.factory/claims.json`, offline reload, remapped keyboard use, invalid room recovery, route titles, room joining, and an axe scan. `npm run test:realtime` checks room expiry, SQLite restart persistence, the complete WebSocket room flow, and the 429 plus `Retry-After` allowance.
+`npm test` starts a production Vite preview and the local Node room service. It runs desktop and phone-sized browser checks. These include claims, offline reload, keyboard use, recovery, route titles, room joining, and an axe scan. `npm run test:realtime` checks room expiry, SQLite restart persistence, the complete WebSocket room flow, and the 429 plus `Retry-After` allowance.
 
 The realtime service is intentionally separate from static hosting because it owns WebSocket rooms and SQLite state.
 
@@ -63,11 +63,11 @@ Deploy the owned WebSocket service with durable SQLite storage and one replica:
 WO_DATA_DIR=/data /opt/fleet/lib/deploy-container.sh pocket-pitlane-realtime /work/repo realtime/Dockerfile 8080
 ```
 
-The client connects to `wss://pocket-pitlane-realtime.sociobot.in/ws` outside local development. The service exposes `/health`, snapshots its SQLite room state to `/data/pocket-pitlane-room-state.sqlite` after each room change, expires rooms after four hours, and permits 20 connection attempts per IP per minute before returning `429 Retry-After: 60`.
+The client connects to `wss://pocket-pitlane-realtime.sociobot.in/ws` outside local development. The service exposes `/health` and saves room state after each change. It expires rooms after four hours. It permits 20 connection attempts per IP each minute. Later attempts receive `429 Retry-After: 60`.
 
 ## Privacy
 
-Pocket Pitlane has no analytics, ads, third-party scripts, accounts, contact access, camera access, or location access. A real room stores random controller tokens and generated game state: ready state, car colors, race state, room code, and timestamps. Browser settings and controller tokens stay local. See `/privacy` and `/terms` for the full plain-language policy.
+Pocket Pitlane has no analytics, ads, third-party scripts, accounts, contact access, camera access, or location access. A real room stores random controller tokens and generated game state. This includes ready state, car colors, race state, room code, and timestamps. Browser settings stay local. The game sends random controller tokens to the owned room relay. See `/privacy` and `/terms` for the full policy.
 
 ## Product shape
 
