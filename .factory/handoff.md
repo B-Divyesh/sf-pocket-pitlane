@@ -55,7 +55,7 @@ Independent verification report: `.factory/verification-1.md`.
 
 ### Status
 
-**PASS.** The five untested public promises from Verification 1 now each have a declared, observable outcome test. The static implementation deployed to the live product is `8953c47ee08f51040d3b650399fbc2969bdee14b`. The prior claims-and-test documentation revision is `4d9e8fecab7c93a77f044815569babfa38bfd83b`; this handoff revision follows it.
+**PASS.** The five untested public promises from Verification 1 now each have a declared, observable outcome test. The static implementation deployed to the live product is `8953c47ee08f51040d3b650399fbc2969bdee14b`. The claims-and-test documentation revision is `4d9e8fecab7c93a77f044815569babfa38bfd83b`; the post-deployment handoff verification report is `4c3b82bd869e2f2b8c1f53d82e6395f130849b77`.
 
 ### What changed
 
