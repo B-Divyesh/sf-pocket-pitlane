@@ -97,3 +97,14 @@ Independent verification report: `.factory/verification-1.md`.
 ### Known gaps
 
 There are no known release-blocking gaps. The product remains intentionally free and has no accounts, chat, advertisements, payments, voice chat, physics simulation, or party-game collection. No billing metadata is needed because no offer is advertised.
+
+## Verification 2
+
+Independent verifier report: `.factory/verification-2.md`.
+
+- Verdict: **FAIL**.
+- Reviewed static implementation: `8953c47ee08f51040d3b650399fbc2969bdee14b`; documentation revision: `c080e91302d18a0965f755e896b490589c7c9dbf`; unchanged relay build: `a955346b3e78fd83e3377c572973c15d9c6b94d9`.
+- A fresh clone completed `npm ci`, `npm --prefix realtime ci`, `npm run check`, and all 19 declared claim commands successfully. The command transcript is `/work/.evidence/pocket-pitlane-verify-2-claims-local.txt`.
+- Fresh live desktop and phone checks confirmed the above-fold game, isolated labeled demo/reset, complete results screen, independent real controller room start, invalid-code recovery, offline demo reload, keyboard/focus/reduced-motion behavior, zero serious/critical axe findings, legal routes, links, styled HTTP 404, relay health, and 20-connection allowance followed by `429 Retry-After: 60`.
+- Verification 1's five claim-coverage findings and the earlier reset-feedback minor defect are now demonstrably repaired.
+- New F-02 remains: `room-limit`, `room-expiry`, `realtime-persistence`, and `realtime-rate-limit` have runnable passing commands but no exact `@claim:<id>` test tags. This violates the claims contract and leaves four claims untestable by the mandated identifier. No code was changed during verification.
