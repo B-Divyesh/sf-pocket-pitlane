@@ -71,13 +71,13 @@ test('claim_room_limit refuses a ninth driver after the host and seven controlle
 });
 
 test('claim_realtime_persists_after_restart reopens a durable room with its ready controller', () => {
-  const file = databaseFile();
-  const first = new RoomStore(file);
+  const durableFile = databaseFile();
+  const first = new RoomStore(databaseFile(), durableFile);
   const room = first.hostRoom(id(1));
   first.joinRoom(room.code, id(2));
   first.setReady(room.code, id(2), true);
   first.close();
-  const restarted = new RoomStore(file);
+  const restarted = new RoomStore(databaseFile(), durableFile);
   disposers.push(async () => restarted.close());
   const persisted = restarted.load(room.code);
   assert.equal(persisted.players.length, 2);

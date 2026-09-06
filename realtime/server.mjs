@@ -1,7 +1,8 @@
 import { createServer } from 'node:http';
 import { randomBytes } from 'node:crypto';
-import { existsSync, mkdirSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { copyFileSync, existsSync, mkdirSync, renameSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { tmpdir } from 'node:os';
 import { DatabaseSync } from 'node:sqlite';
 import { WebSocketServer, WebSocket } from 'ws';
 
@@ -50,8 +51,11 @@ function makeCode() {
 }
 
 export class RoomStore {
-  constructor(databasePath) {
+  constructor(databasePath, durablePath = databasePath) {
     mkdirSync(dirname(databasePath), { recursive: true });
+    this.databasePath = databasePath;
+    this.durablePath = durablePath;
+    if (databasePath !== durablePath && existsSync(durablePath)) copyFileSync(durablePath, databasePath);
     this.database = new DatabaseSync(databasePath);
     this.database.exec(`
       PRAGMA busy_timeout=5000;
@@ -65,10 +69,20 @@ export class RoomStore {
       );
       CREATE INDEX IF NOT EXISTS rooms_host ON rooms(host_id);
     `);
+    this.sync();
   }
 
   close() {
+    this.sync();
     this.database.close();
+  }
+
+  sync() {
+    if (this.databasePath === this.durablePath) return;
+    mkdirSync(dirname(this.durablePath), { recursive: true });
+    const nextPath = `${this.durablePath}.next`;
+    copyFileSync(this.databasePath, nextPath);
+    renameSync(nextPath, this.durablePath);
   }
 
   cleanup() {
@@ -104,6 +118,7 @@ export class RoomStore {
         seed = excluded.seed, updated_at = excluded.updated_at`).run(
       room.code, room.hostId, JSON.stringify(room.players), room.seed, room.createdAt, room.updatedAt
     );
+    this.sync();
   }
 
   newCode() {
@@ -213,7 +228,10 @@ function send(socket, message) {
 }
 
 export function createRelay({ databasePath, buildSha = 'dev', connectionLimit = CONNECTION_LIMIT } = {}) {
-  const store = new RoomStore(databasePath ?? (process.env.DATA_DIR ? `${process.env.DATA_DIR}/pocket-pitlane-rooms.sqlite` : '/data/pocket-pitlane-rooms.sqlite'));
+  const durablePath = databasePath ?? (process.env.DATA_DIR ? `${process.env.DATA_DIR}/pocket-pitlane-room-state.sqlite` : '/data/pocket-pitlane-room-state.sqlite');
+  const usesDurableVolume = !databasePath && (process.env.DATA_DIR || existsSync('/data'));
+  const workingPath = usesDurableVolume ? join(tmpdir(), 'pocket-pitlane-rooms.sqlite') : durablePath;
+  const store = new RoomStore(workingPath, durablePath);
   const rateLimiter = new RateLimiter(connectionLimit);
   const channels = new Map();
   const wss = new WebSocketServer({ noServer: true });
@@ -324,10 +342,7 @@ export function createRelay({ databasePath, buildSha = 'dev', connectionLimit = 
 }
 
 if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
-  const databasePath = process.env.DATA_DIR
-    ? `${process.env.DATA_DIR}/pocket-pitlane-rooms.sqlite`
-    : (process.env.DATABASE_PATH ?? (existsSync('/data') ? '/data/pocket-pitlane-rooms.sqlite' : 'pocket-pitlane-rooms.sqlite'));
-  const relay = createRelay({ databasePath, buildSha: process.env.BUILD_SHA ?? 'dev' });
+  const relay = createRelay({ databasePath: process.env.DATABASE_PATH, buildSha: process.env.BUILD_SHA ?? 'dev' });
   relay.listen().then((port) => console.log(JSON.stringify({ event: 'startup', port, database: databasePath, build: process.env.BUILD_SHA ?? 'dev' }))).catch((error) => {
     console.error(JSON.stringify({ event: 'startup-error', error: 'The room service could not start.' }));
     console.error(error);
