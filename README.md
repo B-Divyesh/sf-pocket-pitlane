@@ -31,7 +31,7 @@ npm run dev
 cd realtime && npm ci && PORT=8787 node server.mjs
 ```
 
-Open `http://127.0.0.1:4173`. The development client uses `ws://127.0.0.1:8787/ws` for the room service. The server writes `pocket-pitlane.sqlite` in its working directory when `/data` is absent.
+Open `http://127.0.0.1:4173`. The development client uses `ws://127.0.0.1:8787/ws` for the room service. The server writes `pocket-pitlane-rooms.sqlite` in its working directory when `/data` is absent.
 
 ## Test and build
 
@@ -61,7 +61,7 @@ Deploy the owned WebSocket service with durable SQLite storage and one replica:
 WO_DATA_DIR=/data /opt/fleet/lib/deploy-container.sh pocket-pitlane-realtime /work/repo realtime/Dockerfile 8080
 ```
 
-The client connects to `wss://pocket-pitlane-realtime.sociobot.in/ws` outside local development. The service exposes `/health`, stores rooms in `/data/pocket-pitlane.sqlite`, expires rooms after four hours, and permits 20 connection attempts per IP per minute before returning `429 Retry-After: 60`.
+The client connects to `wss://pocket-pitlane-realtime.sociobot.in/ws` outside local development. The service exposes `/health`, stores rooms in `/data/pocket-pitlane-rooms.sqlite`, expires rooms after four hours, and permits 20 connection attempts per IP per minute before returning `429 Retry-After: 60`.
 
 ## Privacy
 

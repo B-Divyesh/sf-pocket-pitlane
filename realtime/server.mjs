@@ -214,7 +214,7 @@ function send(socket, message) {
 }
 
 export function createRelay({ databasePath, buildSha = 'dev', connectionLimit = CONNECTION_LIMIT } = {}) {
-  const store = new RoomStore(databasePath ?? (process.env.DATA_DIR ? `${process.env.DATA_DIR}/pocket-pitlane.sqlite` : '/data/pocket-pitlane.sqlite'));
+  const store = new RoomStore(databasePath ?? (process.env.DATA_DIR ? `${process.env.DATA_DIR}/pocket-pitlane-rooms.sqlite` : '/data/pocket-pitlane-rooms.sqlite'));
   const rateLimiter = new RateLimiter(connectionLimit);
   const channels = new Map();
   const wss = new WebSocketServer({ noServer: true });
@@ -326,8 +326,8 @@ export function createRelay({ databasePath, buildSha = 'dev', connectionLimit = 
 
 if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
   const databasePath = process.env.DATA_DIR
-    ? `${process.env.DATA_DIR}/pocket-pitlane.sqlite`
-    : (process.env.DATABASE_PATH ?? (existsSync('/data') ? '/data/pocket-pitlane.sqlite' : 'pocket-pitlane.sqlite'));
+    ? `${process.env.DATA_DIR}/pocket-pitlane-rooms.sqlite`
+    : (process.env.DATABASE_PATH ?? (existsSync('/data') ? '/data/pocket-pitlane-rooms.sqlite' : 'pocket-pitlane-rooms.sqlite'));
   const relay = createRelay({ databasePath, buildSha: process.env.BUILD_SHA ?? 'dev' });
   relay.listen().then((port) => console.log(JSON.stringify({ event: 'startup', port, database: databasePath, build: process.env.BUILD_SHA ?? 'dev' }))).catch((error) => {
     console.error(JSON.stringify({ event: 'startup-error', error: 'The room service could not start.' }));
