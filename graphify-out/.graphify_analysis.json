@@ -1,0 +1,353 @@
+{
+  "communities": {
+    "0": [
+      "realtime_server",
+      "realtime_server_allowedorigin",
+      "realtime_server_colors",
+      "realtime_server_createrelay",
+      "realtime_server_isroomcode",
+      "realtime_server_isuuid",
+      "realtime_server_makecode",
+      "realtime_server_now",
+      "realtime_server_randomseed",
+      "realtime_server_ratelimiter",
+      "realtime_server_ratelimiter_allow",
+      "realtime_server_ratelimiter_constructor",
+      "realtime_server_rejectupgrade",
+      "realtime_server_requestip",
+      "realtime_server_roomerror",
+      "realtime_server_roomerror_constructor",
+      "realtime_server_roomerror_toclientmessage",
+      "realtime_server_roommessage",
+      "realtime_server_roomstore",
+      "realtime_server_roomstore_cleanup",
+      "realtime_server_roomstore_close",
+      "realtime_server_roomstore_constructor",
+      "realtime_server_roomstore_hostroom",
+      "realtime_server_roomstore_joinroom",
+      "realtime_server_roomstore_load",
+      "realtime_server_roomstore_loadbyhost",
+      "realtime_server_roomstore_newcode",
+      "realtime_server_roomstore_save",
+      "realtime_server_roomstore_setready",
+      "realtime_server_roomstore_start",
+      "realtime_server_roomstore_sync",
+      "realtime_server_send"
+    ],
+    "1": [
+      "axe_core_playwright",
+      "package",
+      "package_devdependencies",
+      "package_devdependencies_axe_core_playwright",
+      "package_devdependencies_playwright_test",
+      "package_devdependencies_typescript",
+      "package_devdependencies_vite",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_check",
+      "package_scripts_dev",
+      "package_scripts_preview",
+      "package_scripts_test",
+      "package_scripts_test_claims",
+      "package_scripts_test_realtime",
+      "package_scripts_test_realtime_persistence",
+      "package_scripts_test_realtime_rate_limit",
+      "package_scripts_test_realtime_room_expiry",
+      "package_scripts_test_realtime_room_limit",
+      "package_type",
+      "package_version",
+      "playwright_test",
+      "typescript",
+      "vite"
+    ],
+    "2": [
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_es2022",
+      "ref_playwright_config_ts",
+      "ref_src",
+      "ref_tests",
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowimportingtsextensions",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_nofallthroughcasesinswitch",
+      "tsconfig_compileroptions_nounusedlocals",
+      "tsconfig_compileroptions_nounusedparameters",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_compileroptions_usedefineforclassfields",
+      "tsconfig_compileroptions_verbatimmodulesyntax",
+      "tsconfig_include"
+    ],
+    "3": [
+      "src_main_racegame",
+      "src_main_racegame_beep",
+      "src_main_racegame_constructor",
+      "src_main_racegame_draw",
+      "src_main_racegame_drawcar",
+      "src_main_racegame_drawhazards",
+      "src_main_racegame_drawstartline",
+      "src_main_racegame_handlekeydown",
+      "src_main_racegame_handlekeyup",
+      "src_main_racegame_handlevisibility",
+      "src_main_racegame_hazardat",
+      "src_main_racegame_loop",
+      "src_main_racegame_resize",
+      "src_main_racegame_restore",
+      "src_main_racegame_resume",
+      "src_main_racegame_setremoteinput",
+      "src_main_racegame_start",
+      "src_main_racegame_step",
+      "src_main_racegame_updatecar"
+    ],
+    "4": [
+      "realtime_package",
+      "realtime_package_dependencies",
+      "realtime_package_dependencies_ws",
+      "realtime_package_name",
+      "realtime_package_private",
+      "realtime_package_scripts",
+      "realtime_package_scripts_start",
+      "realtime_package_scripts_test",
+      "realtime_package_scripts_test_persistence",
+      "realtime_package_scripts_test_rate_limit",
+      "realtime_package_scripts_test_room_expiry",
+      "realtime_package_scripts_test_room_limit",
+      "realtime_package_type",
+      "realtime_package_version",
+      "ws"
+    ],
+    "5": [
+      "src_main",
+      "src_main_car",
+      "src_main_defaultcontrols",
+      "src_main_driver",
+      "src_main_gamephase",
+      "src_main_palette",
+      "src_main_racesnapshot",
+      "src_main_racestate",
+      "src_main_roomstate",
+      "src_main_root",
+      "src_main_route",
+      "src_main_servermessage",
+      "src_main_settings"
+    ],
+    "6": [
+      "src_main_bindsettings",
+      "src_main_gameoverlay",
+      "src_main_isdemoroute",
+      "src_main_mounthome",
+      "src_main_racegame_preview",
+      "src_main_racegame_setsettings",
+      "src_main_realtimeclient_send",
+      "src_main_resetdemo",
+      "src_main_sampledrivers",
+      "src_main_startsamplerace"
+    ],
+    "7": [
+      "src_main_controllerpage",
+      "src_main_demosetup",
+      "src_main_escapehtml",
+      "src_main_gamemarkup",
+      "src_main_homepage",
+      "src_main_keyname",
+      "src_main_pageshell",
+      "src_main_readracesnapshot",
+      "src_main_realsetup",
+      "src_main_textpage"
+    ],
+    "8": [
+      "src_main_bindroutes",
+      "src_main_navigate",
+      "src_main_racegame_destroy",
+      "src_main_readsettings",
+      "src_main_registerserviceworker",
+      "src_main_render",
+      "src_main_routefromlocation",
+      "src_main_settitle"
+    ],
+    "9": [
+      "realtime_server_test",
+      "realtime_server_test_databasefile",
+      "realtime_server_test_disposers",
+      "realtime_server_test_id",
+      "realtime_server_test_messagequeue",
+      "realtime_server_test_opensocket",
+      "realtime_server_test_rawupgrade"
+    ],
+    "10": [
+      "src_main_clearracesnapshot",
+      "src_main_createroom",
+      "src_main_getorcreateid",
+      "src_main_handlehostmessage",
+      "src_main_restoresavedrace",
+      "src_main_setconnectionstatus"
+    ],
+    "11": [
+      "src_main_mountcontroller",
+      "src_main_realtimeclient",
+      "src_main_realtimeclient_close",
+      "src_main_realtimeclient_connect",
+      "src_main_realtimeclient_constructor",
+      "src_main_realtimeurl"
+    ],
+    "12": [
+      "src_main_key",
+      "src_main_racegame_snapshot",
+      "src_main_saveracesnapshot",
+      "src_main_savesettings"
+    ],
+    "13": [
+      "public_sw",
+      "public_sw_shell"
+    ],
+    "14": [
+      "playwright_config"
+    ],
+    "15": [
+      "tests_game_spec"
+    ],
+    "16": [
+      "vite_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.14112903225806453,
+    "1": 0.07692307692307693,
+    "2": 0.09090909090909091,
+    "3": 0.1871345029239766,
+    "4": 0.13333333333333333,
+    "5": 0.16666666666666666,
+    "6": 0.35555555555555557,
+    "7": 0.26666666666666666,
+    "8": 0.2857142857142857,
+    "9": 0.2857142857142857,
+    "10": 0.5333333333333333,
+    "11": 0.4,
+    "12": 0.5,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0
+  },
+  "gods": [
+    {
+      "id": "src_main_racegame",
+      "label": "RaceGame",
+      "degree": 23
+    },
+    {
+      "id": "realtime_server_roomstore",
+      "label": "RoomStore",
+      "degree": 14
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 14
+    },
+    {
+      "id": "realtime_server_createrelay",
+      "label": "createRelay()",
+      "degree": 13
+    },
+    {
+      "id": "src_main_render",
+      "label": "render()",
+      "degree": 13
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 12
+    },
+    {
+      "id": "src_main_mounthome",
+      "label": "mountHome()",
+      "degree": 12
+    },
+    {
+      "id": "src_main_gameoverlay",
+      "label": "gameOverlay()",
+      "degree": 9
+    },
+    {
+      "id": "src_main_navigate",
+      "label": "navigate()",
+      "degree": 8
+    },
+    {
+      "id": "src_main_createroom",
+      "label": "createRoom()",
+      "degree": 8
+    }
+  ],
+  "surprises": [
+    {
+      "source": "gameOverlay()",
+      "target": "clearRaceSnapshot()",
+      "source_files": [
+        "src/main.ts",
+        "src/main.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "note": "Bridges community 10 \u2192 community 6"
+    },
+    {
+      "source": "key()",
+      "target": "isDemoRoute()",
+      "source_files": [
+        "src/main.ts",
+        "src/main.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 6 \u2192 community 12"
+    },
+    {
+      "source": "navigate()",
+      "target": "isDemoRoute()",
+      "source_files": [
+        "src/main.ts",
+        "src/main.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 6 \u2192 community 8"
+    },
+    {
+      "source": "clearRaceSnapshot()",
+      "target": "key()",
+      "source_files": [
+        "src/main.ts",
+        "src/main.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 12 \u2192 community 10"
+    },
+    {
+      "source": "readRaceSnapshot()",
+      "target": "key()",
+      "source_files": [
+        "src/main.ts",
+        "src/main.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 12 \u2192 community 7"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
