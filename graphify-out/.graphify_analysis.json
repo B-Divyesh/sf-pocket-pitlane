@@ -306,6 +306,39 @@
       "note": "Bridges community 6 \u2192 community 9"
     },
     {
+      "source": "bindSettings()",
+      "target": "keyName()",
+      "source_files": [
+        "src/main.ts",
+        "src/main.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 10 \u2192 community 2"
+    },
+    {
+      "source": "mountHome()",
+      "target": "bindSettings()",
+      "source_files": [
+        "src/main.ts",
+        "src/main.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 10 \u2192 community 6"
+    },
+    {
+      "source": "clearRaceSnapshot()",
+      "target": "key()",
+      "source_files": [
+        "src/main.ts",
+        "src/main.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 10 \u2192 community 9"
+    },
+    {
       "source": "render()",
       "target": "mountController()",
       "source_files": [
@@ -315,39 +348,6 @@
       "confidence": "EXTRACTED",
       "relation": "calls",
       "note": "Bridges community 11 \u2192 community 7"
-    },
-    {
-      "source": "mountHome()",
-      "target": "navigate()",
-      "source_files": [
-        "src/main.ts",
-        "src/main.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "note": "Bridges community 7 \u2192 community 6"
-    },
-    {
-      "source": "render()",
-      "target": "controllerPage()",
-      "source_files": [
-        "src/main.ts",
-        "src/main.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "note": "Bridges community 2 \u2192 community 7"
-    },
-    {
-      "source": "gameOverlay()",
-      "target": "escapeHtml()",
-      "source_files": [
-        "src/main.ts",
-        "src/main.ts"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "note": "Bridges community 2 \u2192 community 6"
     }
   ],
   "tokens": {
