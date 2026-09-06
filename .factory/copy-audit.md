@@ -11,6 +11,7 @@ The landing page was read aloud before release. All visitor-facing sentences are
 | Touch or keyboard controls | 4 | pass |
 | Create a six-character room. Your keyboard is the first controller. | 10 | pass |
 | The sample starts a four-racer practice race. | 7 | pass |
+| Sample reset. Nothing was saved. | 5 | pass |
 | Open this link on each phone. It opens a controller without an account. | 13 | pass |
 | Two ready drivers are needed. | 5 | pass |
 | Everyone is ready. Start when the group is set. | 9 | pass |

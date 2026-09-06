@@ -68,6 +68,7 @@ test('@claim:sample-sandbox @claim:free-first-release starts a realistic sample 
   await expect(page.getByRole('list', { name: 'Sample racers' }).getByRole('listitem')).toHaveCount(4);
   await expect(page.locator('canvas')).toBeVisible();
   await page.getByRole('button', { name: 'Reset demo' }).click();
+  await expect(page.getByText('Sample reset. Nothing was saved.')).toBeVisible();
   await expect(page.getByText('Demo — sample data, nothing is saved')).toBeVisible();
   const storage = await page.evaluate(() => ({ real: localStorage.getItem('pocket-pitlane:settings'), demo: localStorage.getItem('demo:pocket-pitlane:settings') }));
   expect(storage.real).toBe(JSON.stringify({ sound: false, assist: true }));

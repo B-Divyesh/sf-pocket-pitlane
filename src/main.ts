@@ -272,7 +272,7 @@ function homePage(demo: boolean): string {
 function demoSetup(): string {
   return `<p>Four sample racers are ready. Start to see the full shared-screen race.</p>
     <ul class="player-list" aria-label="Sample racers"><li><span>Mika</span><span class="ready">Ready</span></li><li><span>Ivo</span><span class="ready">Ready</span></li><li><span>June</span><span class="ready">Ready</span></li><li><span>Remy</span><span class="ready">Ready</span></li></ul>
-    <p class="button-note">Sample room CALM42. Nothing is saved.</p>`;
+    <p class="button-note">Sample room CALM42. Nothing is saved.</p><p class="status" id="demo-reset-status" aria-live="polite"></p>`;
 }
 
 function realSetup(): string {
@@ -480,7 +480,7 @@ function resetDemo(): void {
   settings = readSettings(true);
   game?.setSettings(settings);
   game?.preview();
-  const note = document.querySelector<HTMLElement>('#connection-status');
+  const note = document.querySelector<HTMLElement>('#demo-reset-status');
   if (note) note.textContent = 'Sample reset. Nothing was saved.';
 }
 
