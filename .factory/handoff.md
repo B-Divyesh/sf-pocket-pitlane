@@ -192,3 +192,23 @@ Verification 1 F-01.1 through F-01.5 remain covered by their exact declared test
 ### Known gaps
 
 None found in this verification. The intentional first-release scope remains: no accounts, chat, ads, payments, voice chat, physics simulation, or party-game collection.
+
+## Review 1
+
+### Status
+
+**PASS — 0 findings and 0 untested claims.**
+
+### Scope and evidence
+
+- Reviewed static implementation: `b3c9efb1c3c7ee288b6cd0650f20a9532da1e676`.
+- Documentation baseline: `d72f93b`; current factory wrapper: `5e3184200197ede44bbd5d389dcba2f597ef376b`.
+- A fresh detached clone completed `npm ci`, `npm --prefix realtime ci`, `npm run check`, and every claim-manifest command. The check covered 34 browser checks and 8 relay checks; all 19 manifest entries had exactly one matching claim tag and passed.
+- The live static asset matched the candidate build. Fresh desktop and phone contexts confirmed the above-fold game, labeled and isolated sample/reset, deterministic four-finisher result screen, independent real phone join/start, active-race host-refresh recovery, invalid-code recovery, offline demo reload, keyboard skip link, reduced motion, legal routes, internal links, and styled deliberate 404.
+- Live Axe found no serious or critical violations on home or controller and no console errors were captured. Live relay health returned 200; the controlled allowance run returned `429 Retry-After: 60` after the remaining connection allowance.
+- A phone-sized headless active-race measurement was 60.13 fps. It is a reviewer measurement, not a public performance claim.
+- Report: `.factory/review-1.md`; evidence: `/work/.evidence/pocket-pitlane-review-1/`.
+
+### Known gaps
+
+No findings in Review 1. Intentional scope remains unchanged: no accounts, chat, ads, payments, voice chat, physics simulation, or party-game collection.
