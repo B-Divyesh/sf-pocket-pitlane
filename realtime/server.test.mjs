@@ -76,12 +76,15 @@ test('claim_realtime_persists_after_restart reopens a durable room with its read
   const room = first.hostRoom(id(1));
   first.joinRoom(room.code, id(2));
   first.setReady(room.code, id(2), true);
+  const raced = first.start(room.code, id(1));
   first.close();
   const restarted = new RoomStore(databaseFile(), durableFile);
   disposers.push(async () => restarted.close());
   const persisted = restarted.load(room.code);
   assert.equal(persisted.players.length, 2);
   assert.equal(persisted.players.find((player) => player.id === id(2)).ready, true);
+  assert.equal(persisted.race.seed, raced.seed);
+  assert.equal(persisted.race.duration, 90);
 });
 
 test('claim_room_expiry removes an expired room from the durable snapshot', () => {

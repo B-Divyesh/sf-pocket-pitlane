@@ -41,4 +41,4 @@ The social card is a 1200×630 original circuit composition. It has no user-faci
 
 ## Game pacing
 
-A normal round lasts 90 seconds. Four rotating hazards shift lane position during the round. Drafting behind another car fills a boost meter; boost adds temporary speed. The server creates a seed for each real race and the fixed 60 Hz game loop applies that seed to the hazard and demo-driver patterns. The intended difficulty is readable at two players, busier at four, and a deliberate visual crowd at eight.
+A normal round lasts 90 seconds. Four rotating hazards shift lane position during the round. Drafting behind another car fills a boost meter; boost adds temporary speed. The server creates and durably records a seed and start time for each real race. The fixed 60 Hz game loop applies that seed to the hazard and demo-driver patterns. The host stores an active-race snapshot locally so a refresh can reconnect and continue the same race. The intended difficulty is readable at two players, busier at four, and a deliberate visual crowd at eight.

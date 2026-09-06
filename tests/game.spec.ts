@@ -47,6 +47,27 @@ test('@claim:settings-persist keeps a chosen accessibility setting after reload'
   await expect(page.getByRole('checkbox', { name: 'Steering assist' })).toBeChecked();
 });
 
+test('@claim:race-recovery restores an active shared-screen race after the host refreshes', async ({ page, browser }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Create room' }).click();
+  const controllerUrl = await page.locator('.share-link').getAttribute('href');
+  expect(controllerUrl).toBeTruthy();
+  const phone = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  const controller = await phone.newPage();
+  await controller.goto(controllerUrl!);
+  await controller.getByRole('button', { name: 'Join room' }).click();
+  await controller.getByRole('button', { name: 'Tap when ready' }).click();
+  await expect(page.getByRole('button', { name: 'Start 90-second race' })).toBeEnabled();
+  await page.getByRole('button', { name: 'Start 90-second race' }).click();
+  await page.waitForTimeout(2_200);
+  await page.waitForFunction(() => localStorage.getItem('pocket-pitlane:active-race') !== null);
+  await page.reload();
+  await page.getByRole('button', { name: 'Resume saved race' }).click();
+  await expect(page.getByText('Race restored on this browser.')).toBeVisible();
+  await expect(page.locator('#race-timer')).not.toHaveText('Practice track');
+  await phone.close();
+});
+
 test('@claim:offline-demo works offline after the first visit', async ({ browser }) => {
   const context = await browser.newContext();
   const page = await context.newPage();

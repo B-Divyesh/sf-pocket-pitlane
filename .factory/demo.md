@@ -4,6 +4,6 @@ Open `/demo` or select **Try it with sample data** from the home screen. The dem
 
 The banner stays visible for the whole demo: **Demo — sample data, nothing is saved**. **Reset demo** returns the sample race to its first state. **Start for real** removes demo settings and returns to the real room flow.
 
-Demo-only settings use the `demo:pocket-pitlane:*` localStorage namespace. Real settings use `pocket-pitlane:*`; the demo never reads or writes those real keys. No demo action opens a room WebSocket or sends sample data to another origin.
+Demo-only settings and its active-race snapshot use the `demo:pocket-pitlane:*` localStorage namespace. Real settings and a real active-race snapshot use `pocket-pitlane:*`; the demo never reads or writes those real keys. No demo action opens a room WebSocket or sends sample data to another origin.
 
 For deterministic browser verification only, `/demo?test-run=1` runs the same fixed-timestep 90-second sample race at an accelerated simulation clock. It is not linked in the interface and does not change production round length.

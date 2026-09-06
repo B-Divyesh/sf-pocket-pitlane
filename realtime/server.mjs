@@ -63,12 +63,16 @@ export class RoomStore {
         code TEXT PRIMARY KEY,
         host_id TEXT NOT NULL,
         players_json TEXT NOT NULL,
+        race_json TEXT NOT NULL DEFAULT '',
         seed INTEGER NOT NULL,
         created_at INTEGER NOT NULL,
         updated_at INTEGER NOT NULL
       );
       CREATE INDEX IF NOT EXISTS rooms_host ON rooms(host_id);
     `);
+    try { this.database.exec("ALTER TABLE rooms ADD COLUMN race_json TEXT NOT NULL DEFAULT ''"); } catch (error) {
+      if (!String(error).includes('duplicate column name')) throw error;
+    }
     this.sync();
   }
 
@@ -91,13 +95,14 @@ export class RoomStore {
   }
 
   load(code) {
-    const row = this.database.prepare('SELECT code, host_id, players_json, seed, created_at, updated_at FROM rooms WHERE code = ?').get(code);
+    const row = this.database.prepare('SELECT code, host_id, players_json, race_json, seed, created_at, updated_at FROM rooms WHERE code = ?').get(code);
     if (!row) return null;
     try {
       return {
         code: row.code,
         hostId: row.host_id,
         players: JSON.parse(row.players_json),
+        race: row.race_json ? JSON.parse(row.race_json) : null,
         seed: Number(row.seed),
         createdAt: Number(row.created_at),
         updatedAt: Number(row.updated_at)
@@ -113,11 +118,11 @@ export class RoomStore {
   }
 
   save(room) {
-    this.database.prepare(`INSERT INTO rooms (code, host_id, players_json, seed, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?)
+    this.database.prepare(`INSERT INTO rooms (code, host_id, players_json, race_json, seed, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
       ON CONFLICT(code) DO UPDATE SET host_id = excluded.host_id, players_json = excluded.players_json,
-        seed = excluded.seed, updated_at = excluded.updated_at`).run(
-      room.code, room.hostId, JSON.stringify(room.players), room.seed, room.createdAt, room.updatedAt
+        race_json = excluded.race_json, seed = excluded.seed, updated_at = excluded.updated_at`).run(
+      room.code, room.hostId, JSON.stringify(room.players), JSON.stringify(room.race ?? null), room.seed, room.createdAt, room.updatedAt
     );
     this.sync();
   }
@@ -140,6 +145,7 @@ export class RoomStore {
       code: this.newCode(),
       hostId,
       players: [{ id: hostId, label: 'Host', color: COLORS[0], ready: true, host: true }],
+      race: null,
       seed: randomSeed(),
       createdAt: timestamp,
       updatedAt: timestamp
@@ -180,6 +186,7 @@ export class RoomStore {
     if (room.hostId !== playerId) throw new RoomError('notHost');
     if (room.players.filter((player) => player.ready).length < 2) throw new RoomError('needTwoReady');
     room.seed = randomSeed();
+    room.race = { seed: room.seed, startedAt: Date.now(), duration: 90 };
     room.updatedAt = now();
     this.save(room);
     return room;
@@ -221,7 +228,7 @@ function rejectUpgrade(socket, status, body, headers = {}) {
 }
 
 function roomMessage(room) {
-  return { type: 'room', room: room.code, players: room.players };
+  return { type: 'room', room: room.code, players: room.players, race: room.race ?? undefined };
 }
 
 function send(socket, message) {
@@ -303,7 +310,7 @@ export function createRelay({ databasePath, buildSha = 'dev', connectionLimit = 
         } else if (command.type === 'start') {
           if (!roomCode || !playerId) throw new RoomError('invalid');
           const room = store.start(roomCode, playerId);
-          publish(room.code, { type: 'race-start', players: room.players, seed: room.seed });
+          publish(room.code, { type: 'race-start', players: room.players, seed: room.seed, race: room.race });
         } else if (command.type === 'input') {
           if (!roomCode || !playerId || !Number.isFinite(command.steer)) throw new RoomError('invalid');
           publish(roomCode, { type: 'input', playerId, steer: Math.max(-1, Math.min(1, command.steer)), throttle: Boolean(command.throttle), boost: Boolean(command.boost) });

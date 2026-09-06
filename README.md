@@ -21,6 +21,8 @@ The first release is free. It does not offer checkout, paid unlocks, accounts, o
 
 A round uses a 90-second race clock. Four moving hazards make each seeded run different. A race ends with an ordered result and can restart from the result screen.
 
+If the shared-screen host reloads during a race, select **Resume saved race**. The active race snapshot stays in that browser and reconnects to its room.
+
 ## Run locally
 
 Prerequisites: Node 22+, npm 10+, and Chromium installed for Playwright 1.58.2.

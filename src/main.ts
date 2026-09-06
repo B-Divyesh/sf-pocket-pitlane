@@ -32,6 +32,23 @@ interface Settings {
 interface RoomState {
   code: string;
   players: Driver[];
+  race?: RaceState;
+}
+
+interface RaceState {
+  seed: number;
+  startedAt: number;
+  duration: number;
+}
+
+interface RaceSnapshot {
+  version: 1;
+  seed: number;
+  phase: GamePhase;
+  duration: number;
+  raceSeconds: number;
+  cars: Car[];
+  autoPilot: boolean;
 }
 
 interface ServerMessage {
@@ -45,6 +62,7 @@ interface ServerMessage {
   throttle?: boolean;
   boost?: boolean;
   ready?: boolean;
+  race?: RaceState;
 }
 
 const root = document.querySelector<HTMLDivElement>('#app');
@@ -101,6 +119,28 @@ function readSettings(demo: boolean): Settings {
 
 function saveSettings(): void {
   localStorage.setItem(key('settings'), JSON.stringify(settings));
+}
+
+function readRaceSnapshot(): RaceSnapshot | null {
+  try {
+    const raw = localStorage.getItem(key('active-race'));
+    if (!raw) return null;
+    const snapshot = JSON.parse(raw) as Partial<RaceSnapshot>;
+    if (snapshot.version !== 1 || !Number.isFinite(snapshot.seed) || !Number.isFinite(snapshot.duration) || !Number.isFinite(snapshot.raceSeconds) || !Array.isArray(snapshot.cars) || !['countdown', 'racing', 'paused', 'finished'].includes(snapshot.phase ?? '')) return null;
+    return snapshot as RaceSnapshot;
+  } catch {
+    return null;
+  }
+}
+
+function saveRaceSnapshot(): void {
+  const snapshot = game?.snapshot();
+  if (!snapshot || snapshot.phase === 'preview' || snapshot.phase === 'waiting') return;
+  try { localStorage.setItem(key('active-race'), JSON.stringify(snapshot)); } catch { /* A race can still finish when storage is unavailable. */ }
+}
+
+function clearRaceSnapshot(): void {
+  try { localStorage.removeItem(key('active-race')); } catch { /* Storage is optional. */ }
 }
 
 function getOrCreateId(name: string): string {
@@ -236,7 +276,10 @@ function demoSetup(): string {
 }
 
 function realSetup(): string {
-  if (!room) return `<p>Create a six-character room. Your keyboard is the first controller.</p><p class="button-note">Select Create room above, then share the link shown here.</p><p class="status ${connectionStatus.startsWith('Could not') ? 'error' : ''}" id="connection-status" aria-live="polite">${escapeHtml(connectionStatus)}</p>`;
+  if (!room) {
+    const savedRace = readRaceSnapshot();
+    return `<p>Create a six-character room. Your keyboard is the first controller.</p><p class="button-note">Select Create room above, then share the link shown here.</p>${savedRace ? '<button class="button-secondary" id="resume-saved-race" type="button">Resume saved race</button><p class="button-note">Reconnects this browser to its active room.</p>' : ''}<p class="status ${connectionStatus.startsWith('Could not') ? 'error' : ''}" id="connection-status" aria-live="polite">${escapeHtml(connectionStatus)}</p>`;
+  }
   const readyCount = room.players.filter((player) => player.ready).length;
   const players = room.players.map((player) => `<li><span>${escapeHtml(player.label)}${player.host ? ' (keyboard)' : ''}</span><span class="${player.ready ? 'ready' : 'not-ready'}">${player.ready ? 'Ready' : 'Waiting'}</span></li>`).join('');
   const controllerUrl = `${location.origin}/controller?room=${room.code}`;
@@ -288,7 +331,10 @@ function bindRoutes(): void {
 function mountHome(): void {
   const canvas = document.querySelector<HTMLCanvasElement>('#track');
   if (!canvas) return;
-  game = new RaceGame(canvas, settings, gameOverlay);
+  game = new RaceGame(canvas, settings, (phase, cars, seconds) => {
+    gameOverlay(phase, cars, seconds);
+    saveRaceSnapshot();
+  });
   game.preview();
   bindSettings();
   if (isDemoRoute()) {
@@ -296,11 +342,13 @@ function mountHome(): void {
     document.querySelector<HTMLButtonElement>('#reset-demo')?.addEventListener('click', () => resetDemo());
     document.querySelector<HTMLButtonElement>('#start-real')?.addEventListener('click', () => {
       localStorage.removeItem('demo:pocket-pitlane:settings');
+      localStorage.removeItem('demo:pocket-pitlane:active-race');
       navigate('/');
     });
     if (new URLSearchParams(location.search).get('test-run') === '1') startSampleRace();
   } else {
     document.querySelector<HTMLButtonElement>('#create-room')?.addEventListener('click', createRoom);
+    document.querySelector<HTMLButtonElement>('#resume-saved-race')?.addEventListener('click', createRoom);
     document.querySelector<HTMLButtonElement>('#host-ready')?.addEventListener('click', () => {
       const me = room?.players.find((player) => player.id === hostId);
       if (me) socket?.send({ type: 'ready', ready: !me.ready });
@@ -400,6 +448,7 @@ function gameOverlay(phase: GamePhase, cars: Car[], seconds: number): void {
       else if (room) socket?.send({ type: 'start' });
     });
     document.querySelector<HTMLButtonElement>('#back-to-room')?.addEventListener('click', () => game?.preview());
+    document.querySelector<HTMLButtonElement>('#back-to-room')?.addEventListener('click', clearRaceSnapshot);
   }
 }
 
@@ -418,6 +467,7 @@ function startSampleRace(duration = 90): void {
 
 function resetDemo(): void {
   localStorage.removeItem('demo:pocket-pitlane:settings');
+  clearRaceSnapshot();
   settings = readSettings(true);
   game?.setSettings(settings);
   game?.preview();
@@ -449,16 +499,28 @@ function setConnectionStatus(message: string): void {
 
 function handleHostMessage(message: ServerMessage): void {
   if (message.type === 'room' && message.room && message.players) {
-    room = { code: message.room, players: message.players };
+    room = { code: message.room, players: message.players, race: message.race };
     connectionStatus = 'Room connected.';
     render();
+    if (message.race) restoreSavedRace(message.race);
+    else clearRaceSnapshot();
   } else if (message.type === 'input' && message.playerId) {
     game?.setRemoteInput(message.playerId, message.steer ?? 0, Boolean(message.throttle), Boolean(message.boost));
   } else if (message.type === 'race-start' && message.players && message.seed) {
-    game?.start(message.players, message.seed, 90, false);
+    game?.start(message.players, message.seed, message.race?.duration ?? 90, false);
   } else if (message.type === 'error') {
     setConnectionStatus(message.error ?? 'Could not update this room. Try again.');
   }
+}
+
+function restoreSavedRace(race: RaceState): void {
+  const snapshot = readRaceSnapshot();
+  const elapsed = (Date.now() - race.startedAt) / 1000;
+  if (!snapshot || snapshot.seed !== race.seed || snapshot.duration !== race.duration || elapsed > race.duration + 2) {
+    if (elapsed > race.duration + 2) clearRaceSnapshot();
+    return;
+  }
+  if (game?.restore(snapshot)) setConnectionStatus('Race restored on this browser.');
 }
 
 function mountController(): void {
@@ -620,6 +682,7 @@ class RaceGame {
   private autoPilot = false;
   private timeScale = 1;
   private trackSeed = 0;
+  private raceSeed = 0;
   private resizeObserver: ResizeObserver;
   private keyboardDown = new Set<string>();
   private audio: AudioContext | null = null;
@@ -652,12 +715,14 @@ class RaceGame {
     this.autoPilot = true;
     this.timeScale = 1;
     this.trackSeed = 0;
+    this.raceSeed = 0;
     this.cars = sampleDrivers().slice(0, 3).map((driver, index) => ({ ...driver, progress: index * .18, lane: (index - 1) * .22, speed: .032, boost: .4, hitTimer: 0 }));
     this.inputs.clear();
     this.report(this.phase, this.cars, this.duration);
   }
 
   start(drivers: Driver[], seed: number, duration: number, demoRace: boolean): void {
+    this.raceSeed = seed;
     this.trackSeed = seed % 10_000;
     this.phase = 'countdown';
     this.raceSeconds = -1.3;
@@ -668,6 +733,47 @@ class RaceGame {
     this.inputs.clear();
     this.beep(360, .06);
     this.report(this.phase, this.cars, this.duration);
+  }
+
+  snapshot(): RaceSnapshot | null {
+    if (this.phase === 'preview' || this.phase === 'waiting') return null;
+    return {
+      version: 1,
+      seed: this.raceSeed,
+      phase: this.phase,
+      duration: this.duration,
+      raceSeconds: this.raceSeconds,
+      cars: this.cars.map((car) => ({ ...car })),
+      autoPilot: this.autoPilot
+    };
+  }
+
+  restore(snapshot: RaceSnapshot): boolean {
+    if (!Number.isFinite(snapshot.seed) || !Number.isFinite(snapshot.duration) || !Number.isFinite(snapshot.raceSeconds) || snapshot.duration !== 90 || !snapshot.cars.length || snapshot.cars.length > 8) return false;
+    this.raceSeed = snapshot.seed;
+    this.trackSeed = snapshot.seed % 10_000;
+    this.phase = snapshot.phase === 'finished' ? 'finished' : snapshot.phase === 'paused' ? 'paused' : snapshot.phase === 'countdown' ? 'countdown' : 'racing';
+    this.duration = snapshot.duration;
+    this.raceSeconds = snapshot.raceSeconds;
+    this.autoPilot = snapshot.autoPilot;
+    this.timeScale = new URLSearchParams(location.search).get('test-run') === '1' ? 50 : 1;
+    this.cars = snapshot.cars.map((car, index) => ({
+      id: String(car.id),
+      label: String(car.label).slice(0, 30),
+      color: typeof car.color === 'string' ? car.color : palette[index % palette.length],
+      ready: Boolean(car.ready),
+      host: Boolean(car.host),
+      progress: Number.isFinite(car.progress) ? car.progress : 0,
+      lane: Number.isFinite(car.lane) ? Math.max(-.45, Math.min(.45, car.lane)) : 0,
+      speed: Number.isFinite(car.speed) ? car.speed : .012,
+      boost: Number.isFinite(car.boost) ? Math.max(0, Math.min(1, car.boost)) : .2,
+      hitTimer: Number.isFinite(car.hitTimer) ? Math.max(0, car.hitTimer) : 0
+    }));
+    this.inputs.clear();
+    this.previous = performance.now();
+    this.accumulator = 0;
+    this.report(this.phase, this.cars, Math.max(0, this.duration - this.raceSeconds));
+    return true;
   }
 
   resume(): void {
