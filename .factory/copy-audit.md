@@ -19,6 +19,8 @@ The landing page was read aloud before release. All visitor-facing sentences are
 | Steer around hazards and use boost when it fills. | 9 | pass |
 | It has no accounts, voice chat, ads, or contact access. | 11 | pass |
 | The room service only keeps an anonymous controller token and the room state needed to run the race. | 18 | pass |
+| Resume saved race | 3 | pass |
+| Reconnects this browser to its active room. | 7 | pass |
 
 ## Terminology
 
