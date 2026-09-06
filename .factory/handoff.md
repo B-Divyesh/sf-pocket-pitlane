@@ -108,3 +108,50 @@ Independent verifier report: `.factory/verification-2.md`.
 - Fresh live desktop and phone checks confirmed the above-fold game, isolated labeled demo/reset, complete results screen, independent real controller room start, invalid-code recovery, offline demo reload, keyboard/focus/reduced-motion behavior, zero serious/critical axe findings, legal routes, links, styled HTTP 404, relay health, and 20-connection allowance followed by `429 Retry-After: 60`.
 - Verification 1's five claim-coverage findings and the earlier reset-feedback minor defect are now demonstrably repaired.
 - New F-02 remains: `room-limit`, `room-expiry`, `realtime-persistence`, and `realtime-rate-limit` have runnable passing commands but no exact `@claim:<id>` test tags. This violates the claims contract and leaves four claims untestable by the mandated identifier. No code was changed during verification.
+
+## Repair 2
+
+### Status
+
+**PASS.** Verification 2 F-02 is closed. Each declared public claim now has exactly one matching `@claim:<id>` tag in an outcome-based test.
+
+### Versions and deployment
+
+- Claim-contract implementation SHA: `6bc2734342da329963b865d6b8f2064c842e7fa7`.
+- Final static deployment candidate SHA: `b3c9efb1c3c7ee288b6cd0650f20a9532da1e676`.
+- Verification 2 report/factory wrapper SHA: `342d9d6eff41e827769675d5b1e76f0b42dd22b0`.
+- The product-owned relay is unchanged at `a955346b3e78fd83e3377c572973c15d9c6b94d9`; live `/health` returned `200`. Its durable `/data` SQLite volume, probes, and one-replica configuration were not changed.
+- Static deployment completed successfully. The final live shell references `assets/index-C2HFoYNi.js`.
+
+### What changed
+
+- Tagged the existing observable relay tests as `@claim:room-limit`, `@claim:room-expiry`, `@claim:realtime-persistence`, and `@claim:realtime-rate-limit`.
+- Changed the four declared relay commands to select those exact public identifiers, so the claims manifest, command, test name, and asserted outcome agree.
+- Updated development-only Vite from 7.1.7 to 7.3.6. Both production and development dependency audits now report zero vulnerabilities.
+
+### Verification
+
+- From the documented clean setup, `npm ci` and `npm --prefix realtime ci` succeeded. All 19 commands declared in `.factory/claims.json` were then run separately and passed.
+- `npm run check` passed: production build, 32 browser checks passed, two intentional desktop skips remain for mobile-only checks, and all 8 relay checks passed.
+- The four repaired relay tests prove the ninth driver is refused after eight, an expired durable room is unavailable after cleanup, a ready controller and race record survive restart, and attempts 21–22 receive `429` plus `Retry-After: 60`.
+- Final build output: JavaScript 34.02 KB raw / 11.11 KB gzip; CSS 10.29 KB raw / 3.12 KB gzip.
+- Final `verify-url.sh` result: HTTPS 200, 598 ms load, no console errors, title/lang/main present, one h1, no missing image alt text, and no unlabeled buttons. Playwright Axe on fresh home and phone controller pages found zero serious or critical violations.
+- Fresh desktop and phone contexts loaded the final asset with the game canvas, job headline, audience sentence, **Create room**, and **Try it with sample data** on the first screen. Both had no console errors.
+- Final live sample verification entered through the visible sample action, showed four named racers and the persistent `Demo — sample data, nothing is saved` label, reset with its confirmation while preserving a real-storage sentinel, and reached the four-finisher `Race results` screen through the deterministic run.
+- A fresh independent phone joined a real room, marked ready, enabled the host action, and started the two-driver race. The measured left steering control was 153 × 98 CSS pixels.
+- Live checks also covered the keyboard skip link, reduced-motion preference, offline demo reload, internal links, Privacy and Terms route titles, and the styled deliberate HTTP 404. The HTTP 404 is expected behavior, not a defect.
+- A controlled live relay allowance opened 20 upgrades and received `429 Retry-After: 60` on attempts 21–22.
+
+Evidence is in `/work/.evidence/pocket-pitlane-repair-2/`. `.factory/catalog-description.txt` was copied unchanged to `/work/.evidence/catalog-description.txt`.
+
+### Finding disposition
+
+| Finding | Disposition |
+| --- | --- |
+| Verification 1 F-01.1–F-01.5 | Still covered by their declared outcome tests; all pass. |
+| Earlier reset feedback defect | Still fixed; reset announces that nothing was saved and preserves real storage. |
+| Verification 2 F-02 | Fixed: `room-limit`, `room-expiry`, `realtime-persistence`, and `realtime-rate-limit` each have one exact test tag and a tag-selected command. |
+
+### Known gaps
+
+No known release-blocking gaps remain. Pocket Pitlane remains deliberately free and has no accounts, chat, ads, payments, voice chat, physics simulation, or party-game collection. No billing metadata is required because no paid offer is advertised.
