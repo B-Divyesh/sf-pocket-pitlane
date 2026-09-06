@@ -1,7 +1,7 @@
 # Copy audit
 
-This audit covers every full-sentence message on the home, demo, shared-screen
-game, and controller paths. It includes the visible setup, game-state, reset,
+This audit covers every full-sentence message on the home, demo, and
+shared-screen game paths. It includes the visible setup, game-state, reset,
 input, connection, and recovery messages. Labels, button names, room codes,
 driver names, and lap values are reviewed as short fragments.
 

@@ -235,3 +235,95 @@ No findings in Review 1. Intentional scope remains unchanged: no accounts, chat,
 4. Minor: `.factory/copy-audit.md` is incomplete/outdated, and README contains a 26-word sentence above the plain-words cap.
 
 Report: `.factory/review-2.md`. Evidence: `/work/.evidence/pocket-pitlane-review-2/`.
+
+## Repair 3
+
+### Status
+
+**PASS.** Review 2's four findings and its one untested contradictory privacy
+claim are closed. The static implementation is
+`4724115fa67684275ef9191d6133ee30794be2fe`. The documentation report commit
+is recorded in the follow-up handoff reference commit.
+
+### What changed
+
+- Privacy and README now say that browser settings stay local while a random
+  controller token is sent to the owned room relay. This matches the existing
+  durable-storage outcome test; no token is described as browser-only.
+- Every SPA route now updates its title, description, canonical URL, Open
+  Graph title/description/URL, and Twitter title/description/URL. Controller
+  query data does not enter its canonical URL.
+- The deliberate 404 keeps its HTTP 404 status and pit-map style. It now has a
+  skip link, sibling header/nav/main/footer landmarks, header links, Param
+  Factory credit, build label, description, canonical link, Open Graph, and
+  Twitter metadata.
+- `.factory/copy-audit.md` now covers full-sentence home, demo, game, and
+  controller messages. README prose was split so its longest sentence is 21
+  words. The catalog description remains verb-first, 70 characters, and was
+  copied to `/work/.evidence/catalog-description.txt`.
+- Added browser regressions that observe route-specific metadata and the
+  complete accessible 404 shell. They assert rendered browser outcomes,
+  landmarks, metadata, navigation back to the game, and an Axe scan rather
+  than implementation text.
+
+### Verification
+
+- Clean setup completed with `npm ci` and `npm --prefix realtime ci`.
+- `npm run check` passed: production build; 34 browser checks passed with two
+  intentional desktop skips for phone-only checks; all eight realtime checks
+  passed. The static build is 35.12 KB JavaScript raw / 11.45 KB gzip and
+  10.29 KB CSS raw / 3.12 KB gzip.
+- All 19 entries in `.factory/claims.json` were run separately from that clean
+  setup and passed. The durable `realtime-storage-scope` test continues to
+  prove that the relay stores only anonymous room identifiers and generated
+  race state, including random controller tokens.
+- Static deployment completed for implementation `4724115`. The live shell
+  serves `assets/index-2QXTy8Lf.js`. The untouched realtime service remains at
+  `a955346b3e78fd83e3377c572973c15d9c6b94d9` with its existing durable `/data`
+  SQLite storage, probes, and one-replica deployment.
+- Live `verify-url.sh` passed: HTTPS 200, 616 ms load, no console errors,
+  title/lang/main present, one h1, no missing image alt text, and no unlabeled
+  buttons.
+- Fresh 1440 px desktop and iPhone 13 contexts showed the game canvas, job
+  headline, audience sentence, **Create room**, and **Try it with sample data**
+  at scroll position zero. The first action is **Create room** for friends
+  sharing a TV or laptop who want a short phone-controlled race.
+- The live sample action showed Mika, Ivo, June, and Remy under the persistent
+  `Demo — sample data, nothing is saved` label. Reset announced its result,
+  removed demo keys, preserved a real-storage sentinel, and a deterministic
+  sample run reached `Race results` with four ordered finishers and `Race again`.
+- Fresh live route checks confirmed each non-home canonical and social URL.
+  Privacy displays the corrected relay wording. The unknown route returned an
+  expected HTTP 404 with skip link, banner, site navigation, main, footer,
+  metadata, and a return-to-game link.
+- A fresh independent phone joined a live room, readied, enabled the host
+  start control, and exposed a 153 x 98 CSS px left steering target. Live Axe
+  found zero serious or critical violations on home and controller. No console
+  errors occurred.
+- Live relay health returned HTTP 200 and the unchanged build. A controlled
+  WebSocket allowance accepted 16 remaining attempts, then returned HTTP 429
+  with `Retry-After: 60` on the next six attempts. Existing local relay tests
+  cover room isolation, durable restart persistence, and expiry.
+
+Evidence for this repair is in `/work/.evidence/pocket-pitlane-repair-3/`.
+
+### Review 2 disposition
+
+| Finding | Disposition |
+| --- | --- |
+| F-01 controller token described as browser-only | Fixed. Copy now names the owned relay, and the declared durable storage outcome test passes. |
+| F-02 route canonical and social metadata | Fixed. Route metadata is updated and observed on Demo, Privacy, Terms, and Controller. |
+| F-03 incomplete 404 structure and metadata | Fixed. The actual 404 has the standard accessible shell and route metadata. |
+| F-04 stale copy audit and overlong README sentence | Fixed. The audit matches current messages and README prose is within the 22-word cap. |
+
+### Earlier history and known gaps
+
+Verification 1's five claim-coverage findings, the earlier demo-reset feedback
+defect, and Verification 2's four relay-tag findings remain covered by their
+declared passing outcome tests. Verification 3 and Review 1 remain valid for
+their unchanged game and relay paths.
+
+There are no known release-blocking gaps. Pocket Pitlane remains intentionally
+free and has no accounts, chat, ads, payments, voice chat, physics simulation,
+or party-game collection. No billing offer is advertised, so no billing
+metadata is required.
