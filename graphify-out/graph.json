@@ -49,7 +49,7 @@
       "file_type": "code",
       "norm_label": "realtimeclient",
       "source_file": "src/main.ts",
-      "source_location": "L644"
+      "source_location": "L679"
     },
     {
       "id": "tests_game_spec_hazardcenter",
@@ -69,7 +69,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "file_type": "code",
       "norm_label": "car",
       "source_file": "src/main.ts",
@@ -81,7 +81,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "file_type": "code",
       "norm_label": "driver",
       "source_file": "src/main.ts",
@@ -93,7 +93,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "file_type": "code",
       "norm_label": "gamephase",
       "source_file": "src/main.ts",
@@ -105,7 +105,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "file_type": "code",
       "norm_label": "racesnapshot",
       "source_file": "src/main.ts",
@@ -117,7 +117,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "file_type": "code",
       "norm_label": "racestate",
       "source_file": "src/main.ts",
@@ -129,7 +129,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "file_type": "code",
       "norm_label": "roomstate",
       "source_file": "src/main.ts",
@@ -141,7 +141,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "file_type": "code",
       "norm_label": "route",
       "source_file": "src/main.ts",
@@ -153,7 +153,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "file_type": "code",
       "norm_label": "servermessage",
       "source_file": "src/main.ts",
@@ -165,7 +165,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "file_type": "code",
       "norm_label": "settings",
       "source_file": "src/main.ts",
@@ -177,11 +177,11 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 4,
       "file_type": "code",
       "norm_label": "racegame",
       "source_file": "src/main.ts",
-      "source_location": "L681"
+      "source_location": "L716"
     },
     {
       "id": "realtime_server_allowedorigin",
@@ -481,6 +481,61 @@
       "source_location": "L234"
     },
     {
+      "id": "realtime_server_test_databasefile",
+      "label": "databaseFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "databasefile()",
+      "source_file": "realtime/server.test.mjs",
+      "source_location": "L16"
+    },
+    {
+      "id": "realtime_server_test_id",
+      "label": "id()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "id()",
+      "source_file": "realtime/server.test.mjs",
+      "source_location": "L20"
+    },
+    {
+      "id": "realtime_server_test_messagequeue",
+      "label": "messageQueue()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "messagequeue()",
+      "source_file": "realtime/server.test.mjs",
+      "source_location": "L24"
+    },
+    {
+      "id": "realtime_server_test_opensocket",
+      "label": "openSocket()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "opensocket()",
+      "source_file": "realtime/server.test.mjs",
+      "source_location": "L44"
+    },
+    {
+      "id": "realtime_server_test_rawupgrade",
+      "label": "rawUpgrade()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "rawupgrade()",
+      "source_file": "realtime/server.test.mjs",
+      "source_location": "L51"
+    },
+    {
       "id": "src_main_mountcontroller",
       "label": "mountController()",
       "_callable": true,
@@ -489,7 +544,7 @@
       "file_type": "code",
       "norm_label": "mountcontroller()",
       "source_file": "src/main.ts",
-      "source_location": "L535"
+      "source_location": "L570"
     },
     {
       "id": "src_main_realtimeclient_close",
@@ -500,7 +555,7 @@
       "file_type": "code",
       "norm_label": ".close()",
       "source_file": "src/main.ts",
-      "source_location": "L674"
+      "source_location": "L709"
     },
     {
       "id": "src_main_realtimeclient_connect",
@@ -511,7 +566,7 @@
       "file_type": "code",
       "norm_label": ".connect()",
       "source_file": "src/main.ts",
-      "source_location": "L650"
+      "source_location": "L685"
     },
     {
       "id": "src_main_realtimeclient_constructor",
@@ -522,7 +577,7 @@
       "file_type": "code",
       "norm_label": ".constructor()",
       "source_file": "src/main.ts",
-      "source_location": "L648"
+      "source_location": "L683"
     },
     {
       "id": "src_main_realtimeclient_send",
@@ -533,7 +588,7 @@
       "file_type": "code",
       "norm_label": ".send()",
       "source_file": "src/main.ts",
-      "source_location": "L670"
+      "source_location": "L705"
     },
     {
       "id": "src_main_realtimeurl",
@@ -544,7 +599,7 @@
       "file_type": "code",
       "norm_label": "realtimeurl()",
       "source_file": "src/main.ts",
-      "source_location": "L487"
+      "source_location": "L522"
     },
     {
       "id": "tests_game_spec_haschangedposition",
@@ -569,609 +624,554 @@
       "source_location": "L6"
     },
     {
-      "id": "src_main_controllerpage",
-      "label": "controllerPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "controllerpage()",
-      "source_file": "src/main.ts",
-      "source_location": "L305"
-    },
-    {
-      "id": "src_main_demosetup",
-      "label": "demoSetup()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "demosetup()",
-      "source_file": "src/main.ts",
-      "source_location": "L272"
-    },
-    {
-      "id": "src_main_escapehtml",
-      "label": "escapeHtml()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "escapehtml()",
-      "source_file": "src/main.ts",
-      "source_location": "L156"
-    },
-    {
-      "id": "src_main_gamemarkup",
-      "label": "gameMarkup()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "gamemarkup()",
-      "source_file": "src/main.ts",
-      "source_location": "L223"
-    },
-    {
-      "id": "src_main_homepage",
-      "label": "homePage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "homepage()",
-      "source_file": "src/main.ts",
-      "source_location": "L246"
-    },
-    {
-      "id": "src_main_keyname",
-      "label": "keyName()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "keyname()",
-      "source_file": "src/main.ts",
-      "source_location": "L160"
-    },
-    {
-      "id": "src_main_pageshell",
-      "label": "pageShell()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "pageshell()",
-      "source_file": "src/main.ts",
-      "source_location": "L200"
-    },
-    {
-      "id": "src_main_readracesnapshot",
-      "label": "readRaceSnapshot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "readracesnapshot()",
-      "source_file": "src/main.ts",
-      "source_location": "L124"
-    },
-    {
-      "id": "src_main_realsetup",
-      "label": "realSetup()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "realsetup()",
-      "source_file": "src/main.ts",
-      "source_location": "L278"
-    },
-    {
-      "id": "src_main_textpage",
-      "label": "textPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "textpage()",
-      "source_file": "src/main.ts",
-      "source_location": "L289"
-    },
-    {
-      "id": "src_main_bindsettings",
-      "label": "bindSettings()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "bindsettings()",
-      "source_file": "src/main.ts",
-      "source_location": "L360"
-    },
-    {
-      "id": "src_main_gameoverlay",
-      "label": "gameOverlay()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "gameoverlay()",
-      "source_file": "src/main.ts",
-      "source_location": "L426"
-    },
-    {
-      "id": "src_main_isdemoroute",
-      "label": "isDemoRoute()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "isdemoroute()",
-      "source_file": "src/main.ts",
-      "source_location": "L92"
-    },
-    {
-      "id": "src_main_key",
-      "label": "key()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "key()",
-      "source_file": "src/main.ts",
-      "source_location": "L96"
-    },
-    {
-      "id": "src_main_mounthome",
-      "label": "mountHome()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "mounthome()",
-      "source_file": "src/main.ts",
-      "source_location": "L331"
-    },
-    {
-      "id": "src_main_racegame_preview",
-      "label": ".preview()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": ".preview()",
-      "source_file": "src/main.ts",
-      "source_location": "L720"
-    },
-    {
-      "id": "src_main_racegame_resume",
-      "label": ".resume()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": ".resume()",
-      "source_file": "src/main.ts",
-      "source_location": "L788"
-    },
-    {
-      "id": "src_main_racegame_setsettings",
-      "label": ".setSettings()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": ".setsettings()",
-      "source_file": "src/main.ts",
-      "source_location": "L718"
-    },
-    {
-      "id": "src_main_racegame_snapshot",
-      "label": ".snapshot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": ".snapshot()",
-      "source_file": "src/main.ts",
-      "source_location": "L747"
-    },
-    {
-      "id": "src_main_readsettings",
-      "label": "readSettings()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "readsettings()",
-      "source_file": "src/main.ts",
-      "source_location": "L100"
-    },
-    {
-      "id": "src_main_resetdemo",
-      "label": "resetDemo()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "resetdemo()",
-      "source_file": "src/main.ts",
-      "source_location": "L477"
-    },
-    {
-      "id": "src_main_sampledrivers",
-      "label": "sampleDrivers()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "sampledrivers()",
-      "source_file": "src/main.ts",
-      "source_location": "L455"
-    },
-    {
-      "id": "src_main_sampleracedrivers",
-      "label": "sampleRaceDrivers()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "sampleracedrivers()",
-      "source_file": "src/main.ts",
-      "source_location": "L469"
-    },
-    {
-      "id": "src_main_sampleraceseed",
-      "label": "sampleRaceSeed()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "sampleraceseed()",
-      "source_file": "src/main.ts",
-      "source_location": "L464"
-    },
-    {
-      "id": "src_main_saveracesnapshot",
-      "label": "saveRaceSnapshot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "saveracesnapshot()",
-      "source_file": "src/main.ts",
-      "source_location": "L136"
-    },
-    {
-      "id": "src_main_savesettings",
-      "label": "saveSettings()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "savesettings()",
-      "source_file": "src/main.ts",
-      "source_location": "L120"
-    },
-    {
-      "id": "src_main_startsamplerace",
-      "label": "startSampleRace()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "file_type": "code",
-      "norm_label": "startsamplerace()",
-      "source_file": "src/main.ts",
-      "source_location": "L473"
-    },
-    {
-      "id": "src_main_racegame_beep",
-      "label": ".beep()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".beep()",
-      "source_file": "src/main.ts",
-      "source_location": "L1015"
-    },
-    {
-      "id": "src_main_racegame_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "src/main.ts",
-      "source_location": "L701"
-    },
-    {
-      "id": "src_main_racegame_draw",
-      "label": ".draw()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".draw()",
-      "source_file": "src/main.ts",
-      "source_location": "L920"
-    },
-    {
-      "id": "src_main_racegame_drawcar",
-      "label": ".drawCar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".drawcar()",
-      "source_file": "src/main.ts",
-      "source_location": "L987"
-    },
-    {
-      "id": "src_main_racegame_drawhazards",
-      "label": ".drawHazards()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".drawhazards()",
-      "source_file": "src/main.ts",
-      "source_location": "L969"
-    },
-    {
-      "id": "src_main_racegame_drawstartline",
-      "label": ".drawStartLine()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".drawstartline()",
-      "source_file": "src/main.ts",
-      "source_location": "L960"
-    },
-    {
-      "id": "src_main_racegame_handlekeydown",
-      "label": ".handleKeyDown()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".handlekeydown()",
-      "source_file": "src/main.ts",
-      "source_location": "L809"
-    },
-    {
-      "id": "src_main_racegame_handlekeyup",
-      "label": ".handleKeyUp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".handlekeyup()",
-      "source_file": "src/main.ts",
-      "source_location": "L825"
-    },
-    {
-      "id": "src_main_racegame_handlevisibility",
-      "label": ".handleVisibility()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".handlevisibility()",
-      "source_file": "src/main.ts",
-      "source_location": "L827"
-    },
-    {
-      "id": "src_main_racegame_hazardat",
-      "label": ".hazardAt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".hazardat()",
-      "source_file": "src/main.ts",
-      "source_location": "L913"
-    },
-    {
-      "id": "src_main_racegame_loop",
-      "label": ".loop()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".loop()",
-      "source_file": "src/main.ts",
-      "source_location": "L842"
-    },
-    {
-      "id": "src_main_racegame_resize",
-      "label": ".resize()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".resize()",
-      "source_file": "src/main.ts",
-      "source_location": "L834"
-    },
-    {
-      "id": "src_main_racegame_restore",
-      "label": ".restore()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".restore()",
-      "source_file": "src/main.ts",
-      "source_location": "L760"
-    },
-    {
-      "id": "src_main_racegame_start",
-      "label": ".start()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".start()",
-      "source_file": "src/main.ts",
-      "source_location": "L733"
-    },
-    {
-      "id": "src_main_racegame_step",
-      "label": ".step()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".step()",
-      "source_file": "src/main.ts",
-      "source_location": "L854"
-    },
-    {
-      "id": "src_main_racegame_updatecar",
-      "label": ".updateCar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "file_type": "code",
-      "norm_label": ".updatecar()",
-      "source_file": "src/main.ts",
-      "source_location": "L881"
-    },
-    {
-      "id": "realtime_server_test_databasefile",
-      "label": "databaseFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "file_type": "code",
-      "norm_label": "databasefile()",
-      "source_file": "realtime/server.test.mjs",
-      "source_location": "L16"
-    },
-    {
-      "id": "realtime_server_test_id",
-      "label": "id()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "file_type": "code",
-      "norm_label": "id()",
-      "source_file": "realtime/server.test.mjs",
-      "source_location": "L20"
-    },
-    {
-      "id": "realtime_server_test_messagequeue",
-      "label": "messageQueue()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "file_type": "code",
-      "norm_label": "messagequeue()",
-      "source_file": "realtime/server.test.mjs",
-      "source_location": "L24"
-    },
-    {
-      "id": "realtime_server_test_opensocket",
-      "label": "openSocket()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "file_type": "code",
-      "norm_label": "opensocket()",
-      "source_file": "realtime/server.test.mjs",
-      "source_location": "L44"
-    },
-    {
-      "id": "realtime_server_test_rawupgrade",
-      "label": "rawUpgrade()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "file_type": "code",
-      "norm_label": "rawupgrade()",
-      "source_file": "realtime/server.test.mjs",
-      "source_location": "L51"
-    },
-    {
       "id": "src_main_bindroutes",
       "label": "bindRoutes()",
       "_callable": true,
       "_origin": "ast",
-      "community": 8,
+      "community": 3,
       "file_type": "code",
       "norm_label": "bindroutes()",
       "source_file": "src/main.ts",
-      "source_location": "L322"
+      "source_location": "L357"
     },
     {
       "id": "src_main_navigate",
       "label": "navigate()",
       "_callable": true,
       "_origin": "ast",
-      "community": 8,
+      "community": 3,
       "file_type": "code",
       "norm_label": "navigate()",
       "source_file": "src/main.ts",
-      "source_location": "L176"
+      "source_location": "L211"
     },
     {
-      "id": "src_main_racegame_destroy",
-      "label": ".destroy()",
+      "id": "src_main_readsettings",
+      "label": "readSettings()",
       "_callable": true,
       "_origin": "ast",
-      "community": 8,
+      "community": 3,
       "file_type": "code",
-      "norm_label": ".destroy()",
+      "norm_label": "readsettings()",
       "source_file": "src/main.ts",
-      "source_location": "L800"
-    },
-    {
-      "id": "src_main_registerserviceworker",
-      "label": "registerServiceWorker()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "file_type": "code",
-      "norm_label": "registerserviceworker()",
-      "source_file": "src/main.ts",
-      "source_location": "L1032"
-    },
-    {
-      "id": "src_main_render",
-      "label": "render()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "file_type": "code",
-      "norm_label": "render()",
-      "source_file": "src/main.ts",
-      "source_location": "L310"
+      "source_location": "L101"
     },
     {
       "id": "src_main_routefromlocation",
       "label": "routeFromLocation()",
       "_callable": true,
       "_origin": "ast",
-      "community": 8,
+      "community": 3,
       "file_type": "code",
       "norm_label": "routefromlocation()",
       "source_file": "src/main.ts",
-      "source_location": "L84"
+      "source_location": "L85"
     },
     {
-      "id": "src_main_settitle",
-      "label": "setTitle()",
+      "id": "src_main_racegame_beep",
+      "label": ".beep()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".beep()",
+      "source_file": "src/main.ts",
+      "source_location": "L1050"
+    },
+    {
+      "id": "src_main_racegame_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "src/main.ts",
+      "source_location": "L736"
+    },
+    {
+      "id": "src_main_racegame_draw",
+      "label": ".draw()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".draw()",
+      "source_file": "src/main.ts",
+      "source_location": "L955"
+    },
+    {
+      "id": "src_main_racegame_drawcar",
+      "label": ".drawCar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".drawcar()",
+      "source_file": "src/main.ts",
+      "source_location": "L1022"
+    },
+    {
+      "id": "src_main_racegame_drawhazards",
+      "label": ".drawHazards()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".drawhazards()",
+      "source_file": "src/main.ts",
+      "source_location": "L1004"
+    },
+    {
+      "id": "src_main_racegame_drawstartline",
+      "label": ".drawStartLine()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".drawstartline()",
+      "source_file": "src/main.ts",
+      "source_location": "L995"
+    },
+    {
+      "id": "src_main_racegame_handlekeydown",
+      "label": ".handleKeyDown()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".handlekeydown()",
+      "source_file": "src/main.ts",
+      "source_location": "L844"
+    },
+    {
+      "id": "src_main_racegame_handlekeyup",
+      "label": ".handleKeyUp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".handlekeyup()",
+      "source_file": "src/main.ts",
+      "source_location": "L860"
+    },
+    {
+      "id": "src_main_racegame_handlevisibility",
+      "label": ".handleVisibility()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".handlevisibility()",
+      "source_file": "src/main.ts",
+      "source_location": "L862"
+    },
+    {
+      "id": "src_main_racegame_hazardat",
+      "label": ".hazardAt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".hazardat()",
+      "source_file": "src/main.ts",
+      "source_location": "L948"
+    },
+    {
+      "id": "src_main_racegame_loop",
+      "label": ".loop()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".loop()",
+      "source_file": "src/main.ts",
+      "source_location": "L877"
+    },
+    {
+      "id": "src_main_racegame_resize",
+      "label": ".resize()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".resize()",
+      "source_file": "src/main.ts",
+      "source_location": "L869"
+    },
+    {
+      "id": "src_main_racegame_restore",
+      "label": ".restore()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".restore()",
+      "source_file": "src/main.ts",
+      "source_location": "L795"
+    },
+    {
+      "id": "src_main_racegame_start",
+      "label": ".start()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".start()",
+      "source_file": "src/main.ts",
+      "source_location": "L768"
+    },
+    {
+      "id": "src_main_racegame_step",
+      "label": ".step()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".step()",
+      "source_file": "src/main.ts",
+      "source_location": "L889"
+    },
+    {
+      "id": "src_main_racegame_updatecar",
+      "label": ".updateCar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "file_type": "code",
+      "norm_label": ".updatecar()",
+      "source_file": "src/main.ts",
+      "source_location": "L916"
+    },
+    {
+      "id": "src_main_controllerpage",
+      "label": "controllerPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "controllerpage()",
+      "source_file": "src/main.ts",
+      "source_location": "L340"
+    },
+    {
+      "id": "src_main_demosetup",
+      "label": "demoSetup()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "demosetup()",
+      "source_file": "src/main.ts",
+      "source_location": "L307"
+    },
+    {
+      "id": "src_main_escapehtml",
+      "label": "escapeHtml()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "escapehtml()",
+      "source_file": "src/main.ts",
+      "source_location": "L157"
+    },
+    {
+      "id": "src_main_homepage",
+      "label": "homePage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "homepage()",
+      "source_file": "src/main.ts",
+      "source_location": "L281"
+    },
+    {
+      "id": "src_main_pageshell",
+      "label": "pageShell()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "pageshell()",
+      "source_file": "src/main.ts",
+      "source_location": "L235"
+    },
+    {
+      "id": "src_main_racegame_destroy",
+      "label": ".destroy()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": ".destroy()",
+      "source_file": "src/main.ts",
+      "source_location": "L835"
+    },
+    {
+      "id": "src_main_readracesnapshot",
+      "label": "readRaceSnapshot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "readracesnapshot()",
+      "source_file": "src/main.ts",
+      "source_location": "L125"
+    },
+    {
+      "id": "src_main_realsetup",
+      "label": "realSetup()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "realsetup()",
+      "source_file": "src/main.ts",
+      "source_location": "L313"
+    },
+    {
+      "id": "src_main_registerserviceworker",
+      "label": "registerServiceWorker()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "registerserviceworker()",
+      "source_file": "src/main.ts",
+      "source_location": "L1067"
+    },
+    {
+      "id": "src_main_render",
+      "label": "render()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "render()",
+      "source_file": "src/main.ts",
+      "source_location": "L345"
+    },
+    {
+      "id": "src_main_setpagemetadata",
+      "label": "setPageMetadata()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "setpagemetadata()",
+      "source_file": "src/main.ts",
+      "source_location": "L166"
+    },
+    {
+      "id": "src_main_textpage",
+      "label": "textPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "file_type": "code",
+      "norm_label": "textpage()",
+      "source_file": "src/main.ts",
+      "source_location": "L324"
+    },
+    {
+      "id": "src_main_gameoverlay",
+      "label": "gameOverlay()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "file_type": "code",
+      "norm_label": "gameoverlay()",
+      "source_file": "src/main.ts",
+      "source_location": "L461"
+    },
+    {
+      "id": "src_main_isdemoroute",
+      "label": "isDemoRoute()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "file_type": "code",
+      "norm_label": "isdemoroute()",
+      "source_file": "src/main.ts",
+      "source_location": "L93"
+    },
+    {
+      "id": "src_main_mounthome",
+      "label": "mountHome()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "file_type": "code",
+      "norm_label": "mounthome()",
+      "source_file": "src/main.ts",
+      "source_location": "L366"
+    },
+    {
+      "id": "src_main_racegame_preview",
+      "label": ".preview()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "file_type": "code",
+      "norm_label": ".preview()",
+      "source_file": "src/main.ts",
+      "source_location": "L755"
+    },
+    {
+      "id": "src_main_racegame_resume",
+      "label": ".resume()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "file_type": "code",
+      "norm_label": ".resume()",
+      "source_file": "src/main.ts",
+      "source_location": "L823"
+    },
+    {
+      "id": "src_main_resetdemo",
+      "label": "resetDemo()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "file_type": "code",
+      "norm_label": "resetdemo()",
+      "source_file": "src/main.ts",
+      "source_location": "L512"
+    },
+    {
+      "id": "src_main_sampledrivers",
+      "label": "sampleDrivers()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "file_type": "code",
+      "norm_label": "sampledrivers()",
+      "source_file": "src/main.ts",
+      "source_location": "L490"
+    },
+    {
+      "id": "src_main_sampleracedrivers",
+      "label": "sampleRaceDrivers()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "file_type": "code",
+      "norm_label": "sampleracedrivers()",
+      "source_file": "src/main.ts",
+      "source_location": "L504"
+    },
+    {
+      "id": "src_main_sampleraceseed",
+      "label": "sampleRaceSeed()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "file_type": "code",
+      "norm_label": "sampleraceseed()",
+      "source_file": "src/main.ts",
+      "source_location": "L499"
+    },
+    {
+      "id": "src_main_startsamplerace",
+      "label": "startSampleRace()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "file_type": "code",
+      "norm_label": "startsamplerace()",
+      "source_file": "src/main.ts",
+      "source_location": "L508"
+    },
+    {
+      "id": "src_main_bindsettings",
+      "label": "bindSettings()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
       "file_type": "code",
-      "norm_label": "settitle()",
+      "norm_label": "bindsettings()",
       "source_file": "src/main.ts",
-      "source_location": "L165"
+      "source_location": "L395"
+    },
+    {
+      "id": "src_main_gamemarkup",
+      "label": "gameMarkup()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "file_type": "code",
+      "norm_label": "gamemarkup()",
+      "source_file": "src/main.ts",
+      "source_location": "L258"
+    },
+    {
+      "id": "src_main_key",
+      "label": "key()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "file_type": "code",
+      "norm_label": "key()",
+      "source_file": "src/main.ts",
+      "source_location": "L97"
+    },
+    {
+      "id": "src_main_keyname",
+      "label": "keyName()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "file_type": "code",
+      "norm_label": "keyname()",
+      "source_file": "src/main.ts",
+      "source_location": "L161"
+    },
+    {
+      "id": "src_main_racegame_setsettings",
+      "label": ".setSettings()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "file_type": "code",
+      "norm_label": ".setsettings()",
+      "source_file": "src/main.ts",
+      "source_location": "L753"
+    },
+    {
+      "id": "src_main_racegame_snapshot",
+      "label": ".snapshot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "file_type": "code",
+      "norm_label": ".snapshot()",
+      "source_file": "src/main.ts",
+      "source_location": "L782"
+    },
+    {
+      "id": "src_main_saveracesnapshot",
+      "label": "saveRaceSnapshot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "file_type": "code",
+      "norm_label": "saveracesnapshot()",
+      "source_file": "src/main.ts",
+      "source_location": "L137"
+    },
+    {
+      "id": "src_main_savesettings",
+      "label": "saveSettings()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "file_type": "code",
+      "norm_label": "savesettings()",
+      "source_file": "src/main.ts",
+      "source_location": "L121"
     },
     {
       "id": "src_main_clearracesnapshot",
@@ -1182,7 +1182,7 @@
       "file_type": "code",
       "norm_label": "clearracesnapshot()",
       "source_file": "src/main.ts",
-      "source_location": "L142"
+      "source_location": "L143"
     },
     {
       "id": "src_main_createroom",
@@ -1193,7 +1193,7 @@
       "file_type": "code",
       "norm_label": "createroom()",
       "source_file": "src/main.ts",
-      "source_location": "L492"
+      "source_location": "L527"
     },
     {
       "id": "src_main_getorcreateid",
@@ -1204,7 +1204,7 @@
       "file_type": "code",
       "norm_label": "getorcreateid()",
       "source_file": "src/main.ts",
-      "source_location": "L146"
+      "source_location": "L147"
     },
     {
       "id": "src_main_handlehostmessage",
@@ -1215,7 +1215,7 @@
       "file_type": "code",
       "norm_label": "handlehostmessage()",
       "source_file": "src/main.ts",
-      "source_location": "L509"
+      "source_location": "L544"
     },
     {
       "id": "src_main_racegame_setremoteinput",
@@ -1226,7 +1226,7 @@
       "file_type": "code",
       "norm_label": ".setremoteinput()",
       "source_file": "src/main.ts",
-      "source_location": "L796"
+      "source_location": "L831"
     },
     {
       "id": "src_main_restoresavedrace",
@@ -1237,7 +1237,7 @@
       "file_type": "code",
       "norm_label": "restoresavedrace()",
       "source_file": "src/main.ts",
-      "source_location": "L525"
+      "source_location": "L560"
     },
     {
       "id": "src_main_setconnectionstatus",
@@ -1248,7 +1248,7 @@
       "file_type": "code",
       "norm_label": "setconnectionstatus()",
       "source_file": "src/main.ts",
-      "source_location": "L500"
+      "source_location": "L535"
     },
     {
       "id": "realtime_server",
@@ -1269,6 +1269,26 @@
       "norm_label": "colors",
       "source_file": "realtime/server.mjs",
       "source_location": "L12"
+    },
+    {
+      "id": "realtime_server_test",
+      "label": "server.test.mjs",
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "server.test.mjs",
+      "source_file": "realtime/server.test.mjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "realtime_server_test_disposers",
+      "label": "disposers",
+      "_origin": "ast",
+      "community": 0,
+      "file_type": "code",
+      "norm_label": "disposers",
+      "source_file": "realtime/server.test.mjs",
+      "source_location": "L11"
     },
     {
       "id": "package",
@@ -1591,50 +1611,10 @@
       "source_location": "L1"
     },
     {
-      "id": "src_main",
-      "label": "main.ts",
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "main.ts",
-      "source_file": "src/main.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_main_defaultcontrols",
-      "label": "defaultControls",
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "defaultcontrols",
-      "source_file": "src/main.ts",
-      "source_location": "L74"
-    },
-    {
-      "id": "src_main_palette",
-      "label": "palette",
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "palette",
-      "source_file": "src/main.ts",
-      "source_location": "L72"
-    },
-    {
-      "id": "src_main_root",
-      "label": "root",
-      "_origin": "ast",
-      "community": 2,
-      "file_type": "code",
-      "norm_label": "root",
-      "source_file": "src/main.ts",
-      "source_location": "L68"
-    },
-    {
       "id": "tsconfig",
       "label": "tsconfig.json",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "tsconfig.json",
       "source_file": "tsconfig.json",
@@ -1644,7 +1624,7 @@
       "id": "tsconfig_compileroptions",
       "label": "compilerOptions",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "compileroptions",
       "source_file": "tsconfig.json",
@@ -1654,7 +1634,7 @@
       "id": "tsconfig_compileroptions_allowimportingtsextensions",
       "label": "allowImportingTsExtensions",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "allowimportingtsextensions",
       "source_file": "tsconfig.json",
@@ -1664,7 +1644,7 @@
       "id": "tsconfig_compileroptions_lib",
       "label": "lib",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "lib",
       "source_file": "tsconfig.json",
@@ -1674,7 +1654,7 @@
       "id": "tsconfig_compileroptions_module",
       "label": "module",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "module",
       "source_file": "tsconfig.json",
@@ -1684,7 +1664,7 @@
       "id": "tsconfig_compileroptions_moduleresolution",
       "label": "moduleResolution",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "moduleresolution",
       "source_file": "tsconfig.json",
@@ -1694,7 +1674,7 @@
       "id": "tsconfig_compileroptions_noemit",
       "label": "noEmit",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "noemit",
       "source_file": "tsconfig.json",
@@ -1704,7 +1684,7 @@
       "id": "tsconfig_compileroptions_nofallthroughcasesinswitch",
       "label": "noFallthroughCasesInSwitch",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "nofallthroughcasesinswitch",
       "source_file": "tsconfig.json",
@@ -1714,7 +1694,7 @@
       "id": "tsconfig_compileroptions_nounusedlocals",
       "label": "noUnusedLocals",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "nounusedlocals",
       "source_file": "tsconfig.json",
@@ -1724,7 +1704,7 @@
       "id": "tsconfig_compileroptions_nounusedparameters",
       "label": "noUnusedParameters",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "nounusedparameters",
       "source_file": "tsconfig.json",
@@ -1734,7 +1714,7 @@
       "id": "tsconfig_compileroptions_skiplibcheck",
       "label": "skipLibCheck",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "skiplibcheck",
       "source_file": "tsconfig.json",
@@ -1744,7 +1724,7 @@
       "id": "tsconfig_compileroptions_strict",
       "label": "strict",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "strict",
       "source_file": "tsconfig.json",
@@ -1754,7 +1734,7 @@
       "id": "tsconfig_compileroptions_target",
       "label": "target",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "target",
       "source_file": "tsconfig.json",
@@ -1764,7 +1744,7 @@
       "id": "tsconfig_compileroptions_usedefineforclassfields",
       "label": "useDefineForClassFields",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "usedefineforclassfields",
       "source_file": "tsconfig.json",
@@ -1774,7 +1754,7 @@
       "id": "tsconfig_compileroptions_verbatimmodulesyntax",
       "label": "verbatimModuleSyntax",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "verbatimmodulesyntax",
       "source_file": "tsconfig.json",
@@ -1784,7 +1764,7 @@
       "id": "tsconfig_include",
       "label": "include",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "code",
       "norm_label": "include",
       "source_file": "tsconfig.json",
@@ -1794,7 +1774,7 @@
       "id": "ref_dom",
       "label": "DOM",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "concept",
       "norm_label": "dom",
       "source_file": "tsconfig.json",
@@ -1804,7 +1784,7 @@
       "id": "ref_dom_iterable",
       "label": "DOM.Iterable",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "concept",
       "norm_label": "dom.iterable",
       "source_file": "tsconfig.json",
@@ -1814,7 +1794,7 @@
       "id": "ref_es2022",
       "label": "ES2022",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "concept",
       "norm_label": "es2022",
       "source_file": "tsconfig.json",
@@ -1824,7 +1804,7 @@
       "id": "ref_playwright_config_ts",
       "label": "playwright.config.ts",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "concept",
       "norm_label": "playwright.config.ts",
       "source_file": "tsconfig.json",
@@ -1834,7 +1814,7 @@
       "id": "ref_src",
       "label": "src",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "concept",
       "norm_label": "src",
       "source_file": "tsconfig.json",
@@ -1844,17 +1824,57 @@
       "id": "ref_tests",
       "label": "tests",
       "_origin": "ast",
-      "community": 3,
+      "community": 2,
       "file_type": "concept",
       "norm_label": "tests",
       "source_file": "tsconfig.json",
       "source_location": "L17"
     },
     {
+      "id": "src_main",
+      "label": "main.ts",
+      "_origin": "ast",
+      "community": 3,
+      "file_type": "code",
+      "norm_label": "main.ts",
+      "source_file": "src/main.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_main_defaultcontrols",
+      "label": "defaultControls",
+      "_origin": "ast",
+      "community": 3,
+      "file_type": "code",
+      "norm_label": "defaultcontrols",
+      "source_file": "src/main.ts",
+      "source_location": "L75"
+    },
+    {
+      "id": "src_main_palette",
+      "label": "palette",
+      "_origin": "ast",
+      "community": 3,
+      "file_type": "code",
+      "norm_label": "palette",
+      "source_file": "src/main.ts",
+      "source_location": "L72"
+    },
+    {
+      "id": "src_main_root",
+      "label": "root",
+      "_origin": "ast",
+      "community": 3,
+      "file_type": "code",
+      "norm_label": "root",
+      "source_file": "src/main.ts",
+      "source_location": "L68"
+    },
+    {
       "id": "realtime_package",
       "label": "realtime/package.json",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "realtime/package.json",
       "source_file": "realtime/package.json",
@@ -1864,7 +1884,7 @@
       "id": "realtime_package_dependencies",
       "label": "dependencies",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "dependencies",
       "source_file": "realtime/package.json",
@@ -1874,7 +1894,7 @@
       "id": "realtime_package_dependencies_ws",
       "label": "ws",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "ws",
       "source_file": "realtime/package.json",
@@ -1884,7 +1904,7 @@
       "id": "realtime_package_name",
       "label": "name",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "name",
       "source_file": "realtime/package.json",
@@ -1894,7 +1914,7 @@
       "id": "realtime_package_private",
       "label": "private",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "private",
       "source_file": "realtime/package.json",
@@ -1904,7 +1924,7 @@
       "id": "realtime_package_scripts",
       "label": "scripts",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "scripts",
       "source_file": "realtime/package.json",
@@ -1914,7 +1934,7 @@
       "id": "realtime_package_scripts_start",
       "label": "start",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "start",
       "source_file": "realtime/package.json",
@@ -1924,7 +1944,7 @@
       "id": "realtime_package_scripts_test",
       "label": "test",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "test",
       "source_file": "realtime/package.json",
@@ -1934,7 +1954,7 @@
       "id": "realtime_package_scripts_test_persistence",
       "label": "test:persistence",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "test:persistence",
       "source_file": "realtime/package.json",
@@ -1944,7 +1964,7 @@
       "id": "realtime_package_scripts_test_rate_limit",
       "label": "test:rate-limit",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "test:rate-limit",
       "source_file": "realtime/package.json",
@@ -1954,7 +1974,7 @@
       "id": "realtime_package_scripts_test_room_expiry",
       "label": "test:room-expiry",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "test:room-expiry",
       "source_file": "realtime/package.json",
@@ -1964,7 +1984,7 @@
       "id": "realtime_package_scripts_test_room_limit",
       "label": "test:room-limit",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "test:room-limit",
       "source_file": "realtime/package.json",
@@ -1974,7 +1994,7 @@
       "id": "realtime_package_scripts_test_storage_scope",
       "label": "test:storage-scope",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "test:storage-scope",
       "source_file": "realtime/package.json",
@@ -1984,7 +2004,7 @@
       "id": "realtime_package_type",
       "label": "type",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "type",
       "source_file": "realtime/package.json",
@@ -1994,7 +2014,7 @@
       "id": "realtime_package_version",
       "label": "version",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "code",
       "norm_label": "version",
       "source_file": "realtime/package.json",
@@ -2004,31 +2024,11 @@
       "id": "ws",
       "label": "ws",
       "_origin": "ast",
-      "community": 6,
+      "community": 5,
       "file_type": "concept",
       "norm_label": "ws",
       "source_file": "realtime/package.json",
       "source_location": "L16"
-    },
-    {
-      "id": "realtime_server_test",
-      "label": "server.test.mjs",
-      "_origin": "ast",
-      "community": 7,
-      "file_type": "code",
-      "norm_label": "server.test.mjs",
-      "source_file": "realtime/server.test.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "realtime_server_test_disposers",
-      "label": "disposers",
-      "_origin": "ast",
-      "community": 7,
-      "file_type": "code",
-      "norm_label": "disposers",
-      "source_file": "realtime/server.test.mjs",
-      "source_location": "L11"
     }
   ],
   "links": [
@@ -2509,7 +2509,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L327",
+      "source_location": "L362",
       "weight": 1.0
     },
     {
@@ -2521,7 +2521,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L365",
+      "source_location": "L400",
       "weight": 1.0
     },
     {
@@ -2533,7 +2533,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L366",
+      "source_location": "L401",
       "weight": 1.0
     },
     {
@@ -2545,7 +2545,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L378",
+      "source_location": "L413",
       "weight": 1.0
     },
     {
@@ -2557,7 +2557,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L143",
+      "source_location": "L144",
       "weight": 1.0
     },
     {
@@ -2569,7 +2569,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L307",
+      "source_location": "L342",
       "weight": 1.0
     },
     {
@@ -2581,7 +2581,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L307",
+      "source_location": "L342",
       "weight": 1.0
     },
     {
@@ -2593,7 +2593,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L493",
+      "source_location": "L528",
       "weight": 1.0
     },
     {
@@ -2605,7 +2605,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L495",
+      "source_location": "L530",
       "weight": 1.0
     },
     {
@@ -2617,7 +2617,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L497",
+      "source_location": "L532",
       "weight": 1.0
     },
     {
@@ -2629,7 +2629,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L497",
+      "source_location": "L532",
       "weight": 1.0
     },
     {
@@ -2641,7 +2641,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L239",
+      "source_location": "L274",
       "weight": 1.0
     },
     {
@@ -2653,7 +2653,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L239",
+      "source_location": "L274",
       "weight": 1.0
     },
     {
@@ -2665,7 +2665,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L432",
+      "source_location": "L467",
       "weight": 1.0
     },
     {
@@ -2677,7 +2677,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L435",
+      "source_location": "L470",
       "weight": 1.0
     },
     {
@@ -2689,7 +2689,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L445",
+      "source_location": "L480",
       "weight": 1.0
     },
     {
@@ -2701,7 +2701,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L447",
+      "source_location": "L482",
       "weight": 1.0
     },
     {
@@ -2713,7 +2713,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L448",
+      "source_location": "L483",
       "weight": 1.0
     },
     {
@@ -2725,7 +2725,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L450",
+      "source_location": "L485",
       "weight": 1.0
     },
     {
@@ -2737,7 +2737,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L513",
+      "source_location": "L548",
       "weight": 1.0
     },
     {
@@ -2749,7 +2749,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L514",
+      "source_location": "L549",
       "weight": 1.0
     },
     {
@@ -2761,7 +2761,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L515",
+      "source_location": "L550",
       "weight": 1.0
     },
     {
@@ -2773,7 +2773,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L517",
+      "source_location": "L552",
       "weight": 1.0
     },
     {
@@ -2785,7 +2785,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L519",
+      "source_location": "L554",
       "weight": 1.0
     },
     {
@@ -2797,7 +2797,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L521",
+      "source_location": "L556",
       "weight": 1.0
     },
     {
@@ -2809,7 +2809,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L250",
+      "source_location": "L285",
       "weight": 1.0
     },
     {
@@ -2821,7 +2821,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L258",
+      "source_location": "L293",
       "weight": 1.0
     },
     {
@@ -2833,7 +2833,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L261",
+      "source_location": "L296",
       "weight": 1.0
     },
     {
@@ -2845,7 +2845,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L261",
+      "source_location": "L296",
       "weight": 1.0
     },
     {
@@ -2857,7 +2857,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L97",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -2869,7 +2869,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L560",
+      "source_location": "L595",
       "weight": 1.0
     },
     {
@@ -2881,7 +2881,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L579",
+      "source_location": "L614",
       "weight": 1.0
     },
     {
@@ -2893,7 +2893,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L579",
+      "source_location": "L614",
       "weight": 1.0
     },
     {
@@ -2905,7 +2905,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L335",
+      "source_location": "L370",
       "weight": 1.0
     },
     {
@@ -2917,7 +2917,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L336",
+      "source_location": "L371",
       "weight": 1.0
     },
     {
@@ -2929,7 +2929,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L338",
+      "source_location": "L373",
       "weight": 1.0
     },
     {
@@ -2941,7 +2941,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L339",
+      "source_location": "L374",
       "weight": 1.0
     },
     {
@@ -2953,7 +2953,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L340",
+      "source_location": "L375",
       "weight": 1.0
     },
     {
@@ -2965,7 +2965,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L341",
+      "source_location": "L376",
       "weight": 1.0
     },
     {
@@ -2977,7 +2977,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L342",
+      "source_location": "L377",
       "weight": 1.0
     },
     {
@@ -2989,7 +2989,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L346",
+      "source_location": "L381",
       "weight": 1.0
     },
     {
@@ -3001,7 +3001,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L354",
+      "source_location": "L389",
       "weight": 1.0
     },
     {
@@ -3013,7 +3013,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L178",
+      "source_location": "L213",
       "weight": 1.0
     },
     {
@@ -3025,7 +3025,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L179",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -3037,7 +3037,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L179",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -3049,7 +3049,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L181",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -3061,7 +3061,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L183",
+      "source_location": "L218",
       "weight": 1.0
     },
     {
@@ -3073,7 +3073,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L220",
+      "source_location": "L255",
       "weight": 1.0
     },
     {
@@ -3085,7 +3085,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L1025",
+      "source_location": "L1060",
       "weight": 1.0
     },
     {
@@ -3097,7 +3097,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L1026",
+      "source_location": "L1061",
       "weight": 1.0
     },
     {
@@ -3109,7 +3109,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L707",
+      "source_location": "L742",
       "weight": 1.0
     },
     {
@@ -3121,7 +3121,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L713",
+      "source_location": "L748",
       "weight": 1.0
     },
     {
@@ -3133,7 +3133,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L951",
+      "source_location": "L986",
       "weight": 1.0
     },
     {
@@ -3145,7 +3145,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L952",
+      "source_location": "L987",
       "weight": 1.0
     },
     {
@@ -3157,7 +3157,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L953",
+      "source_location": "L988",
       "weight": 1.0
     },
     {
@@ -3169,7 +3169,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L1004",
+      "source_location": "L1039",
       "weight": 1.0
     },
     {
@@ -3181,7 +3181,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L983",
+      "source_location": "L1018",
       "weight": 1.0
     },
     {
@@ -3193,7 +3193,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L847",
+      "source_location": "L882",
       "weight": 1.0
     },
     {
@@ -3205,7 +3205,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L850",
+      "source_location": "L885",
       "weight": 1.0
     },
     {
@@ -3217,7 +3217,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L728",
+      "source_location": "L763",
       "weight": 1.0
     },
     {
@@ -3229,7 +3229,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L864",
+      "source_location": "L899",
       "weight": 1.0
     },
     {
@@ -3241,7 +3241,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L871",
+      "source_location": "L906",
       "weight": 1.0
     },
     {
@@ -3253,7 +3253,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L904",
+      "source_location": "L939",
       "weight": 1.0
     },
     {
@@ -3265,7 +3265,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L908",
+      "source_location": "L943",
       "weight": 1.0
     },
     {
@@ -3277,7 +3277,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L126",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -3289,7 +3289,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L280",
+      "source_location": "L315",
       "weight": 1.0
     },
     {
@@ -3301,7 +3301,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L281",
+      "source_location": "L316",
       "weight": 1.0
     },
     {
@@ -3313,7 +3313,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L653",
+      "source_location": "L688",
       "weight": 1.0
     },
     {
@@ -3325,19 +3325,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L311",
+      "source_location": "L346",
       "weight": 1.0
     },
     {
       "source": "src_main_render",
-      "target": "src_main_settitle",
+      "target": "src_main_setpagemetadata",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L313",
+      "source_location": "L348",
       "weight": 1.0
     },
     {
@@ -3349,7 +3349,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L315",
+      "source_location": "L350",
       "weight": 1.0
     },
     {
@@ -3361,7 +3361,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L315",
+      "source_location": "L350",
       "weight": 1.0
     },
     {
@@ -3373,7 +3373,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L315",
+      "source_location": "L350",
       "weight": 1.0
     },
     {
@@ -3385,7 +3385,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L316",
+      "source_location": "L351",
       "weight": 1.0
     },
     {
@@ -3397,7 +3397,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L317",
+      "source_location": "L352",
       "weight": 1.0
     },
     {
@@ -3409,7 +3409,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L318",
+      "source_location": "L353",
       "weight": 1.0
     },
     {
@@ -3421,7 +3421,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L319",
+      "source_location": "L354",
       "weight": 1.0
     },
     {
@@ -3433,7 +3433,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L479",
+      "source_location": "L514",
       "weight": 1.0
     },
     {
@@ -3445,7 +3445,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L480",
+      "source_location": "L515",
       "weight": 1.0
     },
     {
@@ -3457,7 +3457,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L481",
+      "source_location": "L516",
       "weight": 1.0
     },
     {
@@ -3469,7 +3469,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L482",
+      "source_location": "L517",
       "weight": 1.0
     },
     {
@@ -3481,7 +3481,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L526",
+      "source_location": "L561",
       "weight": 1.0
     },
     {
@@ -3493,7 +3493,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L529",
+      "source_location": "L564",
       "weight": 1.0
     },
     {
@@ -3505,7 +3505,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L532",
+      "source_location": "L567",
       "weight": 1.0
     },
     {
@@ -3517,7 +3517,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L532",
+      "source_location": "L567",
       "weight": 1.0
     },
     {
@@ -3529,7 +3529,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L470",
+      "source_location": "L505",
       "weight": 1.0
     },
     {
@@ -3541,7 +3541,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L137",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -3553,7 +3553,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L139",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -3565,7 +3565,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L121",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -3577,7 +3577,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L474",
+      "source_location": "L509",
       "weight": 1.0
     },
     {
@@ -3589,7 +3589,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L474",
+      "source_location": "L509",
       "weight": 1.0
     },
     {
@@ -3601,7 +3601,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L474",
+      "source_location": "L509",
       "weight": 1.0
     },
     {
@@ -3613,7 +3613,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main.ts",
-      "source_location": "L291",
+      "source_location": "L326",
       "weight": 1.0
     },
     {
@@ -4442,7 +4442,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L100",
+      "source_location": "L101",
       "weight": 1.0
     },
     {
@@ -4453,7 +4453,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L1032",
+      "source_location": "L1067",
       "weight": 1.0
     },
     {
@@ -4464,7 +4464,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L120",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -4475,7 +4475,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L124",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -4486,7 +4486,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L136",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -4508,7 +4508,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L142",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -4519,7 +4519,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L146",
+      "source_location": "L147",
       "weight": 1.0
     },
     {
@@ -4530,7 +4530,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L156",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -4541,18 +4541,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L160",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
       "source": "src_main",
-      "target": "src_main_settitle",
+      "target": "src_main_setpagemetadata",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L165",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -4563,7 +4563,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L176",
+      "source_location": "L211",
       "weight": 1.0
     },
     {
@@ -4574,7 +4574,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L200",
+      "source_location": "L235",
       "weight": 1.0
     },
     {
@@ -4585,7 +4585,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L223",
+      "source_location": "L258",
       "weight": 1.0
     },
     {
@@ -4596,7 +4596,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L246",
+      "source_location": "L281",
       "weight": 1.0
     },
     {
@@ -4607,7 +4607,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L272",
+      "source_location": "L307",
       "weight": 1.0
     },
     {
@@ -4618,40 +4618,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L278",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main",
-      "target": "src_main_textpage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L289",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main",
-      "target": "src_main_controllerpage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L305",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main",
-      "target": "src_main_render",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L310",
+      "source_location": "L313",
       "weight": 1.0
     },
     {
@@ -4667,13 +4634,46 @@
     },
     {
       "source": "src_main",
+      "target": "src_main_textpage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L324",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_controllerpage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L340",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_render",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L345",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
       "target": "src_main_bindroutes",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L322",
+      "source_location": "L357",
       "weight": 1.0
     },
     {
@@ -4684,18 +4684,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L331",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main",
-      "target": "src_main_bindsettings",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L360",
+      "source_location": "L366",
       "weight": 1.0
     },
     {
@@ -4711,6 +4700,17 @@
     },
     {
       "source": "src_main",
+      "target": "src_main_bindsettings",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L395",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
       "target": "src_main_gamephase",
       "relation": "contains",
       "_origin": "ast",
@@ -4718,17 +4718,6 @@
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
       "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main",
-      "target": "src_main_gameoverlay",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L426",
       "weight": 1.0
     },
     {
@@ -4744,13 +4733,24 @@
     },
     {
       "source": "src_main",
+      "target": "src_main_gameoverlay",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L461",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
       "target": "src_main_sampledrivers",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L455",
+      "source_location": "L490",
       "weight": 1.0
     },
     {
@@ -4761,7 +4761,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L464",
+      "source_location": "L499",
       "weight": 1.0
     },
     {
@@ -4772,7 +4772,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L469",
+      "source_location": "L504",
       "weight": 1.0
     },
     {
@@ -4783,7 +4783,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L473",
+      "source_location": "L508",
       "weight": 1.0
     },
     {
@@ -4794,7 +4794,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L477",
+      "source_location": "L512",
       "weight": 1.0
     },
     {
@@ -4805,7 +4805,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L487",
+      "source_location": "L522",
       "weight": 1.0
     },
     {
@@ -4816,45 +4816,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L492",
+      "source_location": "L527",
       "weight": 1.0
     },
     {
       "source": "src_main",
       "target": "src_main_setconnectionstatus",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L500",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main",
-      "target": "src_main_handlehostmessage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L509",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main",
-      "target": "src_main_restoresavedrace",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L525",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main",
-      "target": "src_main_mountcontroller",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4876,6 +4843,39 @@
     },
     {
       "source": "src_main",
+      "target": "src_main_handlehostmessage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L544",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_restoresavedrace",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L560",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
+      "target": "src_main_mountcontroller",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L570",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main",
       "target": "src_main_driver",
       "relation": "contains",
       "_origin": "ast",
@@ -4893,7 +4893,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L644",
+      "source_location": "L679",
       "weight": 1.0
     },
     {
@@ -4915,7 +4915,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L681",
+      "source_location": "L716",
       "weight": 1.0
     },
     {
@@ -4937,7 +4937,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L74",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -4948,7 +4948,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -4959,7 +4959,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L76",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -4970,7 +4970,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L84",
+      "source_location": "L85",
       "weight": 1.0
     },
     {
@@ -4981,7 +4981,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L92",
+      "source_location": "L93",
       "weight": 1.0
     },
     {
@@ -4992,7 +4992,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L96",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -5371,233 +5371,13 @@
     },
     {
       "source": "src_main_racegame",
-      "target": "src_main_racegame_beep",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L1015",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_constructor",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L701",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_setsettings",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L718",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_preview",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L720",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_start",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L733",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_snapshot",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L747",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_restore",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L760",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_resume",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L788",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_setremoteinput",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L796",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_destroy",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L800",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_handlekeydown",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L809",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_handlekeyup",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L825",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_handlevisibility",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L827",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_resize",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L834",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_loop",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L842",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_step",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L854",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_updatecar",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L881",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_hazardat",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L913",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_draw",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L920",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
-      "target": "src_main_racegame_drawstartline",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main.ts",
-      "source_location": "L960",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_racegame",
       "target": "src_main_racegame_drawhazards",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L969",
+      "source_location": "L1004",
       "weight": 1.0
     },
     {
@@ -5608,7 +5388,227 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L987",
+      "source_location": "L1022",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_beep",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L1050",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_constructor",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L736",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_setsettings",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L753",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_preview",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L755",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_start",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L768",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_snapshot",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L782",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_restore",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L795",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_resume",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L823",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_setremoteinput",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L831",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_destroy",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L835",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_handlekeydown",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L844",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_handlekeyup",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L860",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_handlevisibility",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L862",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_resize",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L869",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_loop",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L877",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_step",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L889",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_updatecar",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L916",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_hazardat",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L948",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_draw",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L955",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_racegame",
+      "target": "src_main_racegame_drawstartline",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source_location": "L995",
       "weight": 1.0
     },
     {
@@ -5619,7 +5619,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L648",
+      "source_location": "L683",
       "weight": 1.0
     },
     {
@@ -5630,7 +5630,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L650",
+      "source_location": "L685",
       "weight": 1.0
     },
     {
@@ -5641,7 +5641,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L670",
+      "source_location": "L705",
       "weight": 1.0
     },
     {
@@ -5652,7 +5652,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main.ts",
-      "source_location": "L674",
+      "source_location": "L709",
       "weight": 1.0
     },
     {
@@ -5664,7 +5664,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/main.ts",
-      "source_location": "L496",
+      "source_location": "L531",
       "weight": 1.0
     },
     {
@@ -5676,7 +5676,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/main.ts",
-      "source_location": "L496",
+      "source_location": "L531",
       "weight": 1.0
     },
     {
@@ -5688,7 +5688,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/main.ts",
-      "source_location": "L451",
+      "source_location": "L486",
       "weight": 1.0
     },
     {
@@ -5700,10 +5700,10 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/main.ts",
-      "source_location": "L350",
+      "source_location": "L385",
       "weight": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f1a22ef8dda4d5a9038080343cc258be041b414b"
+  "built_at_commit": "072eae356a6ded035910416f7a14a35145132de2"
 }

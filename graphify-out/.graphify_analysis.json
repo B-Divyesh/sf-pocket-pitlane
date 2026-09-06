@@ -32,7 +32,14 @@
       "realtime_server_roomstore_setready",
       "realtime_server_roomstore_start",
       "realtime_server_roomstore_sync",
-      "realtime_server_send"
+      "realtime_server_send",
+      "realtime_server_test",
+      "realtime_server_test_databasefile",
+      "realtime_server_test_disposers",
+      "realtime_server_test_id",
+      "realtime_server_test_messagequeue",
+      "realtime_server_test_opensocket",
+      "realtime_server_test_rawupgrade"
     ],
     "1": [
       "axe_core_playwright",
@@ -64,31 +71,6 @@
       "vite"
     ],
     "2": [
-      "src_main",
-      "src_main_car",
-      "src_main_controllerpage",
-      "src_main_defaultcontrols",
-      "src_main_demosetup",
-      "src_main_driver",
-      "src_main_escapehtml",
-      "src_main_gamemarkup",
-      "src_main_gamephase",
-      "src_main_homepage",
-      "src_main_keyname",
-      "src_main_pageshell",
-      "src_main_palette",
-      "src_main_racesnapshot",
-      "src_main_racestate",
-      "src_main_readracesnapshot",
-      "src_main_realsetup",
-      "src_main_roomstate",
-      "src_main_root",
-      "src_main_route",
-      "src_main_servermessage",
-      "src_main_settings",
-      "src_main_textpage"
-    ],
-    "3": [
       "ref_dom",
       "ref_dom_iterable",
       "ref_es2022",
@@ -112,26 +94,26 @@
       "tsconfig_compileroptions_verbatimmodulesyntax",
       "tsconfig_include"
     ],
-    "4": [
-      "src_main_bindsettings",
-      "src_main_gameoverlay",
-      "src_main_isdemoroute",
-      "src_main_key",
-      "src_main_mounthome",
-      "src_main_racegame_preview",
-      "src_main_racegame_resume",
-      "src_main_racegame_setsettings",
-      "src_main_racegame_snapshot",
+    "3": [
+      "src_main",
+      "src_main_bindroutes",
+      "src_main_car",
+      "src_main_defaultcontrols",
+      "src_main_driver",
+      "src_main_gamephase",
+      "src_main_navigate",
+      "src_main_palette",
+      "src_main_racesnapshot",
+      "src_main_racestate",
       "src_main_readsettings",
-      "src_main_resetdemo",
-      "src_main_sampledrivers",
-      "src_main_sampleracedrivers",
-      "src_main_sampleraceseed",
-      "src_main_saveracesnapshot",
-      "src_main_savesettings",
-      "src_main_startsamplerace"
+      "src_main_roomstate",
+      "src_main_root",
+      "src_main_route",
+      "src_main_routefromlocation",
+      "src_main_servermessage",
+      "src_main_settings"
     ],
-    "5": [
+    "4": [
       "src_main_racegame",
       "src_main_racegame_beep",
       "src_main_racegame_constructor",
@@ -150,7 +132,7 @@
       "src_main_racegame_step",
       "src_main_racegame_updatecar"
     ],
-    "6": [
+    "5": [
       "realtime_package",
       "realtime_package_dependencies",
       "realtime_package_dependencies_ws",
@@ -168,23 +150,41 @@
       "realtime_package_version",
       "ws"
     ],
-    "7": [
-      "realtime_server_test",
-      "realtime_server_test_databasefile",
-      "realtime_server_test_disposers",
-      "realtime_server_test_id",
-      "realtime_server_test_messagequeue",
-      "realtime_server_test_opensocket",
-      "realtime_server_test_rawupgrade"
-    ],
-    "8": [
-      "src_main_bindroutes",
-      "src_main_navigate",
+    "6": [
+      "src_main_controllerpage",
+      "src_main_demosetup",
+      "src_main_escapehtml",
+      "src_main_homepage",
+      "src_main_pageshell",
       "src_main_racegame_destroy",
+      "src_main_readracesnapshot",
+      "src_main_realsetup",
       "src_main_registerserviceworker",
       "src_main_render",
-      "src_main_routefromlocation",
-      "src_main_settitle"
+      "src_main_setpagemetadata",
+      "src_main_textpage"
+    ],
+    "7": [
+      "src_main_gameoverlay",
+      "src_main_isdemoroute",
+      "src_main_mounthome",
+      "src_main_racegame_preview",
+      "src_main_racegame_resume",
+      "src_main_resetdemo",
+      "src_main_sampledrivers",
+      "src_main_sampleracedrivers",
+      "src_main_sampleraceseed",
+      "src_main_startsamplerace"
+    ],
+    "8": [
+      "src_main_bindsettings",
+      "src_main_gamemarkup",
+      "src_main_key",
+      "src_main_keyname",
+      "src_main_racegame_setsettings",
+      "src_main_racegame_snapshot",
+      "src_main_saveracesnapshot",
+      "src_main_savesettings"
     ],
     "9": [
       "src_main_clearracesnapshot",
@@ -222,15 +222,15 @@
     ]
   },
   "cohesion": {
-    "0": 0.14112903225806453,
+    "0": 0.10661268556005399,
     "1": 0.07407407407407407,
-    "2": 0.1383399209486166,
-    "3": 0.09090909090909091,
-    "4": 0.17647058823529413,
-    "5": 0.22058823529411764,
-    "6": 0.125,
-    "7": 0.2857142857142857,
-    "8": 0.3333333333333333,
+    "2": 0.09090909090909091,
+    "3": 0.14705882352941177,
+    "4": 0.22058823529411764,
+    "5": 0.125,
+    "6": 0.22727272727272727,
+    "7": 0.3111111111111111,
+    "8": 0.25,
     "9": 0.42857142857142855,
     "10": 0.38095238095238093,
     "11": 0.5,
@@ -260,13 +260,13 @@
       "degree": 13
     },
     {
-      "id": "src_main_render",
-      "label": "render()",
+      "id": "package_scripts",
+      "label": "scripts",
       "degree": 13
     },
     {
-      "id": "package_scripts",
-      "label": "scripts",
+      "id": "src_main_render",
+      "label": "render()",
       "degree": 13
     },
     {
@@ -280,13 +280,13 @@
       "degree": 9
     },
     {
-      "id": "src_main_navigate",
-      "label": "navigate()",
+      "id": "realtime_package_scripts",
+      "label": "scripts",
       "degree": 8
     },
     {
-      "id": "src_main_createroom",
-      "label": "createRoom()",
+      "id": "src_main_navigate",
+      "label": "navigate()",
       "degree": 8
     }
   ],
@@ -300,51 +300,51 @@
       ],
       "confidence": "INFERRED",
       "relation": "indirect_call",
-      "note": "Bridges community 4 \u2192 community 9"
+      "note": "Bridges community 9 \u2192 community 7"
     },
     {
-      "source": "bindSettings()",
-      "target": "keyName()",
+      "source": "key()",
+      "target": "isDemoRoute()",
       "source_files": [
         "src/main.ts",
         "src/main.ts"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
-      "note": "Bridges community 4 \u2192 community 2"
+      "note": "Bridges community 7 \u2192 community 8"
     },
     {
-      "source": "render()",
-      "target": "mountController()",
+      "source": "navigate()",
+      "target": "isDemoRoute()",
       "source_files": [
         "src/main.ts",
         "src/main.ts"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
-      "note": "Bridges community 10 \u2192 community 8"
+      "note": "Bridges community 7 \u2192 community 3"
     },
     {
-      "source": "render()",
-      "target": "controllerPage()",
+      "source": "clearRaceSnapshot()",
+      "target": "key()",
       "source_files": [
         "src/main.ts",
         "src/main.ts"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
-      "note": "Bridges community 2 \u2192 community 8"
+      "note": "Bridges community 8 \u2192 community 9"
     },
     {
-      "source": "restoreSavedRace()",
-      "target": "readRaceSnapshot()",
+      "source": "readRaceSnapshot()",
+      "target": "key()",
       "source_files": [
         "src/main.ts",
         "src/main.ts"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
-      "note": "Bridges community 2 \u2192 community 9"
+      "note": "Bridges community 8 \u2192 community 6"
     }
   ],
   "tokens": {
