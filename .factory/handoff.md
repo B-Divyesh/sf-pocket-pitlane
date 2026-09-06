@@ -155,3 +155,40 @@ Evidence is in `/work/.evidence/pocket-pitlane-repair-2/`. `.factory/catalog-des
 ### Known gaps
 
 No known release-blocking gaps remain. Pocket Pitlane remains deliberately free and has no accounts, chat, ads, payments, voice chat, physics simulation, or party-game collection. No billing metadata is required because no paid offer is advertised.
+
+## Verification 3
+
+### Status
+
+**PASS.** Independent verification found zero findings and zero untested declared claims.
+
+### Scope and versions
+
+- Static implementation reviewed: `b3c9efb1c3c7ee288b6cd0650f20a9532da1e676`.
+- Documentation revision supplied for the review: `0dc2a2d`.
+- The later factory-wrapper revision is `a6f79263fe3dba16034ba2b800f0dc0f206ee587`; Graphify-only worktree changes were preserved untouched.
+- The live static shell referenced `assets/index-C2HFoYNi.js`, matching a clean build of `b3c9efb`.
+- The unchanged product relay health endpoint returned HTTP 200 and build `a955346b3e78fd83e3377c572973c15d9c6b94d9`.
+
+### What was verified
+
+- A fresh detached checkout completed `npm ci`, `npm --prefix realtime ci`, `npm run check`, and all 19 declared claim commands. `npm run check` reported 32 passed browser checks, 2 intentional mobile-only desktop skips, and 8 passed relay checks. Every declared claim has exactly one matching `@claim:` test tag.
+- The fresh live desktop first screen displayed the playable canvas, `Race with friends on one shared screen`, the audience sentence, Create room, and the sample action. A fresh independent phone joined and readied a real room, enabled the host start control, and started the two-client race. Its left steering button was 153 × 98 CSS px.
+- The live sample banner remained visible, its four named racers were populated, Reset demo announced that nothing was saved, real-storage isolation held, and the deterministic run reached the four-finisher Race results end screen.
+- The live demo reloaded offline after its first visit. Keyboard skip navigation, reduced-motion behavior, invalid room-code recovery, route titles, privacy request text, legal pages, internal links, and the styled deliberate HTTP 404 all worked. Live axe returned zero violations on home and controller; no console errors occurred.
+- Live headers included CSP/frame-ancestors, Referrer-Policy, X-Content-Type-Options, and Permissions-Policy. The relay accepted 20 controlled connection attempts then returned `429 Retry-After: 60` on attempts 21–22.
+- A three-second phone-sized headless run measured 60.11 fps. This is an emulated-browser measurement, not a public hardware claim.
+
+### Earlier finding disposition
+
+Verification 1 F-01.1 through F-01.5 remain covered by their exact declared tests. The earlier demo-reset feedback defect remains fixed. Verification 2 F-02 is closed: all four relay claims now have exact tags, tag-selected commands, and passing observable tests.
+
+### Evidence and reports
+
+- Verification report: `.factory/verification-3.md`.
+- Evidence: `/work/.evidence/pocket-pitlane-verify-3/`.
+- Factory QA copies: `/work/.evidence/qa-report.md` and `/work/.evidence/qa-result.json`.
+
+### Known gaps
+
+None found in this verification. The intentional first-release scope remains: no accounts, chat, ads, payments, voice chat, physics simulation, or party-game collection.
