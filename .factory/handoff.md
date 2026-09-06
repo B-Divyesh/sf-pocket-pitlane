@@ -40,3 +40,13 @@ No earlier written review report or handoff existed. The repository history was 
 ## Known gaps
 
 No known functional gaps remain for the researched first release. The game deliberately has no accounts, chat, ads, payments, physics simulation, or party-game collection. There is no paid offer or billing integration because this first release is free.
+
+## Verification 1
+
+Independent verification report: `.factory/verification-1.md`.
+
+- Verdict: **FAIL** — five public claims lack the required declared observable tests; see F-01 in the report. This is claims coverage, not a failed tested game path.
+- Reviewed implementation: `a955346b3e78fd83e3377c572973c15d9c6b94d9`; documentation revision: `1405881` (previous handoff text revision `dab7c89c2cac2d38e855564c3151a44f3f351e1e`).
+- In a clean clone, `npm run check` passed (build, 26 browser checks, and 7 relay checks). Every declared claim command was also run separately and passed.
+- Fresh live desktop and phone checks confirmed the first screen, isolated demo/reset, deterministic result screen, independent controller join/start, host refresh recovery, route titles, legal pages, reduced motion, live axe, styled HTTP 404, relay health, and the controlled 429/`Retry-After` allowance.
+- Evidence is in `/work/.evidence/pocket-pitlane/`. No product code was changed during verification.
