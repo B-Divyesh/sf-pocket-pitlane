@@ -212,3 +212,26 @@ None found in this verification. The intentional first-release scope remains: no
 ### Known gaps
 
 No findings in Review 1. Intentional scope remains unchanged: no accounts, chat, ads, payments, voice chat, physics simulation, or party-game collection.
+
+## Review 2
+
+### Status
+
+**FAIL — 4 findings and 1 untested public claim.**
+
+### Scope and verification
+
+- Reviewed static implementation: `b3c9efb1c3c7ee288b6cd0650f20a9532da1e676`; documentation baseline: `7c4e72d2967f78e9f076e9e0f1bdd054b2fbefe0`; current wrapper: `37d2ac83425847a1f42ab3015c2796b45808a8ab`.
+- The live JavaScript and CSS are byte-for-byte matches for the clean candidate build. The relay health endpoint returned 200 with build `a955346b3e78fd83e3377c572973c15d9c6b94d9`.
+- A fresh detached clone completed `npm ci`, `npm --prefix realtime ci`, `npm run check`, and all 19 manifest entries separately. The build, 32 browser checks, and 8 relay checks passed; every declared claim has one exact test tag.
+- Fresh desktop and phone contexts completed the sample and real multiplayer loops through active play and an actual result screen. Sample isolation/reset, restart, pause, settings, keyboard, touch, independent room clients, tenant separation, host-refresh recovery, invalid input, offline reload, reduced motion, 200% text size, links, legal routes, privacy requests, styled 404, health, and 429/`Retry-After` were exercised.
+- Live Axe found zero violations on home, controller, and results. Lighthouse mobile scored 100 in Performance, Accessibility, Best Practices, and SEO. A three-second phone-sized active race measured 60.19 fps.
+
+### Findings
+
+1. Medium: Privacy and README say controller tokens stay in the browser/local, while the relay storage claim and test prove that it stores those tokens. The public local-only wording is unlisted and untested as stated.
+2. Minor: Demo, Privacy, Terms, and Controller retain the home canonical and social metadata.
+3. Minor: The usable, deliberate 404 lacks the required skip link, standard landmarks/header/footer details, and metadata.
+4. Minor: `.factory/copy-audit.md` is incomplete/outdated, and README contains a 26-word sentence above the plain-words cap.
+
+Report: `.factory/review-2.md`. Evidence: `/work/.evidence/pocket-pitlane-review-2/`.
