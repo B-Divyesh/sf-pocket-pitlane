@@ -7,6 +7,7 @@ Pocket Pitlane is a free 2–8 player top-down race for friends sharing a TV or 
 ## Implementation and deployment
 
 - Product implementation SHA: `a955346b3e78fd83e3377c572973c15d9c6b94d9`.
+- Verification documentation SHA: `dab7c89c2cac2d38e855564c3151a44f3f351e1e`.
 - Static site: `https://pocket-pitlane.sociobot.in`.
 - Product-owned relay: `https://pocket-pitlane-realtime.sociobot.in/health` returned `200` with build `a955346b3e78fd83e3377c572973c15d9c6b94d9`.
 - The relay deployment preserved its existing environment and probes, uses the durable `/data` SQLite share, and remains one replica.
