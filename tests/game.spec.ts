@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-test('@claim:sample-sandbox starts a realistic sample race and keeps demo storage separate', async ({ page }) => {
+test('@claim:sample-sandbox @claim:free-first-release starts a realistic sample race without changing real browser data or asking for payment', async ({ page }) => {
   await page.goto('/demo');
   await expect(page.getByText('Demo — sample data, nothing is saved')).toBeVisible();
   expect(await page.evaluate(() => Object.keys(localStorage).filter((name) => name.startsWith('pocket-pitlane:')))).toEqual([]);
@@ -69,9 +69,14 @@ test('@claim:demo-private does not send sample play to another origin', async ({
   expect(requests.every((url) => new URL(url).origin === 'http://127.0.0.1:4173')).toBe(true);
 });
 
-test('@claim:keyboard-controls accepts keyboard steering during a sample race', async ({ page }) => {
+test('@claim:keyboard-controls accepts remapped keyboard steering during a sample race', async ({ page }) => {
   await page.goto('/demo?test-run=1');
-  await page.keyboard.press('ArrowLeft');
+  await page.getByRole('button', { name: 'Open game settings' }).click();
+  await page.getByRole('button', { name: 'Steer left: ArrowLeft' }).click();
+  await page.keyboard.press('a');
+  await expect(page.getByText('Steer left uses A.')).toBeVisible();
+  await page.getByRole('button', { name: 'Close settings' }).click();
+  await page.keyboard.press('a');
   await expect(page.getByText('Keyboard steering is active.')).toBeVisible();
 });
 
@@ -82,6 +87,14 @@ test('mobile controller has usable touch controls and no serious accessibility i
   await expect(page.getByRole('textbox', { name: 'Six-character room code' })).toHaveValue('CALM42');
   const results = await new AxeBuilder({ page: page as never }).analyze();
   expect(results.violations.filter((violation) => ['critical', 'serious'].includes(violation.impact ?? ''))).toEqual([]);
+});
+
+test('controller explains how to recover from an incomplete room code', async ({ page, isMobile }) => {
+  test.skip(!isMobile, 'This check targets the phone controller.');
+  await page.goto('/controller');
+  await page.getByRole('textbox', { name: 'Six-character room code' }).fill('RACE');
+  await page.getByRole('button', { name: 'Join room' }).click();
+  await expect(page.getByText('Enter all six room characters.')).toBeVisible();
 });
 
 test('home has no serious accessibility issues', async ({ page }) => {

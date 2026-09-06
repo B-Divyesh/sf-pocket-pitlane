@@ -21,7 +21,7 @@ class RoomError extends Error {
   toClientMessage() {
     return {
       missing: 'This room no longer exists. Check the code on the shared screen.',
-      full: 'This room already has eight controllers.',
+      full: 'This room already has eight drivers.',
       notHost: 'Only the shared-screen host can start the race.',
       needTwoReady: 'Two ready drivers are needed before the race starts.',
       invalid: 'That room request was not valid. Try again.',
@@ -86,7 +86,8 @@ export class RoomStore {
   }
 
   cleanup() {
-    this.database.prepare('DELETE FROM rooms WHERE updated_at < ?').run(now() - ROOM_TTL_SECONDS);
+    const result = this.database.prepare('DELETE FROM rooms WHERE updated_at < ?').run(now() - ROOM_TTL_SECONDS);
+    if (result.changes > 0) this.sync();
   }
 
   load(code) {

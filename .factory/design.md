@@ -27,7 +27,7 @@ The display and body use a self-hosted-in-practice system stack (`ui-rounded`, A
 
 ## Interaction and motion
 
-The race board has a thick inset line, compact timing capsules, and sign-like buttons. Cars move because the race is live; no decorative background animation runs. UI state changes use direct replacement rather than flourishes. `prefers-reduced-motion` removes transitions and smooth scrolling. Escape and hidden tabs pause a race, and the result screen gives a direct restart.
+The race board has a thick inset line, compact timing capsules, sign-like buttons, and a small lime or amber boost bar below each car. It lets the group see when drafting has charged the one power. Cars move because the race is live; no decorative background animation runs. UI state changes use direct replacement rather than flourishes. `prefers-reduced-motion` removes transitions and smooth scrolling. Escape and hidden tabs pause a race, the keyboard controls can be remapped, and the result screen gives a direct restart.
 
 ## Asset plan and provenance
 

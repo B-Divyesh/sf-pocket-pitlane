@@ -16,8 +16,8 @@ The first release is free. It does not offer checkout, paid unlocks, accounts, o
 
 ## Controls
 
-- Shared-screen host: Left/Right arrows steer, Up or Space accelerates and uses boost, Escape pauses.
-- Phone: hold Left or Right to steer; tap Boost when it is ready. Optional phone tilt asks for browser permission only after a tap.
+- Shared-screen host: Game settings can remap keys. By default, Left/Right steer, Up drives and uses boost, and Escape pauses.
+- Phone: hold Left or Right to steer; tap Boost when the shared screen shows a filled car meter. Optional phone tilt asks only after a tap.
 
 A round uses a 90-second race clock. Four moving hazards make each seeded run different. A race ends with an ordered result and can restart from the result screen.
 
@@ -42,7 +42,7 @@ npm run test:realtime
 npm run check
 ```
 
-`npm test` starts a production Vite preview and the local Node room service. It runs desktop and phone-sized browser checks, including the claims in `.factory/claims.json`, offline reload, keyboard use, route titles, room joining, and an axe scan. `npm run test:realtime` checks SQLite restart persistence, the complete WebSocket room flow, and the 429 plus `Retry-After` allowance.
+`npm test` starts a production Vite preview and the local Node room service. It runs desktop and phone-sized browser checks, including the claims in `.factory/claims.json`, offline reload, remapped keyboard use, invalid room recovery, route titles, room joining, and an axe scan. `npm run test:realtime` checks room expiry, SQLite restart persistence, the complete WebSocket room flow, and the 429 plus `Retry-After` allowance.
 
 The realtime service is intentionally separate from static hosting because it owns WebSocket rooms and SQLite state.
 

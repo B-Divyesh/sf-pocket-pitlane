@@ -84,6 +84,18 @@ test('claim_realtime_persists_after_restart reopens a durable room with its read
   assert.equal(persisted.players.find((player) => player.id === id(2)).ready, true);
 });
 
+test('claim_room_expiry removes an expired room from the durable snapshot', () => {
+  const durableFile = databaseFile();
+  const first = new RoomStore(databaseFile(), durableFile);
+  const room = first.hostRoom(id(1));
+  first.database.prepare('UPDATE rooms SET updated_at = 0 WHERE code = ?').run(room.code);
+  first.cleanup();
+  first.close();
+  const restarted = new RoomStore(databaseFile(), durableFile);
+  disposers.push(async () => restarted.close());
+  assert.equal(restarted.load(room.code), null);
+});
+
 test('claim_realtime_rate_limit returns HTTP 429 with Retry-After after 20 connection attempts', async () => {
   const relay = createRelay({ databasePath: databaseFile() });
   disposers.push(async () => relay.close());

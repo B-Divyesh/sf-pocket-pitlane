@@ -22,6 +22,11 @@ interface Car extends Driver {
 interface Settings {
   sound: boolean;
   assist: boolean;
+  controls: {
+    left: string;
+    right: string;
+    drive: string;
+  };
 }
 
 interface RoomState {
@@ -48,6 +53,7 @@ const app: HTMLDivElement = root;
 
 const palette = ['#ff795f', '#65c9e8', '#d9f36c', '#ffc95e', '#cf9dff', '#ff94c7', '#70e1ba', '#f3f1e9'];
 const storagePrefix = 'pocket-pitlane:';
+const defaultControls = { left: 'ArrowLeft', right: 'ArrowRight', drive: 'ArrowUp' };
 let route = routeFromLocation();
 let settings = readSettings(isDemoRoute());
 let room: RoomState | null = null;
@@ -74,14 +80,22 @@ function key(name: string): string {
 }
 
 function readSettings(demo: boolean): Settings {
-  const fallback: Settings = { sound: true, assist: false };
+  const fallback = (): Settings => ({ sound: true, assist: false, controls: { ...defaultControls } });
   try {
     const raw = localStorage.getItem(`${demo ? 'demo:' : ''}${storagePrefix}settings`);
-    if (!raw) return fallback;
+    if (!raw) return fallback();
     const value = JSON.parse(raw) as Partial<Settings>;
-    return { sound: value.sound !== false, assist: value.assist === true };
+    return {
+      sound: value.sound !== false,
+      assist: value.assist === true,
+      controls: {
+        left: typeof value.controls?.left === 'string' ? value.controls.left : defaultControls.left,
+        right: typeof value.controls?.right === 'string' ? value.controls.right : defaultControls.right,
+        drive: typeof value.controls?.drive === 'string' ? value.controls.drive : defaultControls.drive
+      }
+    };
   } catch {
-    return fallback;
+    return fallback();
   }
 }
 
@@ -101,6 +115,11 @@ function getOrCreateId(name: string): string {
 
 function escapeHtml(value: string): string {
   return value.replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character] ?? character);
+}
+
+function keyName(value: string): string {
+  if (value === ' ') return 'Space';
+  return value.length === 1 ? value.toUpperCase() : value;
 }
 
 function setTitle(nextRoute: Route): void {
@@ -177,7 +196,8 @@ function gameMarkup(demo: boolean): string {
         <h2 id="settings-title">Game settings</h2>
         <label class="setting"><span>Sound effects</span><input id="sound-setting" type="checkbox" ${settings.sound ? 'checked' : ''}></label>
         <label class="setting"><span>Steering assist</span><input id="assist-setting" type="checkbox" ${settings.assist ? 'checked' : ''}></label>
-        <p>Arrow keys steer the host car. Controllers use touch buttons.</p>
+        <fieldset class="key-settings"><legend>Keyboard controls</legend><p>Choose a control, then press one key.</p><div class="key-bindings"><button class="button-secondary" id="bind-left" type="button">Steer left: ${escapeHtml(keyName(settings.controls.left))}</button><button class="button-secondary" id="bind-right" type="button">Steer right: ${escapeHtml(keyName(settings.controls.right))}</button><button class="button-secondary" id="bind-drive" type="button">Drive and boost: ${escapeHtml(keyName(settings.controls.drive))}</button></div><button class="button-quiet" id="reset-key-bindings" type="button">Reset keyboard controls</button><p class="key-status" id="key-binding-status" aria-live="polite"></p></fieldset>
+        <p>Controllers use touch buttons. The shared screen uses these keyboard controls.</p>
         <div class="dialog-actions"><button class="button-secondary" value="close">Close settings</button></div>
       </form>
     </dialog>`;
@@ -302,6 +322,57 @@ function bindSettings(): void {
     saveSettings();
     game?.setSettings(settings);
   });
+  let listeningFor: keyof Settings['controls'] | null = null;
+  const status = document.querySelector<HTMLElement>('#key-binding-status');
+  const updateBindingButton = (control: keyof Settings['controls']): void => {
+    const button = document.querySelector<HTMLButtonElement>(`#bind-${control}`);
+    const labels: Record<keyof Settings['controls'], string> = { left: 'Steer left', right: 'Steer right', drive: 'Drive and boost' };
+    if (button) button.textContent = `${labels[control]}: ${keyName(settings.controls[control])}`;
+  };
+  const stopListening = (): void => {
+    listeningFor = null;
+    window.removeEventListener('keydown', captureKey, true);
+  };
+  const captureKey = (event: KeyboardEvent): void => {
+    if (!listeningFor) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const control = listeningFor;
+    if (event.key === 'Escape') {
+      status!.textContent = 'Key change cancelled.';
+      stopListening();
+      updateBindingButton(control);
+      return;
+    }
+    if (event.key === 'Tab' || event.metaKey || event.ctrlKey || event.altKey || event.key === 'Shift') {
+      status!.textContent = 'Choose one regular key.';
+      return;
+    }
+    settings.controls[control] = event.key;
+    saveSettings();
+    game?.setSettings(settings);
+    status!.textContent = `${control === 'drive' ? 'Drive and boost' : `Steer ${control}`} uses ${keyName(event.key)}.`;
+    stopListening();
+    updateBindingButton(control);
+  };
+  (['left', 'right', 'drive'] as const).forEach((control) => {
+    document.querySelector<HTMLButtonElement>(`#bind-${control}`)?.addEventListener('click', () => {
+      stopListening();
+      listeningFor = control;
+      const button = document.querySelector<HTMLButtonElement>(`#bind-${control}`);
+      if (button) button.textContent = 'Press a key…';
+      if (status) status.textContent = `Press the new key for ${control === 'drive' ? 'drive and boost' : `steering ${control}`}.`;
+      window.addEventListener('keydown', captureKey, true);
+    });
+  });
+  document.querySelector<HTMLButtonElement>('#reset-key-bindings')?.addEventListener('click', () => {
+    settings.controls = { ...defaultControls };
+    saveSettings();
+    game?.setSettings(settings);
+    (['left', 'right', 'drive'] as const).forEach(updateBindingButton);
+    if (status) status.textContent = 'Keyboard controls reset.';
+  });
+  dialog?.addEventListener('close', stopListening);
 }
 
 function gameOverlay(phase: GamePhase, cars: Car[], seconds: number): void {
@@ -454,6 +525,7 @@ function mountController(): void {
     const down = (event: Event): void => {
       event.preventDefault();
       button.dataset.active = 'true';
+      button.dataset.pointerUsed = 'true';
       if (control === 'left') sendControl(-1, true, false);
       if (control === 'right') sendControl(1, true, false);
       if (control === 'boost') sendControl(0, true, true);
@@ -461,11 +533,22 @@ function mountController(): void {
     const up = (): void => {
       button.dataset.active = 'false';
       sendControl(0, false, false);
+      window.setTimeout(() => { button.dataset.pointerUsed = 'false'; }, 0);
     };
     button.addEventListener('pointerdown', down);
     button.addEventListener('pointerup', up);
     button.addEventListener('pointercancel', up);
     button.addEventListener('pointerleave', up);
+    button.addEventListener('click', () => {
+      if (button.dataset.pointerUsed === 'true') {
+        button.dataset.pointerUsed = 'false';
+        return;
+      }
+      if (control === 'left') sendControl(-1, true, false);
+      if (control === 'right') sendControl(1, true, false);
+      if (control === 'boost') sendControl(0, true, true);
+      window.setTimeout(() => sendControl(0, false, false), 180);
+    });
   });
   document.querySelector<HTMLButtonElement>('#motion-controller')?.addEventListener('click', async () => {
     type MotionPermission = typeof DeviceOrientationEvent & { requestPermission?: () => Promise<'granted' | 'denied'> };
@@ -560,7 +643,7 @@ class RaceGame {
 
   private canvas: HTMLCanvasElement;
 
-  setSettings(nextSettings: Settings): void { this.settingState = { ...nextSettings }; }
+  setSettings(nextSettings: Settings): void { this.settingState = { ...nextSettings, controls: { ...nextSettings.controls } }; }
 
   preview(): void {
     this.phase = 'preview';
@@ -609,14 +692,16 @@ class RaceGame {
   }
 
   private handleKeyDown = (event: KeyboardEvent): void => {
-    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', ' ', 'Escape'].includes(event.key) && (this.phase === 'racing' || this.phase === 'countdown')) event.preventDefault();
+    const controls = this.settingState.controls;
+    const drivingKeys = [controls.left, controls.right, controls.drive, 'Escape'];
+    if (drivingKeys.includes(event.key) && (this.phase === 'racing' || this.phase === 'countdown')) event.preventDefault();
     if (event.key === 'Escape' && this.phase === 'racing') {
       this.phase = 'paused';
       this.report(this.phase, this.cars, this.duration - this.raceSeconds);
       return;
     }
     this.keyboardDown.add(event.key);
-    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', ' '].includes(event.key) && (this.phase === 'racing' || this.phase === 'countdown')) {
+    if ([controls.left, controls.right, controls.drive].includes(event.key) && (this.phase === 'racing' || this.phase === 'countdown')) {
       const status = document.querySelector<HTMLElement>('#game-input-status');
       if (status) status.textContent = 'Keyboard steering is active.';
     }
@@ -680,7 +765,14 @@ class RaceGame {
 
   private updateCar(car: Car, index: number, dt: number): void {
     let input = this.inputs.get(car.id);
-    if (car.host && !this.autoPilot) input = { steer: (this.keyboardDown.has('ArrowLeft') ? -1 : 0) + (this.keyboardDown.has('ArrowRight') ? 1 : 0), throttle: this.keyboardDown.has('ArrowUp') || this.keyboardDown.has(' '), boost: this.keyboardDown.has(' ') };
+    if (car.host && !this.autoPilot) {
+      const controls = this.settingState.controls;
+      input = {
+        steer: (this.keyboardDown.has(controls.left) ? -1 : 0) + (this.keyboardDown.has(controls.right) ? 1 : 0),
+        throttle: this.keyboardDown.has(controls.drive),
+        boost: this.keyboardDown.has(controls.drive)
+      };
+    }
     if (this.autoPilot) input = { steer: Math.sin(this.raceSeconds * 1.9 + index * 2.1 + this.trackSeed) > .36 ? 1 : Math.sin(this.raceSeconds * 1.9 + index * 2.1 + this.trackSeed) < -.36 ? -1 : 0, throttle: true, boost: Math.sin(this.raceSeconds * .7 + index + this.trackSeed) > .86 };
     const steer = input?.steer ?? 0;
     const throttle = input?.throttle ?? false;
@@ -795,6 +887,10 @@ class RaceGame {
     context.fillStyle = '#0e202b';
     context.fillRect(-5, 3, 10, 6);
     context.restore();
+    context.fillStyle = '#071018';
+    context.fillRect(x - 16, y + 18, 32, 5);
+    context.fillStyle = car.boost >= .16 ? '#d9f36c' : '#ffc95e';
+    context.fillRect(x - 15, y + 19, 30 * Math.max(0, Math.min(1, car.boost)), 3);
     context.fillStyle = '#f8f4e8';
     context.font = '700 11px ui-rounded, system-ui, sans-serif';
     context.textAlign = 'center';
